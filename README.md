@@ -36,6 +36,9 @@ We came up with the idea of collecting information about Palestinian cities and 
 The visitor will enter the site and will see a Nav bar with an entry box to search for a city in Palestine, He will see a little of the Palestinian heritage and he can go to the city's page and will find a lot of information about it, and he can add a story about city and a new city.
 
 -----
+## Prototype
+![all project (1)](https://user-images.githubusercontent.com/71079908/138553012-7bd9ebf1-afef-45d9-bdfe-741029940bff.png)
+
 ## Database schema: 
 ![database ](https://user-images.githubusercontent.com/71079908/138549598-36d2ef3f-1813-4740-8078-ee0d4f45c283.png)
 
