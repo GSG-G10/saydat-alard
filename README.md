@@ -12,7 +12,7 @@ After more than three quarters of a century have passed since the Nakba and the 
 We came up with the idea of collecting information about Palestinian cities and villages, the Palestinian heritage, and the most famous industries and crops that these cities are famous for, and this is in the context of preserving the Palestinian history that the occupier is trying to steal and overturning the facts.
 
 ---------------
-## User Story :open_book:
+## User Story  :books: 
 >Visitor
 * As a visitor, I can Sign up and verify that the email is correct through the verification.
 * As a visitor, I can browse the site and see information about Palestinian cities like(this is a city or village, Location, When this city  occupied? The most common places, The Most common Meal, Why is it called by that name?).
@@ -32,7 +32,7 @@ We came up with the idea of collecting information about Palestinian cities and 
 * As an Admin, I can accept the users' stories by the dashboard to accept add them to the site stories.
 * As an Admin, I can add a new city.
 --------------------------
-## User journey :mag_right:
+## User journey  :open_book:
 The visitor will enter the site and will see a Nav bar with an entry box to search for a city in Palestine, He will see a little of the Palestinian heritage and he can go to the city's page and will find a lot of information about it, and he can add a story about city and a new city.
 
 -----
