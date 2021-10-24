@@ -33,10 +33,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm start",
     "server": "cd server && npm run dev",
-    "lint-fix":"cd server && npm run lint",
-    "lint-fix-front":"cd client && npm run lint"
+    "lint-fix": "cd server && npm run lint && cd ../client && npm run lint-front"
   },
-  "pre-commit":["lint-fix","lint-fix-front"],
+  "pre-commit": [
+    "lint-fix"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GSG-G10/saydat-alard.git"
