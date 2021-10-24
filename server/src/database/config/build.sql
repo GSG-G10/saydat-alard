@@ -14,16 +14,16 @@ CREATE TABLE users(
 CREATE TABLE cities(
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    area VARCHAR(50) NOT NULL,
-    location VARCHAR(255) NOT NULL,
-    occupationDate VARCHAR(255) NOT NULL,
+    area VARCHAR(50),
+    location VARCHAR(255),
+    occupationDate VARCHAR(255),
     famousFor TEXT,
     image TEXT,
-    population VARCHAR(255) NOT NULL,
-    populationDensity VARCHAR(255) NOT NULL,
+    population VARCHAR(255),
+    populationDensity VARCHAR(255),
     quotation TEXT,
     isMain BOOLEAN DEFAULT FALSE,
-    cityFrom VARCHAR(255) NOT NULL
+    cityFrom VARCHAR(255)
 );
 
 CREATE TABLE stories(
