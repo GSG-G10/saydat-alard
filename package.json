@@ -1,5 +1,48 @@
 {
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "name": "saydat-alard",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
   "dependencies": {
-    "cross-env": "^7.0.3"
-  }
+    "buffer-from": "^1.1.2",
+    "concat-stream": "^1.6.2",
+    "core-util-is": "^1.0.3",
+    "cross-spawn": "^5.1.0",
+    "inherits": "^2.0.4",
+    "isarray": "^1.0.0",
+    "isexe": "^2.0.0",
+    "lru-cache": "^4.1.5",
+    "process-nextick-args": "^2.0.1",
+    "pseudomap": "^1.0.2",
+    "readable-stream": "^2.3.7",
+    "os-shim": "^0.1.3",
+    "safe-buffer": "^5.1.2",
+    "shebang-command": "^1.2.0",
+    "shebang-regex": "^1.0.0",
+    "spawn-sync": "^1.0.15",
+    "string_decoder": "^1.1.1",
+    "typedarray": "^0.0.6",
+    "util-deprecate": "^1.0.2",
+    "which": "^1.2.14",
+    "yallist": "^2.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint-fix":"cd server && npm run lint"
+  },
+  "pre-commit":["lint-fix"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G10/saydat-alard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G10/saydat-alard/issues"
+  },
+  "homepage": "https://github.com/GSG-G10/saydat-alard#readme"
 }
