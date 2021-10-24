@@ -36,7 +36,7 @@
     "client": "cd client && npm start",
     "server": "cd server && npm run dev"
   },
-  "pre-commit":["lint-fix", "lint-fix-front"],
+  "pre-commit":["lint-fix","lint-fix-front"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GSG-G10/saydat-alard.git"
