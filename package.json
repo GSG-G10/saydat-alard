@@ -31,10 +31,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint-fix":"cd server && npm run lint",
-    "lint-fix-front":"cd client && npm run lint",
     "client": "cd client && npm start",
-    "server": "cd server && npm run dev"
+    "server": "cd server && npm run dev",
+    "lint-fix":"cd server && npm run lint",
+    "lint-fix-front":"cd client && npm run lint"
   },
   "pre-commit":["lint-fix","lint-fix-front"],
   "repository": {
