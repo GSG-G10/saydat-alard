@@ -4,6 +4,6 @@ const {
 } = require('../controllers');
 
 router.get('/', getMainCities);
-router.get(' /proverb?char=', getProverbs);
+router.get('/proverbs', getProverbs);
 router.post('/signup', checkUserExist, signup, setCookie);
 module.exports = router;
