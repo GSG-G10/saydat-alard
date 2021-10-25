@@ -33,7 +33,7 @@ const login = async (request, response) => {
 
     if (result) {
       const { password_hash, ...data } = user;
-      const token = jwt.sign(data, process.env.SECRET);
+      const token = jwt.sign(data, process.env.SECRET_TOKEN);
       response.cookie(
         'authorization',
         token,
