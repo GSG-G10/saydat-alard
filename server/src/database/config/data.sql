@@ -80,3 +80,22 @@ VALUES
         3,
         false
     );
+
+        3
+    );
+
+INSERT INTO
+    proverbs(content)
+VALUES
+    ('أنا'),
+    ('إنت'),
+    ('انا'),
+    ('بانت');
+
+INSERT INTO
+    families(name, city_id)
+VALUES
+    ('ناصر', 1),
+    ('زقوت', 3),
+    ('شامية', 2);
+
