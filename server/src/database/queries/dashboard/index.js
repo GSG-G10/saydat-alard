@@ -1,3 +1,4 @@
 const approvePendingStory = require('./approverdStory');
+const getDashboardProverbsQuery = require('./getDashboardProverbsQuery');
 
-module.exports = { approvePendingStory };
+module.exports = { approvePendingStory, getDashboardProverbsQuery };
