@@ -4,7 +4,6 @@ const {
   checkUserExist, setCookie, isAdmin, checkAuth,
 } = require('./middlewares');
 
-
 module.exports = {
   getMainCities,
   signup,
