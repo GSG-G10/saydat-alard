@@ -1,3 +1,4 @@
 const approvedStory = require('./approvedStory');
+const getDashboardCities = require('./getDashboardCities');
 
-module.exports = { approvedStory };
+module.exports = { approvedStory, getDashboardCities };
