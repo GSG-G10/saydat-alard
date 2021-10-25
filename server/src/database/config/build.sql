@@ -22,8 +22,7 @@ CREATE TABLE cities(
     location VARCHAR(255),
     image TEXT,
     quotation TEXT,
-    is_main BOOLEAN DEFAULT FALSE,
-    approved BOOLEAN DEFAULT FALSE
+    is_main BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE stories(
@@ -32,7 +31,9 @@ CREATE TABLE stories(
     content TEXT NOT NULL,
     title VARCHAR(50) NOT NULL,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE
+    city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE,
+    approved BOOLEAN DEFAULT FALSE
+
 );
 
 CREATE TABLE proverbs(id SERIAL PRIMARY KEY, content TEXT);
