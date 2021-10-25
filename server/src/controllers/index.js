@@ -3,7 +3,7 @@ const { signup } = require('./Auth');
 const {
   checkUserExist, setCookie, isAdmin, checkAuth,
 } = require('./middlewares');
-const { approvedStory, editProvebDashboard } = require('./dashboard');
+const { approvedStory, editProvebDashboard, addProverb } = require('./dashboard');
 
 module.exports = {
   getMainCities,
@@ -15,4 +15,5 @@ module.exports = {
   getProverbs,
   approvedStory,
   editProvebDashboard,
+  addProverb,
 };

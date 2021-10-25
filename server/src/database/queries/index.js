@@ -1,7 +1,7 @@
 const getMainCitiesQuery = require('./getMainCitiesQuery');
 const checkEmail = require('./checkEmail');
 const addNewUser = require('./addNewUser');
-const { approvePendingStory, editProverbQuery } = require('./dashboard');
+const { approvePendingStory, editProverbQuery, addProverQuery } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
 
 module.exports = {
@@ -11,4 +11,5 @@ module.exports = {
   approvePendingStory,
   editProverbQuery,
   getProverbQuery,
+  addProverQuery,
 };
