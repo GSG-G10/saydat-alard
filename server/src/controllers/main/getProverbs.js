@@ -2,7 +2,6 @@ const { getProverbQuery } = require('../../database/queries');
 
 const getProverbs = async (req, res) => {
   const { char } = req.query;
-  console.log(char);
   try {
     const data = await getProverbQuery(char);
     const { rows } = data;
