@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('env2')('.env');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { getUser } = require('../../database/queries');
