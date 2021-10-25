@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  getMainCities, signup, checkUserExist, setCookie,
+  checkUserExist, setCookie, getMainCities, signup,
 } = require('../controllers');
 
 router.get('/', getMainCities);
