@@ -6,6 +6,6 @@ const schema = Joi.object({
   confirmPassword: Joi.ref('password'),
   email: Joi.string().email().required(),
   originalCity: Joi.string().required(),
-});
+}).options({ abortEarly: true });
 
 module.exports = schema;
