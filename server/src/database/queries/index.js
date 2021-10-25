@@ -1,5 +1,9 @@
 const getUserQuery = require('./getUser');
+const checkEmail = require('./checkEmail');
+const addNewUser = require('./addNewUser');
 
 module.exports = {
-  getUserQuery,
+  checkEmail,
+  addNewUser,
+  getUserQuery
 };
