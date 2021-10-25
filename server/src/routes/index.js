@@ -1,10 +1,11 @@
 const router = require('express').Router();
+const {
+  checkUserExist, setCookie, getMainCities, signup, approvedStory,
+} = require('../controllers');
 
-const { approvedStory } = require('../controllers/dashboard');
+router.get('/', getMainCities);
 
-router.get('/', (req, res) => {
-  res.json({ msg: 'hello' });
-});
+router.post('/signup', checkUserExist, signup, setCookie);
 
 router.patch('/dashboard/story', approvedStory);
 
