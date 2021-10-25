@@ -1,22 +1,17 @@
-const {verify} = require('jsonwebtoken');
+const { verifyToken } = require('../utilities');
 
-const checkAuth = async (req,res,next) => {
-    
-    const {token} = req.cookies; 
-if (!token){
-    return res.status(400).json({message:"Not Authorized"})
-}
-if(!process.env.SECRET){
-    return next(new Error('Internal server error!'))
-}
-try {
-    const decoded = await verify(token.process.env.SECRET);
+const checkAuth = async (req, res, next) => {
+  const { token } = req.cookies;
+  if (!token) {
+    return res.status(400).json({ message: 'Not Authorized' });
+  }
+  try {
+    const decoded = await verifyToken(token);
     req.userObj = decoded;
     return next();
-}catch(err){
-    return res.clearCookie('token').status(401).json({message:"Not Authorized"});
-}
+  } catch (err) {
+    return res.clearCookie('token').status(401).json({ message: 'Not Authorized' });
+  }
+};
 
-}
-
-module.exports=checkAuth;
+module.exports = checkAuth;
