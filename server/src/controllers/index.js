@@ -3,6 +3,7 @@ const { signup } = require('./Auth');
 const {
   checkUserExist, setCookie, isAdmin, checkAuth,
 } = require('./middlewares');
+const { approvedStory } = require('./dashboard');
 
 module.exports = {
   getMainCities,
@@ -12,4 +13,5 @@ module.exports = {
   isAdmin,
   checkAuth,
   getProverbs,
+  approvedStory,
 };
