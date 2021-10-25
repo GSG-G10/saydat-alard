@@ -1,6 +1,6 @@
 -- admin and user
 INSERT INTO
-    users(name, email, password, orginialTown, isAdmin)
+    users(name, email, password, orginial_town, is_admin)
 VALUES
     (
         'palestineAdmin',
@@ -8,11 +8,7 @@ VALUES
         '$2a$10$Bp9etHWYo1UAANX99Ju3LuEzTlH7d1mq8snUpUzV7UhfBlQwozIly',
         'فلسطين',
         true
-    );
-
-INSERT INTO
-    users(name, email, password, orginialTown, isAdmin)
-VALUES
+    ),
     (
         'Reem',
         'reem@gmail.com',
@@ -29,7 +25,7 @@ INSERT INTO
         location,
         image,
         quotation,
-        isMain
+        is_main
     )
 VALUES
     (
@@ -39,18 +35,7 @@ VALUES
         'https://palemb-sy.com/wp-content/uploads/2018/09/A1CPssD3PPQOwpWp5122_jpg-750x430.jpg',
         'أجمل المدن القديمة، أقدم المدن الجميلة',
         true
-    );
-
-INSERT INTO
-    cities (
-        name,
-        area,
-        location,
-        image,
-        quotation,
-        isMain
-    )
-VALUES
+    ),
     (
         'حيفا',
         '63.66',
@@ -58,18 +43,7 @@ VALUES
         'https://i.ytimg.com/vi/QhMNyc0GTyE/maxresdefault.jpg',
         'لن يعرفوا حيفا إذا رجعوا، هذي الأرضُ لا تأتي إلى أحدٍ',
         true
-    );
-
-INSERT INTO
-    cities (
-        name,
-        area,
-        location,
-        image,
-        quotation,
-        isMain
-    )
-VALUES
+    ),
     (
         'القدس',
         '125.1',
@@ -77,18 +51,7 @@ VALUES
         'https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto/cnnarabic/2020/01/29/images/145651.jpg',
         'حيث الأنبياء هنا يقتسمون تاريخ المقدس',
         true
-    );
-
-INSERT INTO
-    cities (
-        name,
-        area,
-        location,
-        image,
-        quotation,
-        isMain
-    )
-VALUES
+    ),
     (
         'نابلس',
         '85',

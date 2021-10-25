@@ -11,8 +11,8 @@ CREATE TABLE users(
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     password TEXT,
-    orginialTown VARCHAR(50) NOT NULL,
-    isAdmin BOOLEAN DEFAULT FALSE
+    orginial_town VARCHAR(50) NOT NULL,
+    is_admin BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE cities(
@@ -22,13 +22,14 @@ CREATE TABLE cities(
     location VARCHAR(255),
     image TEXT,
     quotation TEXT,
-    isMain BOOLEAN DEFAULT FALSE
+    is_main BOOLEAN DEFAULT FALSE,
+    approved BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE stories(
     id SERIAL PRIMARY KEY,
     image TEXT,
-    content TEXT,
+    content TEXT NOT NULL,
     title VARCHAR(50) NOT NULL,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE
@@ -38,7 +39,7 @@ CREATE TABLE proverbs(id SERIAL PRIMARY KEY, content TEXT);
 
 CREATE TABLE families(
     id SERIAL PRIMARY KEY,
-    name TEXT,
+    name TEXT NOT NULL,
     city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE
 );
 
