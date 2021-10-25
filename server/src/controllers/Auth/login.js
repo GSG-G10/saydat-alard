@@ -19,10 +19,9 @@ const login = async (request, response) => {
     const { error, value } = schema.validate(request.body)
 
     if(error){
-
+        throw new Error('invalid email or password !');
     }
   try {
-    // const value = request.body;
     const { rows } = await getUser(value.email);
     const user = rows[0];
 
