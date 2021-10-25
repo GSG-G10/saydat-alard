@@ -1,4 +1,4 @@
-const { getMainCities } = require('./main');
+const { getMainCities, getProverbs } = require('./main');
 const { signup } = require('./Auth');
 const {
   checkUserExist, setCookie, isAdmin, checkAuth,
@@ -12,6 +12,7 @@ module.exports = {
   setCookie,
   isAdmin,
   checkAuth,
+  getProverbs,
   approvedStory,
   getDashboardProverbs,
 };

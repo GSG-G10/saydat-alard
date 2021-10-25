@@ -1,7 +1,7 @@
-const { getDashboardProverbsQuery } = require('../../database/queries');
+// const { getDashboardProverbsQuery } = require('../../database/queries');
 
-const getDashboardProverbs = async (req, res) => {
-  const { page, char } = req.query;
-};
+// const getDashboardProverbs = async (req, res) => {
+//   const { page, char } = req.query;
+// };
 
-module.exports = getDashboardProverbs;
+// module.exports = getDashboardProverbs;
