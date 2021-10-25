@@ -62,7 +62,6 @@ VALUES
     );
 
 -- stories
-
 INSERT INTO
     stories (
         image,
@@ -86,3 +85,5 @@ VALUES
         3
     );
 
+INSERT INTO
+    proverbs(content) VALUES ('أنا'),('إنت'),('انا'),('بانت');
