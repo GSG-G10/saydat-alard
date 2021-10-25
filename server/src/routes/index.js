@@ -1,9 +1,8 @@
 const router = require('express').Router();
-const { signup } = require('../controllers/Auth');
-const { checkUserExist, setCookie } = require('../controllers/middlewares');
+const {
+  checkUserExist, setCookie, getMainCities, signup,
+} = require('../controllers');
 
-router.get('/', (req, res) => {
-  res.json({ msg: 'hello' });
-});
+router.get('/', getMainCities);
 router.post('/signup', checkUserExist, signup, setCookie);
 module.exports = router;
