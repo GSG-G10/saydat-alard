@@ -1,5 +1,6 @@
+const getCitiesNames = require('./getCitiesNames');
 const getMainCities = require('./getMainCities');
 
 module.exports = {
-  getMainCities,
+  getMainCities, getCitiesNames,
 };
