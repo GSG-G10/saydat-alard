@@ -1,7 +1,7 @@
 const connection = require('../../config/connection');
 
-const getDashboardCitiesQuery = () => connection.query(
-  'SELECT * FROM cities',
+const getDashboardCitiesQuery = (page = 1) => connection.query(
+  'SELECT * FROM cities LIMIT 5 OFFSET ($1 - 1) * 5', [page],
 
 );
 
