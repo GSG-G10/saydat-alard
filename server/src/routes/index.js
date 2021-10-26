@@ -4,7 +4,7 @@ const {
 } = require('../controllers');
 
 router.get('/', getMainCities);
-router.get('/search', getCitiesNames);
+router.get('/search', getCitiesNames); //  route =>  /search?city=...
 
 router.post('/signup', checkUserExist, signup, setCookie);
 module.exports = router;
