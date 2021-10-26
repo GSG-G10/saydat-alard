@@ -29,4 +29,5 @@ router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboa
 
 router.put('/story/:id ', checkAuth, updateStory);
 
+router.delete('/story/:storyId', checkAuth);
 module.exports = router;
