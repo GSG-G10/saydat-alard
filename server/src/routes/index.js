@@ -5,7 +5,7 @@ const {
 
 router.get('/', getMainCities);
 
-router.get('/families', getFamilies);
+router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
 
 router.post('/signup', checkUserExist, signup, setCookie);
 module.exports = router;
