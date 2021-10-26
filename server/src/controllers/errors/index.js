@@ -1,3 +1,3 @@
-const errors = require('./errors');
+const { error404, errors } = require('./errors');
 
-module.exports = { errors };
+module.exports = { error404, errors };
