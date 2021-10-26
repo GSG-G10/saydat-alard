@@ -13,7 +13,7 @@ const addCity = async (req, res) => {
       await addNewCityQuery({
         cityName, area, location, image, quotation, is_main,
       });
-      res.json({ msg: 'تم إضافة المدينة بنجاح' });
+      res.status(201).json({ msg: 'تم إضافة المدينة بنجاح' });
     }
   } catch (error) {
     res.status(500).json({ errMsg: 'حدث خطأ ما في السيرفر' });
