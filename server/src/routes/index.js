@@ -1,13 +1,9 @@
 const router = require('express').Router();
 
 const {
-  checkUserExist,
-  setCookie,
-  getMainCities,
-  signup,
+  checkUserExist, setCookie, getMainCities, signup, checkAuth, updateStory,
   approvedStory,
   isAdmin,
-  checkAuth,
   getDashboardProverbs,
   getProverbs,
   getDashboardCities,
@@ -22,6 +18,7 @@ router.get('/', getMainCities);
 router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // '/dashboard/proverbs?char=...&page=1';
 
 router.get('/', getMainCities);
+router.put('/story/:id ', checkAuth, updateStory);
 router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 
 router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
