@@ -14,6 +14,7 @@ const {
 } = require('../controllers');
 
 router.get('/', getMainCities);
+
 router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
 router.get('/search', getCitiesNames); //  route =>  /search?city=...
 router.get('/proverbs', getProverbs);
