@@ -6,7 +6,8 @@ const {
   updateStoryQuery, getFamiliesQuery, getUserIdQuery, deleteStoryQuery,
 } = require('./cityPage');
 const {
-  approvePendingStory, editProverbQuery, getDashboardCitiesQuery, getStoriesQuery, addProverQuery,
+  approvePendingStory, editProverbQuery, getDashboardCitiesQuery, getStoriesQuery,
+  addProverQuery, deleteProverbDashboardQuery,
 } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
 
@@ -26,4 +27,5 @@ module.exports = {
   addProverQuery,
   getUserIdQuery,
   deleteStoryQuery,
+  deleteProverbDashboardQuery,
 };
