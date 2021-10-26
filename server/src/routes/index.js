@@ -1,15 +1,24 @@
 const router = require('express').Router();
 
 const {
-  checkUserExist, setCookie, getMainCities, signup, approvedStory,
-  isAdmin, checkAuth, getProverbs, addProverb,
-  getDashboardStories, updateStory,
+  checkUserExist,
+  setCookie,
+  getMainCities,
+  signup,
+  approvedStory,
+  isAdmin,
+  checkAuth,
+  getProverbs,
+  addProverb,
+  getDashboardStories,
+  updateStory,
   getDashboardProverbs,
   getDashboardCities,
   getFamilies,
   getCitiesNames,
   editProvebDashboard,
   login,
+  serverError,
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -28,5 +37,7 @@ router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // 
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
 
 router.put('/story/:storyId ', checkAuth, updateStory);
+
+router.use(serverError);
 
 module.exports = router;
