@@ -10,7 +10,7 @@ const {
   approvedStory, getDashboardProverbs, getDashboardCities,
   editProvebDashboard, getDashboardStories, addProverb,
 } = require('./dashboard');
-const { getFamilies, updateStory } = require('./city');
+const { getFamilies, updateStory, deleteStory } = require('./city');
 
 module.exports = {
   getMainCities,
@@ -30,4 +30,5 @@ module.exports = {
   getDashboardCities,
   editProvebDashboard,
   addProverb,
+  deleteStory,
 };

@@ -23,4 +23,5 @@ module.exports = {
   getProverbQuery,
   addProverQuery,
   getUserIdQuery,
+  deleteStoryQuery,
 };
