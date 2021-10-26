@@ -1,4 +1,4 @@
-const { getMainCities, getProverbs } = require('./main');
+const { getMainCities, getCitiesNames, getProverbs } = require('./main');
 const { signup, login } = require('./Auth');
 const {
   checkUserExist,
@@ -6,16 +6,19 @@ const {
   isAdmin,
   checkAuth,
 } = require('./middlewares');
+const { getFamilies } = require('./city');
 const { approvedStory, editProvebDashboard } = require('./dashboard');
 
 module.exports = {
   getMainCities,
+  getCitiesNames,
   signup,
   login,
   checkUserExist,
   setCookie,
   isAdmin,
   checkAuth,
+  getFamilies,
   getProverbs,
   approvedStory,
   editProvebDashboard,
