@@ -6,7 +6,9 @@ const {
   isAdmin,
   checkAuth,
 } = require('./middlewares');
-const { approvedStory, getDashboardCities, editProvebDashboard } = require('./dashboard');
+const {
+  approvedStory, getDashboardProverbs, getDashboardCities, editProvebDashboard,
+} = require('./dashboard');
 const { getFamilies } = require('./city');
 
 module.exports = {
@@ -21,6 +23,7 @@ module.exports = {
   getFamilies,
   getProverbs,
   approvedStory,
+  getDashboardProverbs,
   getDashboardCities,
   editProvebDashboard,
 };
