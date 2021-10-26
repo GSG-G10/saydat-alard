@@ -1,6 +1,7 @@
 const { getMainCitiesQuery, getCitiesNamesQuery } = require('./mainPage');
 const checkEmail = require('./checkEmail');
 const addNewUser = require('./addNewUser');
+const { getFamiliesQuery } = require('./cityPage');
 const { approvePendingStory, editProverbQuery } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
 
@@ -9,6 +10,7 @@ module.exports = {
   getMainCitiesQuery,
   checkEmail,
   addNewUser,
+  getFamiliesQuery,
   approvePendingStory,
   editProverbQuery,
   getProverbQuery,
