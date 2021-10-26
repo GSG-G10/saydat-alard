@@ -5,11 +5,12 @@ const {
   setCookie,
   getMainCities,
   signup,
-  getFamilies,
-  getCitiesNames,
   approvedStory,
   isAdmin,
   checkAuth,
+  getDashboardCities,
+  getFamilies,
+  getCitiesNames,
   getProverbs,
   editProvebDashboard,
   login,
@@ -17,6 +18,7 @@ const {
 
 router.post('/login', login);
 router.get('/', getMainCities);
+router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 
 router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
 router.get('/search', getCitiesNames); //  route =>  /search?city=...
