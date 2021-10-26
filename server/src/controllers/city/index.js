@@ -1,8 +1,8 @@
 const updateStory = require('./updateStory');
+const getFamilies = require('./getFamilies');
 
 module.exports = {
   updateStory,
-};
-const getFamilies = require('./getFamilies');
+  getFamilies,
 
-module.exports = { getFamilies };
+};
