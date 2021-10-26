@@ -8,7 +8,7 @@ const {
 } = require('./middlewares');
 const {
   approvedStory, getDashboardProverbs, getDashboardCities,
-  editProvebDashboard, getDashboardStories, addProverb,
+  editProvebDashboard, getDashboardStories, addProverb, deleteStoryDashboard,
 } = require('./dashboard');
 const { getFamilies, updateStory, deleteStory } = require('./city');
 
@@ -31,4 +31,5 @@ module.exports = {
   editProvebDashboard,
   addProverb,
   deleteStory,
+  deleteStoryDashboard,
 };
