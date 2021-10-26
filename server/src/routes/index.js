@@ -12,7 +12,7 @@ const {
 } = require('../controllers');
 
 router.get('/', getMainCities);
-router.get('/dashboard/proverbs', getDashboardProverbs);
+router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // '/dashboard/proverbs?char=...&page=1';
 router.get('/proverbs', getProverbs);
 
 router.post('/signup', checkUserExist, signup, setCookie);
