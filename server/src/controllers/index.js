@@ -6,14 +6,10 @@ const {
   isAdmin,
   checkAuth,
 } = require('./middlewares');
-<<<<<<< HEAD
-const { updateStory } = require('./city');
-=======
 const {
   approvedStory, getDashboardProverbs, getDashboardCities, editProvebDashboard,
 } = require('./dashboard');
-const { getFamilies } = require('./city');
->>>>>>> ba1786a2cb3a010a5041e63d279ca15276416222
+const { getFamilies, updateStory } = require('./city');
 
 module.exports = {
   getMainCities,
@@ -24,14 +20,11 @@ module.exports = {
   setCookie,
   isAdmin,
   checkAuth,
-<<<<<<< HEAD
   updateStory,
-=======
   getFamilies,
   getProverbs,
   approvedStory,
   getDashboardProverbs,
   getDashboardCities,
   editProvebDashboard,
->>>>>>> ba1786a2cb3a010a5041e63d279ca15276416222
 };
