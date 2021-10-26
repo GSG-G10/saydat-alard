@@ -1,4 +1,3 @@
-const { query } = require('../../database/config/connection');
 const { getStoriesQuery } = require('../../database/queries');
 
 const getDashboardStories = async (req, res) => {
