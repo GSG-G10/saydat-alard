@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const {
   checkUserExist,
   setCookie,
@@ -12,8 +13,10 @@ const {
   getCitiesNames,
   getProverbs,
   editProvebDashboard,
+  login,
 } = require('../controllers');
 
+router.post('/login', login);
 router.get('/', getMainCities);
 router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 

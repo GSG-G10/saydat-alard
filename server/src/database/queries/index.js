@@ -1,3 +1,4 @@
+const getUser = require('./getUser');
 const { getMainCitiesQuery, getCitiesNamesQuery } = require('./mainPage');
 const checkEmail = require('./checkEmail');
 const addNewUser = require('./addNewUser');
@@ -10,6 +11,7 @@ module.exports = {
   getMainCitiesQuery,
   checkEmail,
   addNewUser,
+  getUser,
   getDashboardCitiesQuery,
   getFamiliesQuery,
   approvePendingStory,
