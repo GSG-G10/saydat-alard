@@ -18,7 +18,7 @@ const {
   getCitiesNames,
   editProvebDashboard,
   login,
-  serverError,
+  errors,
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -38,6 +38,6 @@ router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboa
 
 router.put('/story/:storyId ', checkAuth, updateStory);
 
-router.use(serverError);
+router.use(errors);
 
 module.exports = router;

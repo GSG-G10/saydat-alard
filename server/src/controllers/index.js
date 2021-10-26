@@ -15,7 +15,7 @@ const {
   addProverb,
 } = require('./dashboard');
 const { getFamilies, updateStory } = require('./city');
-const { serverError } = require('./errors');
+const { errors } = require('./errors');
 
 module.exports = {
   getMainCities,
@@ -35,5 +35,5 @@ module.exports = {
   getDashboardCities,
   editProvebDashboard,
   addProverb,
-  serverError,
+  errors,
 };

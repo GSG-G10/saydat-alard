@@ -1,3 +1,3 @@
-const serverError = require('./errors');
+const errors = require('./errors');
 
-module.exports = { serverError };
+module.exports = { errors };
