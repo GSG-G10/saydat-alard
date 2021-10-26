@@ -1,11 +1,15 @@
-const { updateStoryQuery } = require('../../database/queries');
+const { updateStoryQuery, getUserIdQuery } = require('../../database/queries');
 
 const updateStory = async (req, res) => {
-  const { id } = req.params;
+  const { storyId } = req.params;
   const { content, title, image } = req.body;
+  const { id } = req.userObj;
   try {
-    await updateStoryQuery(id, content, title, image);
-    res.status(200).json({ msg: 'تم التعديل بنجاح' });
+    const { rows } = await getUserIdQuery(storyId);
+    if (rows[0].user_id === id) {
+      await updateStoryQuery(storyId, content, title, image);
+      res.json({ msg: 'تم التعديل بنجاح' });
+    } else res.status(401).json({ msg: 'غير مسموح لك بالتعديل ' });
   } catch (error) { res.status(500).json({ status: 500, msg: 'Server Error' }); }
 };
 module.exports = updateStory;
