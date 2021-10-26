@@ -1,5 +1,5 @@
 const checkAdmin = (res, req, next) => {
-  const isAdmin = req.userObj;
+  const { isAdmin } = req.userObj;
   if (isAdmin) {
     return next();
   }
