@@ -11,7 +11,7 @@ const {
 } = require('../controllers');
 
 router.get('/', getMainCities);
-router.get('/dashboard/cities', getDashboardCities);
+router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 
 router.post('/signup', checkUserExist, signup, setCookie);
 
