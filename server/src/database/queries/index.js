@@ -2,9 +2,19 @@ const getUser = require('./getUser');
 const { getMainCitiesQuery, getCitiesNamesQuery } = require('./mainPage');
 const checkEmail = require('./checkEmail');
 const addNewUser = require('./addNewUser');
-const { updateStoryQuery, getFamiliesQuery, getUserIdQuery } = require('./cityPage');
 const {
-  approvePendingStory, editProverbQuery, getDashboardCitiesQuery, getStoriesQuery, addProverQuery,
+  updateStoryQuery,
+  getFamiliesQuery,
+  getUserIdQuery,
+} = require('./cityPage');
+const {
+  approvePendingStory,
+  editProverbQuery,
+  getDashboardCitiesQuery,
+  getStoriesQuery,
+  addProverQuery,
+  addNewCityQuery,
+  checkCityByNameQuery,
 } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
 
@@ -23,4 +33,6 @@ module.exports = {
   getProverbQuery,
   addProverQuery,
   getUserIdQuery,
+  addNewCityQuery,
+  checkCityByNameQuery,
 };

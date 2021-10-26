@@ -10,6 +10,7 @@ const {
   getCitiesNames,
   editProvebDashboard,
   login,
+  addCity,
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -22,7 +23,8 @@ router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // rout
 
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);
-router.post('/dashboard/proverb', checkAuth, addProverb);
+router.post('/dashboard/proverb', checkAuth, isAdmin, addProverb);
+router.post('/dashboard/newcity', checkAuth, isAdmin, addCity); // route => by body send all data about new city
 
 router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // /dashboard/proverb?id=
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
