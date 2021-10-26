@@ -12,22 +12,21 @@ const {
   login,
 } = require('../controllers');
 
-router.post('/login', login);
 router.get('/', getMainCities);
-router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // '/dashboard/proverbs?char=...&page=1';
-
-router.get('/', getMainCities);
-router.get('/dashboard/stories', getDashboardStories);
-router.put('/story/:id ', checkAuth, updateStory);
-router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
-
 router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
 router.get('/search', getCitiesNames); //  route =>  /search?city=...
-router.get('/proverbs', getProverbs);
+router.get('/proverbs', getProverbs); // /proverbs?char=...&page=1'
+router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // '/dashboard/proverbs?char=...&page=1';
+router.get('/dashboard/stories', getDashboardStories);
+router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 
 router.post('/signup', checkUserExist, signup, setCookie);
+router.post('/login', login);
 router.post('/dashboard/proverb', checkAuth, addProverb);
+
 router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard);
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory);
+
+router.put('/story/:id ', checkAuth, updateStory);
 
 module.exports = router;
