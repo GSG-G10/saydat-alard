@@ -5,5 +5,5 @@ const hashPassword = require('./hashPassword');
 const comparePasswords = require('./comparePassword');
 
 module.exports = {
-  schema, hashPassword, comparePasswords, loginSchema, verifyToken,
+  schema, hashPassword, comparePasswords, verifyToken, loginSchema,
 };
