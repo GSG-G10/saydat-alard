@@ -10,6 +10,7 @@ const {
   getCitiesNames,
   editProvebDashboard,
   login,
+  deleteStory,
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -29,5 +30,6 @@ router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboa
 
 router.put('/story/:storyId ', checkAuth, updateStory);
 
-router.delete('/story/:storyId', checkAuth);
+router.delete('/story/:storyId', checkAuth, deleteStory);
+
 module.exports = router;
