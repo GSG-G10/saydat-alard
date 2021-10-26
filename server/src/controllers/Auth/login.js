@@ -4,15 +4,6 @@ const jwt = require('jsonwebtoken');
 const { getUser } = require('../../database/queries');
 const schema = require('../utilities/loginSchema');
 
-const compare = (incomingPass, origPass) => new Promise((resolve, reject) => {
-  bcrypt.compare(incomingPass, origPass, (err, result) => {
-    if (err) {
-      reject(err);
-    }
-    resolve(result);
-  });
-});
-
 const login = async (request, response) => {
   const { err, value } = schema.validate(request.body);
 
@@ -27,9 +18,16 @@ const login = async (request, response) => {
       throw new Error('This email is not used');
     }
 
-    const result = await compare(value.password, user.hashedPassword);
+    const validatedPassword = await bcrypt.compare(
+      value.password,
+      user.password,
+    );
 
-    if (result) {
+    if (!validatedPassword) {
+      throw new Error('invalid email or password');
+    }
+
+    if (validatedPassword) {
       const { hashedPassword, ...data } = user;
       const token = jwt.sign(data, process.env.SECRET_TOKEN);
       response.cookie(
