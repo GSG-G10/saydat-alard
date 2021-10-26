@@ -1,16 +1,11 @@
-require('env2')('.env');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const { getUser } = require('../../database/queries');
 const schema = require('../utilities/loginSchema');
+const { signToken } = require('../utilities/jwt');
 
 const login = async (request, response) => {
-  const { err, value } = schema.validate(request.body);
-
-  if (err) {
-    throw new Error('invalid email or password !');
-  }
   try {
+    const value = await schema.validateAsync(request.body);
     const { rows } = await getUser(value.email);
     const user = rows[0];
 
@@ -28,20 +23,20 @@ const login = async (request, response) => {
     }
 
     if (validatedPassword) {
-      const { hashedPassword, ...data } = user;
-      const token = jwt.sign(data, process.env.SECRET_TOKEN);
+      const token = await signToken(user);
+
       response.cookie(
         'authorization',
         token,
         { maxAge: 1000 * 60 * 60 * 24 * 1 },
         { httpOnly: true },
       );
-      response.status(200).send({ message: 'Logged in successfully' });
+      response.status(200).json({ message: 'Logged in successfully' });
     } else {
       throw new Error('Incorrect password');
     }
   } catch (error) {
-    response.status(400).send({ error: error.message });
+    response.status(400).json({ error: error.message });
   }
 };
 
