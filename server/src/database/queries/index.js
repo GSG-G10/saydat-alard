@@ -2,9 +2,7 @@ const getUser = require('./getUser');
 const { getMainCitiesQuery, getCitiesNamesQuery } = require('./mainPage');
 const checkEmail = require('./checkEmail');
 const addNewUser = require('./addNewUser');
-const {
-  updateStoryQuery, getFamiliesQuery, getUserIdQuery, deleteStoryQuery,
-} = require('./cityPage');
+const { updateStoryQuery, getFamiliesQuery, getUserIdQuery } = require('./cityPage');
 const {
   approvePendingStory, editProverbQuery, getDashboardCitiesQuery, getStoriesQuery, addProverQuery,
 } = require('./dashboard');

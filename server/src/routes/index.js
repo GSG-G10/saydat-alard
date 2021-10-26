@@ -27,7 +27,7 @@ router.post('/dashboard/proverb', checkAuth, addProverb);
 router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // /dashboard/proverb?id=
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
 
-router.put('/story/:id ', checkAuth, updateStory);
+router.put('/story/:storyId ', checkAuth, updateStory);
 
 router.delete('/story/:storyId', checkAuth);
 module.exports = router;
