@@ -7,8 +7,7 @@ const {
 } = require('./cityPage');
 const {
   approvePendingStory, editProverbQuery, getDashboardCitiesQuery, getStoriesQuery,
-  addProverQuery, deleteProverbDashboardQuery,
-  addProverQuery, deleteCityDashboardQuery,
+  addProverQuery, deleteProverbDashboardQuery, deleteCityDashboardQuery,
 } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
 
