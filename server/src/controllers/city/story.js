@@ -2,11 +2,12 @@ const { addStoryQuery } = require('../../database/queries/cityPage');
 const { uploadToCloudinary } = require('../utilities');
 
 const uploadStory = async (request, response) => {
-  const { content, title, cityId } = request.body;
-  const { id } = request.userobj;
+  const {
+    data, content, title, cityId,
+  } = request.body;
+  const { id } = request.userObj;
   try {
-    const fileStr = request.body.data;
-    const uploadResponse = await uploadToCloudinary(fileStr, {
+    const uploadResponse = await uploadToCloudinary(data, {
       upload_preset: 'dev_setup',
     });
 
