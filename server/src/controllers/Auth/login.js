@@ -31,12 +31,12 @@ const login = async (request, response) => {
         { maxAge: 1000 * 60 * 60 * 24 * 1 },
         { httpOnly: true },
       );
-      response.status(200).json({ message: 'Logged in successfully' });
+      response.status(200).json({ msg: 'Logged in successfully' });
     } else {
       throw new Error('Incorrect password');
     }
   } catch (error) {
-    response.status(400).json({ error: error.message });
+    response.status(400).json({ msg: error.message });
   }
 };
 

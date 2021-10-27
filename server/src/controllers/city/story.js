@@ -14,7 +14,7 @@ const uploadStory = async (request, response) => {
     await addStoryQuery(content, title, uploadResponse.url, cityId, id);
     response.status(201).json({ msg: 'uploaded successfully' });
   } catch (err) {
-    response.status(500).json({ err: 'Something went wrong' });
+    response.status(500).json({ msg: 'Something went wrong' });
   }
 };
 
