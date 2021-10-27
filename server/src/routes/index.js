@@ -18,6 +18,7 @@ const {
   getCitiesNames,
   editProvebDashboard,
   login,
+  deleteStory,
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -36,5 +37,7 @@ router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // 
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
 
 router.put('/story/:storyId ', checkAuth, updateStory);
+
+router.delete('/story/:storyId', checkAuth, deleteStory);
 
 module.exports = router;
