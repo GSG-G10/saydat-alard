@@ -80,7 +80,6 @@ VALUES
         3,
         false
     );
-    );
 
 INSERT INTO
     proverbs(content)
