@@ -32,6 +32,6 @@ router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboa
 router.put('/story/:storyId ', checkAuth, updateStory);
 
 router.delete('/story/:storyId', checkAuth, deleteStory);
-router.delete('/dashboard/proverb/:proverbId', checkAuth,isAdmin, deleteProvebDashboard);
+router.delete('/dashboard/proverb/:proverbId', checkAuth, isAdmin, deleteProvebDashboard);
 
 module.exports = router;
