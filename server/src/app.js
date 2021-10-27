@@ -6,6 +6,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 
 const router = require('./routes');
+const { error404, errors } = require('./controllers/errors');
 
 const app = express();
 
@@ -23,5 +24,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }
+
+app.use(error404);
+app.use(errors);
 
 module.exports = app;
