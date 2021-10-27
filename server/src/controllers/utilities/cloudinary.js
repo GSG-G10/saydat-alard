@@ -1,5 +1,3 @@
-require('env2')('.env');
-
 const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({

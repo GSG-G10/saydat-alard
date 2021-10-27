@@ -23,7 +23,7 @@ const {
   deleteProvebDashboard,
   deleteCityDashboard,
   logout,
-
+  auth,
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -34,6 +34,7 @@ router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // 
 router.get('/dashboard/stories', checkAuth, isAdmin, getDashboardStories); // /dashboard/stories?page=1
 router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 router.get('/logout', logout);
+router.get('/user-info', checkAuth, auth);
 
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);
