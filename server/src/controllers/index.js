@@ -1,5 +1,5 @@
 const { getMainCities, getCitiesNames, getProverbs } = require('./main');
-const { signup, login } = require('./Auth');
+const { signup, login, logout } = require('./Auth');
 const {
   checkUserExist,
   setCookie,
@@ -49,4 +49,5 @@ module.exports = {
   deleteProvebDashboard,
   deleteCityDashboard,
   deleteStoryDashboard,
+  logout,
 };
