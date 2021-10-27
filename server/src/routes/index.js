@@ -21,6 +21,8 @@ const {
   deleteStory,
   deleteProvebDashboard,
   deleteCityDashboard,
+  logout,
+
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -30,6 +32,7 @@ router.get('/proverbs', getProverbs); // /proverbs?char=...&page=1'
 router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // '/dashboard/proverbs?char=...&page=1';
 router.get('/dashboard/stories', checkAuth, isAdmin, getDashboardStories); // /dashboard/stories?page=1
 router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
+router.get('/logout', logout);
 
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);
