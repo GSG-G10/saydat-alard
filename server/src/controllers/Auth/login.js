@@ -10,7 +10,7 @@ const login = async (request, response) => {
     const user = rows[0];
 
     if (!user) {
-      throw new Error('This email is not used');
+      throw new Error('wrong email or password');
     }
 
     const validatedPassword = await bcrypt.compare(
