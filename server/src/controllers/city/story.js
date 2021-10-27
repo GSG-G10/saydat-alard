@@ -10,7 +10,6 @@ const uploadStory = async (request, response) => {
     const uploadResponse = await uploadToCloudinary(data, {
       upload_preset: 'dev_setup',
     });
-
     await addStoryQuery(content, title, uploadResponse.url, cityId, id);
     response.status(201).json({ msg: 'uploaded successfully' });
   } catch (err) {
