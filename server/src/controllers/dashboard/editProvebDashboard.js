@@ -7,7 +7,7 @@ const editProvebDashboard = async (req, res) => {
     await editProverbQuery(id, content);
     res.status(200).json({ msg: 'تم التعديل بنجاح' });
   } catch (error) {
-    res.status(500).json({ status: 500, msg: 'حدث خطأ ما في السيرفر' });
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }
 };
 module.exports = editProvebDashboard;
