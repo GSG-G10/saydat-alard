@@ -19,6 +19,7 @@ const {
   editProvebDashboard,
   login,
   deleteStory,
+  uploadStory,
   deleteProvebDashboard,
   deleteCityDashboard,
   logout,
@@ -37,6 +38,7 @@ router.get('/logout', logout);
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);
 router.post('/dashboard/proverb', checkAuth, addProverb);
+router.post('/story', checkAuth, uploadStory);
 
 router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // /dashboard/proverb?id=
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
@@ -44,7 +46,17 @@ router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboa
 router.put('/story/:storyId ', checkAuth, updateStory);
 
 router.delete('/story/:storyId', checkAuth, deleteStory);
-router.delete('/dashboard/proverb/:proverbId', checkAuth, isAdmin, deleteProvebDashboard);
-router.delete('/dashboard/story/:storyId', checkAuth, isAdmin, deleteCityDashboard);
+router.delete(
+  '/dashboard/proverb/:proverbId',
+  checkAuth,
+  isAdmin,
+  deleteProvebDashboard,
+);
+router.delete(
+  '/dashboard/story/:storyId',
+  checkAuth,
+  isAdmin,
+  deleteCityDashboard,
+);
 
 module.exports = router;
