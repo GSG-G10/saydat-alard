@@ -11,6 +11,7 @@ const {
   editProvebDashboard,
   login,
   deleteStory,
+  updateTheCityData,
 } = require('../controllers');
 
 router.get('/city/:cityId', getCityData);
@@ -30,6 +31,7 @@ router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // 
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
 
 router.put('/story/:storyId ', checkAuth, updateStory);
+router.put('./dashboard/city?id', updateTheCityData);
 
 router.delete('/story/:storyId', checkAuth, deleteStory);
 

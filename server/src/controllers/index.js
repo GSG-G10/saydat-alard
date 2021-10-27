@@ -11,7 +11,7 @@ const {
 } = require('./middlewares');
 const {
   approvedStory, getDashboardProverbs, getDashboardCities,
-  editProvebDashboard, getDashboardStories, addProverb,
+  editProvebDashboard, getDashboardStories, addProverb, updateTheCityData,
 } = require('./dashboard');
 
 module.exports = {
@@ -31,6 +31,7 @@ module.exports = {
   getDashboardProverbs,
   getDashboardCities,
   editProvebDashboard,
+  updateTheCityData,
   getCityData,
   addProverb,
   deleteStory,
