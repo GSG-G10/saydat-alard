@@ -10,6 +10,7 @@ const {
   approvedStory, getDashboardProverbs, getDashboardCities,
   editProvebDashboard, getDashboardStories, addProverb, deleteStoryDashboard,
 } = require('./dashboard');
+const { errors } = require('./errors');
 const { getFamilies, updateStory, deleteStory } = require('./city');
 
 module.exports = {
@@ -30,6 +31,7 @@ module.exports = {
   getDashboardCities,
   editProvebDashboard,
   addProverb,
+  errors,
   deleteStory,
   deleteStoryDashboard,
 };
