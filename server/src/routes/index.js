@@ -1,9 +1,17 @@
 const router = require('express').Router();
 
 const {
-  checkUserExist, setCookie, getMainCities, signup, approvedStory,
-  isAdmin, checkAuth, getProverbs, addProverb,
-  getDashboardStories, updateStory,
+  checkUserExist,
+  setCookie,
+  getMainCities,
+  signup,
+  approvedStory,
+  isAdmin,
+  checkAuth,
+  getProverbs,
+  addProverb,
+  getDashboardStories,
+  updateStory,
   getDashboardProverbs,
   getDashboardCities,
   getFamilies,
@@ -12,6 +20,7 @@ const {
   login,
   deleteStory,
   deleteProvebDashboard,
+  deleteCityDashboard,
 } = require('../controllers');
 
 router.get('/', getMainCities);
@@ -33,5 +42,6 @@ router.put('/story/:storyId ', checkAuth, updateStory);
 
 router.delete('/story/:storyId', checkAuth, deleteStory);
 router.delete('/dashboard/proverb/:proverbId', checkAuth, isAdmin, deleteProvebDashboard);
+router.delete('/dashboard/story/:storyId', checkAuth, isAdmin, deleteCityDashboard);
 
 module.exports = router;
