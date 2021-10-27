@@ -1,17 +1,21 @@
 const { cloudinary } = require('../utilities/cloudinary');
 const { addStoryQuery } = require('../../database/queries/cityPage');
 
-const uploadStory = async (req, res) => {
+const uploadStory = async (request, response) => {
+  const {content, title } = request.body;
+  // console.log();
+
   try {
-    const fileStr = req.body.data;
+    const fileStr = request.body.data;
     const uploadResponse = await cloudinary.uploader.upload(fileStr, {
       upload_preset: 'dev_setup',
     });
 
-    addStoryQuery(req.body.content, req.body.title, uploadResponse.url);
-    res.json({ msg: 'uploaded successfully' });
+    addStoryQuery(content, title, uploadResponse.url);
+    console.log('bodyyyyyyy', request.body);
+    response.json({ msg: 'uploaded successfully' });
   } catch (err) {
-    res.status(500).json({ err: 'Something went wrong' });
+    response.status(500).json({ err: 'Something went wrong' });
   }
 };
 
