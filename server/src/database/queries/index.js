@@ -21,8 +21,6 @@ const {
 } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
 
-
-
 module.exports = {
   getCitiesNamesQuery,
   getMainCitiesQuery,
