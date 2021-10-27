@@ -1,9 +1,17 @@
 const router = require('express').Router();
 
 const {
-  checkUserExist, setCookie, getMainCities, signup, approvedStory,
-  isAdmin, checkAuth, getProverbs, addProverb,
-  getDashboardStories, updateStory,
+  checkUserExist,
+  setCookie,
+  getMainCities,
+  signup,
+  approvedStory,
+  isAdmin,
+  checkAuth,
+  getProverbs,
+  addProverb,
+  getDashboardStories,
+  updateStory,
   getDashboardProverbs,
   getDashboardCities,
   getFamilies,
