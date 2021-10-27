@@ -25,7 +25,7 @@ router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // rout
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);
 router.post('/dashboard/proverb', checkAuth, addProverb);
-router.post('/story', uploadStory);
+router.post('/story', checkAuth, uploadStory);
 
 router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // /dashboard/proverb?id=
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=

@@ -80,8 +80,6 @@ VALUES
         3,
         false
     );
-
-        3
     );
 
 INSERT INTO
