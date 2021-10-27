@@ -12,7 +12,9 @@ const getCityData = async (req, res, next) => {
         });
       }
       return res.json({
-        message: 'City Imported Successfuly', cities, stories,
+        message: 'City Imported Successfuly',
+        cityData: cities[0],
+        stories,
       });
     }
     return res.json({ status: 400, message: 'Bad Request' });
