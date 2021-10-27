@@ -1,8 +1,12 @@
 const {
-  getCityData, getFamilies, updateStory, deleteStory,
+  getFamilies,
+  updateStory,
+  deleteStory,
+  uploadStory,
+  getCityData,
 } = require('./city');
 const { getMainCities, getCitiesNames, getProverbs } = require('./main');
-const { signup, login } = require('./Auth');
+const { signup, login, logout } = require('./Auth');
 const {
   checkUserExist,
   setCookie,
@@ -10,9 +14,18 @@ const {
   checkAuth,
 } = require('./middlewares');
 const {
-  approvedStory, getDashboardProverbs, getDashboardCities,
-  editProvebDashboard, getDashboardStories, addProverb, updateTheCityData,
+  approvedStory,
+  getDashboardProverbs,
+  getDashboardCities,
+  editProvebDashboard,
+  getDashboardStories,
+  addProverb,
+  deleteCityDashboard,
+  deleteStoryDashboard,
+  deleteProvebDashboard,
+  updateTheCityData,
 } = require('./dashboard');
+const { errors } = require('./errors');
 
 module.exports = {
   getMainCities,
@@ -34,5 +47,11 @@ module.exports = {
   updateTheCityData,
   getCityData,
   addProverb,
+  errors,
   deleteStory,
+  uploadStory,
+  deleteProvebDashboard,
+  deleteCityDashboard,
+  deleteStoryDashboard,
+  logout,
 };
