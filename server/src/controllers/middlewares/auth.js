@@ -8,9 +8,9 @@ const checkAuth = async (req, res, next) => {
   try {
     const decoded = await verifyToken(token);
     req.userObj = decoded;
-    return next();
+    next();
   } catch (err) {
-    return res.clearCookie('token').status(401).json({ message: 'Not Authorized' });
+    res.clearCookie('token').status(401).json({ message: 'Not Authorized' });
   }
 };
 

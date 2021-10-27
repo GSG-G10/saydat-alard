@@ -26,7 +26,7 @@ const login = async (request, response) => {
       const token = await signToken(user);
 
       response.cookie(
-        'authorization',
+        'token',
         token,
         { maxAge: 1000 * 60 * 60 * 24 * 1 },
         { httpOnly: true },
