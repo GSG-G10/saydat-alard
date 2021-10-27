@@ -1,7 +1,7 @@
 const getUser = require('../../database/queries/getUser');
 const { error } = require('./loginSchema');
 
-const auth = async (request, response) => {
+const userInfo = async (request, response) => {
   try {
     const { id } = request.userObj;
     const user = await getUser(null, id);
@@ -14,4 +14,4 @@ const auth = async (request, response) => {
     response.status(400).json({ error: error.message });
   }
 };
-module.exports = auth;
+module.exports = userInfo;

@@ -4,7 +4,7 @@ const { schema } = require('./signupValidation.js');
 const hashPassword = require('./hashPassword');
 const comparePasswords = require('./comparePassword');
 const { uploadToCloudinary } = require('./cloudinary');
-const auth = require('./userInfo');
+const userInfo = require('./userInfo');
 
 module.exports = {
   schema,
@@ -13,5 +13,5 @@ module.exports = {
   verifyToken,
   loginSchema,
   uploadToCloudinary,
-  auth,
+  userInfo,
 };

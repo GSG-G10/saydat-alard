@@ -25,7 +25,7 @@ const {
   uploadStory,
 } = require('./city');
 
-const { auth } = require('./utilities');
+const { userInfo } = require('./utilities');
 
 module.exports = {
   getMainCities,
@@ -52,5 +52,5 @@ module.exports = {
   deleteCityDashboard,
   deleteStoryDashboard,
   logout,
-  auth,
+  userInfo,
 };
