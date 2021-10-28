@@ -1,5 +1,5 @@
-const getUser = require('../../database/queries/getUser');
-const { error } = require('./loginSchema');
+const { getUser } = require('../../database/queries');
+const { error } = require('../utilities/loginSchema');
 
 const userInfo = async (request, response) => {
   try {

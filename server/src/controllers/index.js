@@ -1,5 +1,7 @@
 const { getMainCities, getCitiesNames, getProverbs } = require('./main');
-const { signup, login, logout } = require('./Auth');
+const {
+  signup, login, logout, userInfo,
+} = require('./Auth');
 const {
   checkUserExist,
   setCookie,
@@ -26,8 +28,6 @@ const {
   uploadStory,
 } = require('./city');
 const { uploadToCloudinary } = require('./utilities');
-
-const { userInfo } = require('./utilities');
 
 module.exports = {
   getMainCities,
