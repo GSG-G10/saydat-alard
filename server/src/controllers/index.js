@@ -23,7 +23,7 @@ const {
   deleteCityDashboard,
   deleteStoryDashboard,
   deleteProvebDashboard,
-  updateTheCityData,
+  editCityDashboard,
 } = require('./dashboard');
 const { errors } = require('./errors');
 
@@ -44,7 +44,7 @@ module.exports = {
   getDashboardProverbs,
   getDashboardCities,
   editProvebDashboard,
-  updateTheCityData,
+  editCityDashboard,
   getCityData,
   addProverb,
   errors,

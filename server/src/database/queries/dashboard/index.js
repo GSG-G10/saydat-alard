@@ -6,6 +6,7 @@ const addProverQuery = require('./addProverQuery');
 const getDashboardCitiesQuery = require('./getDashboardCitiesQuery');
 const deleteProverbDashboardQuery = require('./deleteProverbDashboardQuery');
 const deleteCityDashboardQuery = require('./deleteCityDashboardQuery');
+const editCityQuery = require('./editCityQuery');
 
 module.exports = {
   approvePendingStory,
@@ -16,4 +17,5 @@ module.exports = {
   addProverQuery,
   deleteProverbDashboardQuery,
   deleteCityDashboardQuery,
+  editCityQuery,
 };
