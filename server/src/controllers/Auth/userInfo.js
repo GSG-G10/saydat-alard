@@ -10,7 +10,7 @@ const userInfo = async (request, response) => {
       response.json({
         id,
         name,
-        is_admin,
+        role: is_admin,
       });
     } else {
       throw new Error('somthing went wrong!!');
