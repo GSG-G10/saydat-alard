@@ -6,7 +6,10 @@ const userInfo = async (request, response) => {
     const { id } = request.userObj;
     const user = await getUser(null, id);
     if (user) {
-      response.json(user.rows);
+      const { name, is_admin } = user.rows[0];
+      response.json({
+        id, name, is_admin,
+      });
     } else {
       throw new Error('somthing went wrong!!');
     }
