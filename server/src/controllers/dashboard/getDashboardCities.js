@@ -6,7 +6,7 @@ const getDashboardCities = async (req, res) => {
     const { rows } = await getDashboardCitiesQuery(page);
     res.json({ cities: rows });
   } catch (error) {
-    res.status(500).json({ errorMsg: 'حدث خطأ ما في السيرفر' });
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }
 };
 

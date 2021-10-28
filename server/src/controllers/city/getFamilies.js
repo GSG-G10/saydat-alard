@@ -12,7 +12,7 @@ const getFamilies = async (req, res) => {
       res.json({ msg: 'لا يوجد عائلات في هذه المدينة تبدأ بهذا الحرف' });
     }
   } catch (error) {
-    res.status(500).json({ errorMsg: 'حدث خطأ ما في السيرفر' });
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }
 };
 
