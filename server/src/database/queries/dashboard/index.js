@@ -4,6 +4,8 @@ const getDashboardProverbsQuery = require('./getDashboardProverbsQuery');
 const editProverbQuery = require('./editProverbQuery');
 const addProverQuery = require('./addProverQuery');
 const getDashboardCitiesQuery = require('./getDashboardCitiesQuery');
+const addNewCityQuery = require('./addNewCityQuery');
+const checkCityByNameQuery = require('./checkCityExist');
 const deleteProverbDashboardQuery = require('./deleteProverbDashboardQuery');
 const deleteCityDashboardQuery = require('./deleteCityDashboardQuery');
 
@@ -14,6 +16,8 @@ module.exports = {
   getDashboardProverbsQuery,
   getStoriesQuery,
   addProverQuery,
+  addNewCityQuery,
+  checkCityByNameQuery,
   deleteProverbDashboardQuery,
   deleteCityDashboardQuery,
 };

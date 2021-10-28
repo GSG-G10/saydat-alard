@@ -13,6 +13,7 @@ const {
   editProvebDashboard,
   getDashboardStories,
   addProverb,
+  addCity,
   deleteCityDashboard,
   deleteStoryDashboard,
   deleteProvebDashboard,
@@ -24,6 +25,7 @@ const {
   deleteStory,
   uploadStory,
 } = require('./city');
+const { uploadToCloudinary } = require('./utilities');
 
 const { userInfo } = require('./utilities');
 
@@ -45,6 +47,7 @@ module.exports = {
   getDashboardCities,
   editProvebDashboard,
   addProverb,
+  addCity,
   errors,
   deleteStory,
   uploadStory,
@@ -53,4 +56,5 @@ module.exports = {
   deleteStoryDashboard,
   logout,
   userInfo,
+  uploadToCloudinary,
 };

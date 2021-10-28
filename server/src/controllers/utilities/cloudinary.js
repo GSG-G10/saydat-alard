@@ -9,10 +9,13 @@ cloudinary.config({
 function uploadToCloudinary(file) {
   return new Promise((resolve, reject) => {
     cloudinary.uploader.upload(file, (err, url) => {
-      if (err) return reject(err);
-      return resolve(url);
+      if (err) {
+        reject(err);
+      } else {
+        resolve(url);
+      }
     });
   });
 }
 
-module.exports = { cloudinary, uploadToCloudinary };
+module.exports = uploadToCloudinary;
