@@ -5,7 +5,7 @@ const editProvebDashboard = async (req, res) => {
   const { content } = req.body;
   try {
     await editProverbQuery(id, content);
-    res.status(200).json({ msg: 'تم التعديل بنجاح' });
+    res.json({ msg: 'تم التعديل بنجاح' });
   } catch (error) {
     res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }

@@ -31,7 +31,7 @@ const login = async (request, response) => {
         { maxAge: 1000 * 60 * 60 * 24 * 1 },
         { httpOnly: true },
       );
-      response.status(200).json({ msg: 'Logged in successfully' });
+      response.json({ msg: 'Logged in successfully' });
     } else {
       throw new Error('Incorrect password');
     }
