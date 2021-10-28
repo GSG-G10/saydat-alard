@@ -1,4 +1,4 @@
-const checkAdmin = (res, req, next) => {
+const checkAdmin = (req, res, next) => {
   const { isAdmin } = req.userObj;
   if (isAdmin) {
     return next();

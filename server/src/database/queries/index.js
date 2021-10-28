@@ -3,10 +3,21 @@ const { getMainCitiesQuery, getCitiesNamesQuery } = require('./mainPage');
 const checkEmail = require('./checkEmail');
 const addNewUser = require('./addNewUser');
 const {
-  updateStoryQuery, getFamiliesQuery, getUserIdQuery, deleteStoryQuery,
+  updateStoryQuery,
+  getFamiliesQuery,
+  getUserIdQuery,
+  deleteStoryQuery,
 } = require('./cityPage');
 const {
-  approvePendingStory, editProverbQuery, getDashboardCitiesQuery, getStoriesQuery, addProverQuery,
+  approvePendingStory,
+  editProverbQuery,
+  getDashboardCitiesQuery,
+  getStoriesQuery,
+  addProverQuery,
+  addNewCityQuery,
+  checkCityByNameQuery,
+  deleteProverbDashboardQuery,
+  deleteCityDashboardQuery,
 } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
 const { getCityDataQuery } = require('./cityPage');
@@ -29,5 +40,9 @@ module.exports = {
   getstoryDataQuery,
   addProverQuery,
   getUserIdQuery,
+  addNewCityQuery,
+  checkCityByNameQuery,
   deleteStoryQuery,
+  deleteProverbDashboardQuery,
+  deleteCityDashboardQuery,
 };

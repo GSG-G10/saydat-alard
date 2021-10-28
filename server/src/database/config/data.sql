@@ -79,14 +79,6 @@ VALUES
         1,
         3,
         false
-    ),
-    (
-        'https://lh3.googleusercontent.com/proxy/fzlGJ2skma065mTkNTEKn38kTVDvxcS-tbkJ8yD8_sRcPxyK3snTjRIbwmdM1dAbyOg90P-Z2c1_z2k-btFgPIy7MN8JAB6lpnpjHuD-RJbvOhI',
-        'كنت أَمشي فوق منحدر وأهجس، كيف يختلف الرواة على كلام الضوء في حجر، أمن حجر شحيح الضوء تندلع الحروب، أسير في نومي. أحملق في منامي. لا أرى أحدا ورائي. لا أرى أَحدا أمامي. كل هذا الضوء لي. أمشي. أخف. أطير ثم أصير غيري في التجلي. ',
-        'في القدس',
-        1,
-        2,
-        true
     );
 
 INSERT INTO
