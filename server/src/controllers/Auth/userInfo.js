@@ -4,11 +4,13 @@ const { error } = require('../utilities/loginSchema');
 const userInfo = async (request, response) => {
   try {
     const { id } = request.userObj;
-    const user = await getUser(null, id);
-    if (user) {
-      const { name, is_admin } = user.rows[0];
+    const { rows } = await getUser(null, id);
+    if (rows) {
+      const { name, is_admin } = rows[0];
       response.json({
-        id, name, is_admin,
+        id,
+        name,
+        is_admin,
       });
     } else {
       throw new Error('somthing went wrong!!');
