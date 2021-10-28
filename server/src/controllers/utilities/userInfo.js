@@ -6,12 +6,12 @@ const userInfo = async (request, response) => {
     const { id } = request.userObj;
     const user = await getUser(null, id);
     if (user) {
-      response.status(200).json(user.rows);
+      response.json(user.rows);
     } else {
       throw new Error('somthing went wrong!!');
     }
   } catch {
-    response.status(400).json({ error: error.message });
+    response.status(400).json({ msg: error.message });
   }
 };
 module.exports = userInfo;
