@@ -6,7 +6,7 @@ const addProverb = async (req, res) => {
     await addProverQuery(content);
     res.status(201).json({ msg: 'تم الإضافة بنجاح' });
   } catch (error) {
-    res.status(500).json({ status: 500, msg: 'حدث خطأ ما في السيرفر' });
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }
 };
 module.exports = addProverb;

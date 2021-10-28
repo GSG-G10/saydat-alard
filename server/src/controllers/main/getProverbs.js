@@ -5,7 +5,7 @@ const getProverbs = async (req, res) => {
   try {
     const data = await getProverbQuery(char, page);
     const { rows } = data;
-    res.status(200).json({ proverbs: rows });
-  } catch (error) { res.status(500).json({ status: 500, msg: 'Server Error' }); }
+    res.json({ proverbs: rows });
+  } catch (error) { res.status(500).json({ msg: 'Server Error' }); }
 };
 module.exports = getProverbs;
