@@ -1,5 +1,19 @@
 const connection = require('../../config/connection');
 
-const editCityQuery = (name, area, location, image, families, id) => connection.query('UPDATE cities SET C.name=$1 ,C.area =$2,C.location=$3,C.image=$4 ,F.name =$5 FROM cities C INNER JOIN families F ON C.id = F.city_id WERE id=$6', [name, area, location, image, families, id]);
+const editCityQuery = (name, area, location, image, id) => connection.query(
+  `
+     UPDATE cities 
+     SET name = $1, area=$2, location=$3, image=$4 
+     WHERE id = $5; 
+      
+    `,
+  [name, area, location, image, id],
+);
 
-module.exports = editCityQuery;
+const editFamiliesQuery = (families, id) => connection.query(
+  `UPDATE families
+SET name = $1
+WHERE city_id = $2;`,
+  [families, id],
+);
+module.exports = { editCityQuery, editFamiliesQuery };

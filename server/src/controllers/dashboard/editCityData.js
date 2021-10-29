@@ -1,19 +1,22 @@
-const { editCityQuery } = require('../../database/queries');
+const {
+  editFamiliesQuery,
+  editCityQuery,
+} = require('../../database/queries/dashboard/editCityQuery');
 
 const editCityDashboard = async (req, res) => {
-  const { id } = req.query;
+  const { id: cityId } = req.query;
   const {
     photo, cityName, area, location, families,
   } = req.body;
   try {
-    await editCityQuery(id, photo,
-      cityName,
-      area,
-      location,
-      families);
-    res.status(200).json({ msg: 'تم التعديل بنجاح' });
+    if (cityId > 0) {
+      await editCityQuery(photo, cityName, area, location, cityId);
+      await editFamiliesQuery(families, cityId);
+      return res.status(200).json({ msg: 'تم التعديل بنجاح' });
+    }
+    return res.status(400).json({ message: ' خطأ في الطلب ' });
   } catch (error) {
-    res.status(500).json({ status: 500, msg: 'حدث خطأ ما في السيرفر' });
+    return res.status(500).json({ status: 500, msg: 'حدث خطأ ما في السيرفر' });
   }
 };
 module.exports = editCityDashboard;

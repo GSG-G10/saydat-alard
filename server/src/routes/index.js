@@ -23,7 +23,7 @@ const {
   uploadStory,
   deleteProvebDashboard,
   deleteCityDashboard,
-  updateTheCityData,
+  editCityDashboard,
   logout,
 
 } = require('../controllers');
@@ -47,7 +47,7 @@ router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // 
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
 
 router.put('/story/:storyId ', checkAuth, updateStory);
-router.put('./dashboard/city?id', updateTheCityData);
+router.put('/dashboard/city', editCityDashboard);
 
 router.delete('/story/:storyId', checkAuth, deleteStory);
 router.delete(
