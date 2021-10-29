@@ -8,10 +8,10 @@ const getDashboardProverbs = async (req, res) => {
     if (rowCount) {
       res.json({ proverbs: rows });
     } else {
-      res.json({ errorMsg: 'لا يوجد أمثال شعبية تبدأ بهذا الحرف' });
+      res.json({ msg: 'لا يوجد أمثال شعبية تبدأ بهذا الحرف' });
     }
   } catch (error) {
-    res.status(500).json({ errorMsg: 'حدث خطأ ما في السيرفر' });
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }
 };
 

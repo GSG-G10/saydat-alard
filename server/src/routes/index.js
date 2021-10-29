@@ -19,6 +19,7 @@ const {
   getCitiesNames,
   editProvebDashboard,
   login,
+  addCity,
   deleteStory,
   uploadStory,
   deleteProvebDashboard,
@@ -41,6 +42,7 @@ router.get('/logout', logout);
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);
 router.post('/dashboard/proverb', checkAuth, isAdmin, addProverb);
+router.post('/dashboard/newcity', checkAuth, isAdmin, addCity); // route => by body send all data about new city
 router.post('/story', checkAuth, uploadStory);
 
 router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // /dashboard/proverb?id=

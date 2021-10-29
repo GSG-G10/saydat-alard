@@ -13,6 +13,6 @@ const signup = async (req, res, next) => {
     req.name = name;
     req.isAdmin = is_admin;
     next();
-  } catch (error) { res.status(403).json({ message: error }); }
+  } catch (error) { res.status(403).json({ msg: error }); }
 };
 module.exports = signup;

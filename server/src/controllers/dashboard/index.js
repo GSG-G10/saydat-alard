@@ -5,6 +5,7 @@ const editProvebDashboard = require('./editProvebDashboard');
 const addProverb = require('./addProverb');
 const getDashboardCities = require('./getDashboardCities');
 const editCityDashboard = require('./editCityData');
+const addCity = require('./addCity');
 const deleteProvebDashboard = require('./deleteProvebDashboard');
 const deleteCityDashboard = require('./deleteCityDashboard');
 const deleteStoryDashboard = require('./deleteStoryDashboard');
@@ -17,6 +18,7 @@ module.exports = {
   getDashboardStories,
   addProverb,
   editCityDashboard,
+  addCity,
   deleteProvebDashboard,
   deleteCityDashboard,
   deleteStoryDashboard,
