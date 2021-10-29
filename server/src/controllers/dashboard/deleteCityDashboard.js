@@ -6,7 +6,9 @@ const deleteCityDashboard = async (req, res) => {
     const result = await deleteCityDashboardQuery(cityId);
     if (result.rowCount > 0) {
       res.json({ msg: 'تم الحذف بنجاح' });
-    } else res.status(400).json({ msg: 'Bad request' });
-  } catch (error) { res.status(500).json({ msg: 'Server Error' }); }
+    } else res.status(400).json({ msg: 'طلب خاطئ ' });
+  } catch (error) {
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+  }
 };
 module.exports = deleteCityDashboard;

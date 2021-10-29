@@ -13,6 +13,8 @@ const signup = async (req, res, next) => {
     req.name = name;
     req.isAdmin = is_admin;
     next();
-  } catch (error) { res.status(403).json({ msg: error }); }
+  } catch (error) {
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+  }
 };
 module.exports = signup;
