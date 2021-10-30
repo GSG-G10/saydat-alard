@@ -26,7 +26,6 @@ router
   .patch(asyncHandler(editProvebDashboard))
   .delete(asyncHandler(deleteProvebDashboard));
 
-
 router.get('/stories', asyncHandler(getDashboardStories));
 router.get('/cities', asyncHandler(getDashboardCities));
 
