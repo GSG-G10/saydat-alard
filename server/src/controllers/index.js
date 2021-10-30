@@ -1,3 +1,4 @@
+const { uploadToCloudinary } = require('./utilities');
 const {
   getCityData, getFamilies, updateStory, deleteStory, uploadStory,
 } = require('./city');
@@ -20,9 +21,9 @@ const {
   deleteCityDashboard,
   deleteStoryDashboard,
   deleteProvebDashboard,
+  editCityDashboard,
 } = require('./dashboard');
 const { errors } = require('./errors');
-const { uploadToCloudinary } = require('./utilities');
 
 module.exports = {
   getMainCities,
@@ -41,6 +42,7 @@ module.exports = {
   getDashboardProverbs,
   getDashboardCities,
   editProvebDashboard,
+  editCityDashboard,
   getCityData,
   addProverb,
   addCity,

@@ -9,6 +9,7 @@ const {
   deleteStoryQuery,
 } = require('./cityPage');
 const {
+  editFamiliesQuery,
   approvePendingStory,
   editProverbQuery,
   getDashboardCitiesQuery,
@@ -16,6 +17,7 @@ const {
   addProverQuery,
   addNewCityQuery,
   checkCityByNameQuery,
+  editCityQuery,
   deleteProverbDashboardQuery,
   deleteCityDashboardQuery,
 } = require('./dashboard');
@@ -26,6 +28,7 @@ const { getstoryDataQuery } = require('./story');
 module.exports = {
   getCitiesNamesQuery,
   getMainCitiesQuery,
+  editFamiliesQuery,
   checkEmail,
   addNewUser,
   getStoriesQuery,
@@ -45,4 +48,5 @@ module.exports = {
   deleteStoryQuery,
   deleteProverbDashboardQuery,
   deleteCityDashboardQuery,
+  editCityQuery,
 };
