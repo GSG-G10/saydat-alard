@@ -1,10 +1,6 @@
 const { uploadToCloudinary } = require('./utilities');
 const {
-  getFamilies,
-  updateStory,
-  deleteStory,
-  uploadStory,
-  getCityData,
+  getCityData, getFamilies, updateStory, deleteStory, uploadStory,
 } = require('./city');
 const { getMainCities, getCitiesNames, getProverbs } = require('./main');
 const { signup, login, logout } = require('./Auth');

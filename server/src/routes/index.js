@@ -3,6 +3,7 @@ const router = require('express').Router();
 const {
   checkUserExist,
   setCookie,
+  getCityData,
   getMainCities,
   signup,
   approvedStory,
@@ -10,7 +11,6 @@ const {
   checkAuth,
   getProverbs,
   addProverb,
-  getCityData,
   getDashboardStories,
   updateStory,
   getDashboardProverbs,
