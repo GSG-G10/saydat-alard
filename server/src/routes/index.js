@@ -3,6 +3,7 @@ const router = require('express').Router();
 const {
   checkUserExist,
   setCookie,
+  getCityData,
   getMainCities,
   signup,
   approvedStory,
@@ -23,10 +24,12 @@ const {
   uploadStory,
   deleteProvebDashboard,
   deleteCityDashboard,
+  editCityDashboard,
   logout,
-
+  userInfo,
 } = require('../controllers');
 
+router.get('/city/:cityId', getCityData);
 router.get('/', getMainCities);
 router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
 router.get('/search', getCitiesNames); //  route =>  /search?city=...
@@ -35,6 +38,7 @@ router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // 
 router.get('/dashboard/stories', checkAuth, isAdmin, getDashboardStories); // /dashboard/stories?page=1
 router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 router.get('/logout', logout);
+router.get('/userInfo', checkAuth, userInfo);
 
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);
@@ -46,6 +50,7 @@ router.patch('/dashboard/proverb', checkAuth, isAdmin, editProvebDashboard); // 
 router.patch('/dashboard/story', checkAuth, isAdmin, approvedStory); // /dashboard/story?id=
 
 router.put('/story/:storyId ', checkAuth, updateStory);
+router.put('/dashboard/city', checkAuth, isAdmin, editCityDashboard);
 
 router.delete('/story/:storyId', checkAuth, deleteStory);
 router.delete(

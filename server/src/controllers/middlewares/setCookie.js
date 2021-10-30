@@ -6,7 +6,7 @@ const setCookie = (req, res) => {
     if (error) {
       res.status(500).json({ message: error });
     }
-    res.cookie('token', token, { httponly: true, secure: true }).status(201).json({ msg: 'success' });
+    res.cookie('token', token, { httponly: true, secure: true }).status(201).json({ msg: 'تم الدخول بنجاح' });
   });
 };
 module.exports = setCookie;

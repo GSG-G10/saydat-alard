@@ -6,6 +6,8 @@ const getProverbs = async (req, res) => {
     const data = await getProverbQuery(char, page);
     const { rows } = data;
     res.json({ proverbs: rows });
-  } catch (error) { res.status(500).json({ msg: 'Server Error' }); }
+  } catch (error) {
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+  }
 };
 module.exports = getProverbs;
