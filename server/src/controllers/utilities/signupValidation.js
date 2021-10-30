@@ -9,7 +9,6 @@ const schema = Joi.object().keys({
       'any.required': ' اسم المستخدم مطلوب  ',
     }),
   password: Joi.string().required().min(7)
-    // .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
     .regex(/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*[^\w\s])\S{8,30}$/)
     .messages({
       'string.pattern.base': '  يجب أن تحتوي كلمة المرور على الاقل على حرف واحد كبير و حرف واحد صغير ورمز و رقم  ',
