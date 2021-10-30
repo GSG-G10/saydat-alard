@@ -14,13 +14,12 @@ switch (process.env.NODE_ENV) {
     dbUrl = DATABASE_URL;
     break;
   default:
-    throw new Error('DATA BASE ERROR');
+    dbUrl = 'postgres://gaza:123@localhost:5432/palestine';
 }
+
 const options = {
   connectionString: dbUrl,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: false,
 };
 
 module.exports = new Pool(options);
