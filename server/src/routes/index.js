@@ -13,11 +13,12 @@ const {
 } = require('../controllers');
 
 const { asyncHandler } = require('../controllers/middlewares');
+
 const authentication = require('./authentication');
-const dashboard = require('./dashboard');
+const dashboardRouter = require('./dashboard');
 
 router.use(authentication);
-router.use(dashboard);
+router.use('/dashboard', dashboardRouter);
 
 router.get('/', asyncHandler(getMainCities));
 router.get('/city/:cityId', getCityData);

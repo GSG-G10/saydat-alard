@@ -17,22 +17,25 @@ const {
 
 const { asyncHandler } = require('../controllers/middlewares');
 
-router.use(checkAuth)
-  .use(isAdmin);
+router.use(checkAuth, isAdmin);
 
-router.get('/dashboard/proverbs', asyncHandler(getDashboardProverbs))
-  .get('/dashboard/stories', asyncHandler(getDashboardStories))
-  .get('/dashboard/cities', asyncHandler(getDashboardCities));
+router
+  .route('/proverb')
+  .get(asyncHandler(getDashboardProverbs))
+  .post(asyncHandler(addProverb))
+  .patch(asyncHandler(editProvebDashboard))
+  .delete(asyncHandler(deleteProvebDashboard));
 
-router.post('/dashboard/proverb', asyncHandler(addProverb))
-  .post('/dashboard/newcity', asyncHandler(addCity));
 
-router.patch('/dashboard/proverb', asyncHandler(editProvebDashboard))
-  .patch('/dashboard/story', asyncHandler(approvedStory));
+router.get('/stories', asyncHandler(getDashboardStories));
+router.get('/cities', asyncHandler(getDashboardCities));
 
-router.put('/dashboard/city', asyncHandler(editCityDashboard));
+router.post('/newcity', asyncHandler(addCity));
 
-router.delete('/dashboard/proverb/:proverbId', asyncHandler(deleteProvebDashboard))
-  .delete('/dashboard/story/:storyId', asyncHandler(deleteCityDashboard));
+router.patch('/story', asyncHandler(approvedStory));
+
+router.put('/city', asyncHandler(editCityDashboard));
+
+router.delete('/story/:storyId', asyncHandler(deleteCityDashboard));
 
 module.exports = router;

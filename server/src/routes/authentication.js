@@ -6,10 +6,10 @@ const {
 
 const { asyncHandler } = require('../controllers/middlewares');
 
-router.get('/userinfo', asyncHandler(checkAuth), asyncHandler(userInfo))
-  .get('/logout', asyncHandler(logout));
+router.get('/userinfo', asyncHandler(checkAuth), asyncHandler(userInfo));
+router.get('/logout', asyncHandler(logout));
 
-router.post('/login', asyncHandler(login))
-  .post('/signup', asyncHandler(checkUserExist), asyncHandler(signup));
+router.post('/login', asyncHandler(login));
+router.post('/signup', asyncHandler(checkUserExist), asyncHandler(signup));
 
 module.exports = router;
