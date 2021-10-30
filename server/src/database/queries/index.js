@@ -20,6 +20,8 @@ const {
   deleteCityDashboardQuery,
 } = require('./dashboard');
 const getProverbQuery = require('./getProverbQuery');
+const { getCityDataQuery } = require('./cityPage');
+const { getstoryDataQuery } = require('./story');
 
 module.exports = {
   getCitiesNamesQuery,
@@ -34,6 +36,8 @@ module.exports = {
   approvePendingStory,
   editProverbQuery,
   getProverbQuery,
+  getCityDataQuery,
+  getstoryDataQuery,
   addProverQuery,
   getUserIdQuery,
   addNewCityQuery,

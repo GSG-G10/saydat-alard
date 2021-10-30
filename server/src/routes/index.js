@@ -3,6 +3,7 @@ const router = require('express').Router();
 const {
   checkUserExist,
   setCookie,
+  getCityData,
   getMainCities,
   signup,
   approvedStory,
@@ -27,6 +28,7 @@ const {
 
 } = require('../controllers');
 
+router.get('/city/:cityId', getCityData);
 router.get('/', getMainCities);
 router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
 router.get('/search', getCitiesNames); //  route =>  /search?city=...
