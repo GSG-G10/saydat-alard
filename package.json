@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "husky": "^4.3.8",
     "pre-commit": "^1.2.2"
   },
   "name": "saydat-alard",
