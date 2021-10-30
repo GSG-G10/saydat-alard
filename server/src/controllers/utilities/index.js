@@ -1,6 +1,6 @@
 const loginSchema = require('./loginSchema');
 const { verifyToken } = require('./jwt');
-const { schema } = require('./signupValidation.js');
+const schema = require('./signupValidation');
 const hashPassword = require('./hashPassword');
 const comparePasswords = require('./comparePassword');
 const uploadToCloudinary = require('./cloudinary');
