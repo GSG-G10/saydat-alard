@@ -5,14 +5,14 @@ VALUES
     (
         'palestineAdmin',
         'saydat.alard@gmail.com',
-        '$2a$10$Bp9etHWYo1UAANX99Ju3LuEzTlH7d1mq8snUpUzV7UhfBlQwozIly',
+        '$2a$10$bsZpifgIhsmH2o9uMbVTw.r2jQPX4xUf7.eZ92FmR./ur6a216KWa',
         'فلسطين',
         true
     ),
     (
         'Reem',
         'reem@gmail.com',
-        '$2a$10$Bp9etHWYo1UAANX99Ju3LuEzTlH7d1mq8snUpUzV7UhfBlQwozIly',
+        '$2a$10$bsZpifgIhsmH2o9uMbVTw.r2jQPX4xUf7.eZ92FmR./ur6a216KWa',
         'حمامة',
         false
     );

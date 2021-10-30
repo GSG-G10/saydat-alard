@@ -4,13 +4,14 @@ const schema = require('../utilities/loginSchema');
 const { signToken } = require('../utilities/jwt');
 
 const login = async (request, response) => {
+  console.log(request.body)
   try {
     const value = await schema.validateAsync(request.body);
     const { rows } = await getUser(value.email);
     const user = rows[0];
 
     if (!user) {
-      throw new Error('wrong email or password');
+      throw new Error('خطأ في البريد الإلكتروني أو كلمة المرور');
     }
 
     const validatedPassword = await bcrypt.compare(
@@ -19,7 +20,7 @@ const login = async (request, response) => {
     );
 
     if (!validatedPassword) {
-      throw new Error('invalid email or password');
+      throw new Error('خطأ في البريد الإلكتروني أو كلمة المرور');
     }
 
     if (validatedPassword) {
@@ -31,13 +32,12 @@ const login = async (request, response) => {
         { maxAge: 1000 * 60 * 60 * 24 * 1 },
         { httpOnly: true },
       );
-      response.json({ data: user, msg: 'Logged in successfully' });
+      response.json({ msg: ' تم تسجيل الدخول بنجاح ' });
     } else {
-      throw new Error('Incorrect password');
+      throw new Error('خطأ في البريد الإلكتروني أو كلمة المرور');
     }
   } catch (error) {
-    response.status(400).json({ msg: error.message });
+    response.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }
 };
-
 module.exports = login;
