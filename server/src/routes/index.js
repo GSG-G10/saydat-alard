@@ -26,7 +26,7 @@ const {
   deleteCityDashboard,
   editCityDashboard,
   logout,
-
+  userInfo,
 } = require('../controllers');
 
 router.get('/city/:cityId', getCityData);
@@ -38,6 +38,7 @@ router.get('/dashboard/proverbs', checkAuth, isAdmin, getDashboardProverbs); // 
 router.get('/dashboard/stories', checkAuth, isAdmin, getDashboardStories); // /dashboard/stories?page=1
 router.get('/dashboard/cities', checkAuth, isAdmin, getDashboardCities); // route => /dashboard/cities?page=1
 router.get('/logout', logout);
+router.get('/userInfo', checkAuth, userInfo);
 
 router.post('/signup', checkUserExist, signup, setCookie);
 router.post('/login', login);

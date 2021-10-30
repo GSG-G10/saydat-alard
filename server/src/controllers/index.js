@@ -3,7 +3,9 @@ const {
   getCityData, getFamilies, updateStory, deleteStory, uploadStory,
 } = require('./city');
 const { getMainCities, getCitiesNames, getProverbs } = require('./main');
-const { signup, login, logout } = require('./Auth');
+const {
+  signup, login, logout, userInfo,
+} = require('./Auth');
 const {
   checkUserExist,
   setCookie,
@@ -53,5 +55,6 @@ module.exports = {
   deleteCityDashboard,
   deleteStoryDashboard,
   logout,
+  userInfo,
   uploadToCloudinary,
 };
