@@ -1,14 +1,11 @@
 const { deleteCityDashboardQuery } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 
 const deleteCityDashboard = async (req, res) => {
   const { cityId } = req.params;
-  try {
-    const result = await deleteCityDashboardQuery(cityId);
-    if (result.rowCount > 0) {
-      res.json({ msg: 'تم الحذف بنجاح' });
-    } else res.status(400).json({ msg: 'طلب خاطئ ' });
-  } catch (error) {
-    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
-  }
+
+  const { rowCount } = await deleteCityDashboardQuery(cityId);
+  if (rowCount) return httpResponse.ok(res, null, 'تم الحذف بنجاح');
+  return httpResponse.badRequest(res, 'طلب خاطئ ');
 };
 module.exports = deleteCityDashboard;

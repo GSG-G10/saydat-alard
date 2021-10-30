@@ -1,31 +1,27 @@
 const { editFamiliesQuery, editCityQuery } = require('../../database/queries');
 const { uploadToCloudinary } = require('../utilities');
 const { getCityDataQuery } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 
 const editCityDashboard = async (req, res) => {
   const { id: cityId } = req.query;
   const {
-    image, cityName, area, location, families,
+    image, cityName, area, location, families, quotation,
   } = req.body;
-  try {
-    if (cityId > 0) {
-      const { rows } = await getCityDataQuery(cityId);
-      if (image === rows[0].image) {
-        await editCityQuery(image, cityName, area, location, cityId);
-      } else {
-        const uploadResponse = await uploadToCloudinary(image, {
-          upload_preset: 'dev_setup',
-        });
-        const { url } = uploadResponse;
-        await editCityQuery(url, cityName, area, location, cityId);
-      }
-      await editFamiliesQuery(families, cityId);
-      return res.status(200).json({ msg: 'تم التعديل بنجاح' });
-    }
+  const { rows, rowCount } = await getCityDataQuery(cityId);
 
-    return res.status(400).json({ msg: ' خطأ في الطلب ' });
-  } catch (error) {
-    return res.status(500).json({ status: 500, msg: 'حدث خطأ ما في السيرفر' });
+  if (rowCount) {
+    if (image !== rows[0].image) {
+      const { url } = await uploadToCloudinary(image, {
+        upload_preset: 'dev_setup',
+      });
+
+      await editCityQuery(url, cityName, area, location, cityId, quotation);
+      await editFamiliesQuery(families, cityId);
+      return httpResponse.ok(res, null, 'تم التعديل على المدينة بنجاح');
+    }
   }
+
+  return httpResponse.badRequest(res, ' خطأ في الطلب ');
 };
 module.exports = editCityDashboard;
