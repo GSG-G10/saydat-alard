@@ -5,6 +5,8 @@ const getMainCities = async (req, res) => {
     const data = await getMainCitiesQuery();
     const { rows } = data;
     res.json(rows);
-  } catch (error) { res.status(500).json({ msg: 'Server Error' }); }
+  } catch (error) {
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+  }
 };
 module.exports = getMainCities;
