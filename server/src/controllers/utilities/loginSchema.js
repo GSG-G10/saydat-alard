@@ -1,11 +1,11 @@
-const joi = require('joi');
+const Joi = require('joi');
 
-module.exports = joi.object({
-  email: joi.string().email().required().messages({
+const loginValidation = Joi.object({
+  email: Joi.string().email().required().messages({
     'string.empty': 'البريد الالكتروني لا يمكن أن يكون فارغ',
     'any.required': '    البريد الالكتروني مطلوب  ',
   }),
-  password: joi.string().alphanum().min(7).required()
+  password: Joi.string().required().min(7)
     .regex(/^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*[^\w\s])\S{8,30}$/)
     .messages({
       'string.pattern.base': '  يجب أن تحتوي كلمة المرور على الاقل على حرف واحد كبير و حرف واحد صغير ورمز و رقم  ',
@@ -14,3 +14,5 @@ module.exports = joi.object({
       'any.required': '  كلمة المرور مطلوبة ',
     }),
 });
+
+module.exports = loginValidation;

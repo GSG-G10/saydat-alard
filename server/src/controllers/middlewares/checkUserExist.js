@@ -1,16 +1,16 @@
 const { checkEmail } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 const { schema } = require('../utilities');
 
 const checkUserExist = async (req, res, next) => {
   const userObj = await schema.validateAsync(req.body);
   const { email } = userObj;
-  const result = await checkEmail(email);
-  if (result.rowCount > 0) {
-    res.status(400).json({ msg: 'هذا البريد الالكتروني يمتلك حساباً  ' });
-  } else {
-    req.userObj = userObj;
-    next();
+  const { rowCount } = await checkEmail(email);
+  if (rowCount) {
+    return httpResponse.badRequest(res, 'البريد الإلكتروني أو كلمة المرور خطأ');
   }
+  req.userObj = userObj;
+  next();
 };
 
 module.exports = checkUserExist;
