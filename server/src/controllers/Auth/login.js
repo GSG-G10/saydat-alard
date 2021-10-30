@@ -4,7 +4,6 @@ const schema = require('../utilities/loginSchema');
 const { signToken } = require('../utilities/jwt');
 
 const login = async (request, response) => {
-  console.log(request.body)
   try {
     const value = await schema.validateAsync(request.body);
     const { rows } = await getUser(value.email);
