@@ -18,16 +18,23 @@ import Error from './pages/Error';
 const axios = require('axios').default;
 
 function App() {
-  const [state, setstate] = useState(0);
-  // useEffect(() => () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get('/userinfo');
+      const { role } = data;
+      setIsAdmin(role);
+    };
+    getData();
+  }, []);
 
-  // }, []);
-  axios.get('/userInfo').then(console.log).catch((error) => console.log(error));
   return (
     <Router>
       <Switch>
-        <Route path="/city/:id" component={City} />
-        <ProtectedRoute path="/dashboard" isAdmin={false}>
+        <Route path="/city/:id">
+          <City />
+        </Route>
+        <ProtectedRoute path="/dashboard" isAdmin={isAdmin}>
           <Dashboard />
         </ProtectedRoute>
         <Route path="/login">
