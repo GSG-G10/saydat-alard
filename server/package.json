@@ -20,7 +20,8 @@
     "start": "cross-env NODE_ENV=production node src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "cross-env NODE_ENV=test jest test/test.js",
-    "lint": "eslint ./src --fix"
+    "lint": "eslint ./src --fix",
+    "db:build": "cross-env NODE_ENV=development node src/database/config/build.js"
   },
   "repository": {
     "type": "git",

@@ -1,18 +1,23 @@
-const dataCities = require('../data/cities.json');
-const connection = require('./connection');
-
-const bulkInsertCities = (query) => connection.query(query);
-
-const insertInto = (data) => data.reduce((acc, curr) => {
-  // eslint-disable-next-line no-param-reassign
-  acc += `(${curr.cityName}),`;
+/* eslint-disable no-param-reassign */
+const shapeCitiesValues = (data) => data.reduce((acc, curr) => {
+  acc += `('${curr.cityName}', '${parseInt(curr.area, 10)}') ,`;
+  return acc;
+}, '');
+const shapeProverbsValues = (data) => data.reduce((acc, curr) => {
+  acc += `('${curr}') ,`;
   return acc;
 }, '');
 
-const build = async () => {
-  const values = insertInto(dataCities).slice(0, -1);
-  const query = `INSERT INTO cities (name) VALUES ${values}`;
-  await bulkInsertCities(query);
+const buildCities = (data) => {
+  const values = shapeCitiesValues(data).slice(0, -1);
+  const query = `INSERT INTO cities (name, area) VALUES ${values}`;
+  return query;
 };
 
-build();
+const buildProverbs = (data) => {
+  const values = shapeProverbsValues(data).slice(0, -1);
+  const query = `INSERT INTO proverbs (content) VALUES ${values}`;
+  return query;
+};
+
+module.exports = { buildCities, buildProverbs };

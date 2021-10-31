@@ -1,3 +1,4 @@
+require('env2')('.env');
 const { Pool } = require('pg');
 
 const { DATABASE_URL, TEST_DB_URL, DEV_DB_URL } = process.env;
@@ -14,7 +15,7 @@ switch (process.env.NODE_ENV) {
     dbUrl = DATABASE_URL;
     break;
   default:
-    dbUrl = 'postgres://gaza:123@localhost:5432/palestine';
+    throw new Error('NO DATA BASE FOUND !');
 }
 
 const options = {
