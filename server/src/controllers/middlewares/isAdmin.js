@@ -3,6 +3,6 @@ const checkAdmin = (req, res, next) => {
   if (isAdmin) {
     return next();
   }
-  return res.status(403).json({ msg: 'Forbbiden Access' });
+  return res.status(403).json({ msg: 'طلب مرفوض  ' });
 };
 module.exports = checkAdmin;

@@ -34,7 +34,7 @@ const addCity = async (req, res) => {
       res.status(201).json({ msg: 'تم إضافة المدينة بنجاح' });
     }
   } catch (error) {
-    res.status(500).json({ errMsg: ' خطأ ما في السيرفر' });
+    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
   }
 };
 

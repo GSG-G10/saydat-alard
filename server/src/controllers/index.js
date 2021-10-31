@@ -1,5 +1,11 @@
+const { uploadToCloudinary } = require('./utilities');
+const {
+  getCityData, getFamilies, updateStory, deleteStory, uploadStory,
+} = require('./city');
 const { getMainCities, getCitiesNames, getProverbs } = require('./main');
-const { signup, login, logout } = require('./Auth');
+const {
+  signup, login, logout, userInfo,
+} = require('./Auth');
 const {
   checkUserExist,
   setCookie,
@@ -17,15 +23,9 @@ const {
   deleteCityDashboard,
   deleteStoryDashboard,
   deleteProvebDashboard,
+  editCityDashboard,
 } = require('./dashboard');
 const { errors } = require('./errors');
-const {
-  getFamilies,
-  updateStory,
-  deleteStory,
-  uploadStory,
-} = require('./city');
-const { uploadToCloudinary } = require('./utilities');
 
 module.exports = {
   getMainCities,
@@ -44,6 +44,8 @@ module.exports = {
   getDashboardProverbs,
   getDashboardCities,
   editProvebDashboard,
+  editCityDashboard,
+  getCityData,
   addProverb,
   addCity,
   errors,
@@ -53,5 +55,6 @@ module.exports = {
   deleteCityDashboard,
   deleteStoryDashboard,
   logout,
+  userInfo,
   uploadToCloudinary,
 };
