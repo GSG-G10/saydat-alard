@@ -1,15 +1,28 @@
+const { uploadToCloudinary } = require('..');
 const { updateStoryQuery, getUserIdQuery } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 
 const updateStory = async (req, res) => {
-  const { storyId } = req.params;
-  const { content, title, image } = req.body;
+  const { storyId } = req.query;
+  const { content, title } = req.body;
+  let { image } = req.body;
   const { id } = req.userObj;
-  try {
-    const { rows } = await getUserIdQuery(storyId);
+
+  const { rows, rowCount } = await getUserIdQuery(storyId);
+
+  if (rowCount) {
     if (rows[0].user_id === id) {
+      if (image !== rows[0].image) {
+        const { url } = await uploadToCloudinary(image, {
+          upload_preset: 'dev_setup',
+        });
+        image = url;
+      }
       await updateStoryQuery(storyId, content, title, image);
-      res.json({ msg: 'تم التعديل بنجاح' });
-    } else res.status(401).json({ msg: 'غير مسموح لك بالتعديل ' });
-  } catch (error) { res.status(500).json({ msg: 'حدث خطأ ما في السيرفر ' }); }
+      return httpResponse.ok(res, { data: null }, 'تم التعديل dبنجاح');
+    }
+    return httpResponse.unAuthorized(res, 'غير مسموح لك بالتعديل ');
+  }
+  return httpResponse.badRequest(res, 'لا يوجد قصة بهذه البيانات ');
 };
 module.exports = updateStory;

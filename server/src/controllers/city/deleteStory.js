@@ -1,7 +1,7 @@
 const { deleteStoryQuery, getUserIdQuery } = require('../../database/queries');
 
 const deleteStory = async (req, res) => {
-  const { storyId } = req.params;
+  const { storyId } = req.query;
   const { id } = req.userObj;
   try {
     const { rows } = await getUserIdQuery(storyId);

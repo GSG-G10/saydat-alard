@@ -1,20 +1,18 @@
 const { addStoryQuery } = require('../../database/queries/cityPage');
+const { httpResponse } = require('../../helpers');
 const { uploadToCloudinary } = require('../utilities');
 
-const uploadStory = async (request, response) => {
+const uploadStory = async (req, res) => {
   const {
-    data, content, title, cityId,
-  } = request.body;
-  const { id } = request.userObj;
-  try {
-    const uploadResponse = await uploadToCloudinary(data, {
-      upload_preset: 'dev_setup',
-    });
-    await addStoryQuery(content, title, uploadResponse.url, cityId, id);
-    response.status(201).json({ msg: 'تم التحميل بنجاح  ' });
-  } catch (err) {
-    response.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
-  }
+    image, content, title, cityId,
+  } = req.body;
+  const { id } = req.userObj;
+
+  const { url } = await uploadToCloudinary(image, {
+    upload_preset: 'dev_setup',
+  });
+  await addStoryQuery(content, title, url, cityId, id);
+  return httpResponse.created(res, { data: null }, 'تم إضافة قصتك، بانتظار  الموافقة عليها');
 };
 
 module.exports = uploadStory;

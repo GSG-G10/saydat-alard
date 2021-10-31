@@ -6,8 +6,9 @@ const { httpResponse } = require('../../helpers');
 const editCityDashboard = async (req, res) => {
   const { id: cityId } = req.query;
   const {
-    image, cityName, area, location, families, quotation,
+    cityName, area, location, families, quotation,
   } = req.body;
+  let { image } = req.body;
   const { rows, rowCount } = await getCityDataQuery(cityId);
 
   if (rowCount) {
@@ -15,13 +16,14 @@ const editCityDashboard = async (req, res) => {
       const { url } = await uploadToCloudinary(image, {
         upload_preset: 'dev_setup',
       });
-
-      await editCityQuery(url, cityName, area, location, cityId, quotation);
-      await editFamiliesQuery(families, cityId);
-      return httpResponse.ok(res, null, 'تم التعديل على المدينة بنجاح');
+      image = url;
     }
+
+    await editCityQuery(image, cityName, area, location, cityId, quotation);
+    await editFamiliesQuery(families, cityId);
+    return httpResponse.ok(res, null, 'تم التعديل على المدينة بنجاح');
   }
 
-  return httpResponse.badRequest(res, ' هذه المدينة غير موجودة يمكنك إضافتها من خلال النقر على إضافة');
+  return httpResponse.badRequest(res, ' هذه المدينة غير موجودة يمكنك إضافتها من خلال النقر على إضافة مدينة');
 };
 module.exports = editCityDashboard;
