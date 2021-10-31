@@ -2,7 +2,7 @@ const { deleteCityDashboardQuery } = require('../../database/queries');
 const { httpResponse } = require('../../helpers');
 
 const deleteCityDashboard = async (req, res) => {
-  const { cityId } = req.params;
+  const { cityId } = req.query;
 
   const { rowCount } = await deleteCityDashboardQuery(cityId);
   if (rowCount) return httpResponse.ok(res, null, 'تم الحذف بنجاح');

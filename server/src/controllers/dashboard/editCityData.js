@@ -22,6 +22,6 @@ const editCityDashboard = async (req, res) => {
     }
   }
 
-  return httpResponse.badRequest(res, ' خطأ في الطلب ');
+  return httpResponse.badRequest(res, ' هذه المدينة غير موجودة يمكنك إضافتها من خلال النقر على إضافة');
 };
 module.exports = editCityDashboard;

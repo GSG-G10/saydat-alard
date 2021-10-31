@@ -17,7 +17,7 @@ const {
 
 const { asyncHandler } = require('../controllers/middlewares');
 
-router.use(checkAuth, isAdmin);
+router.use(asyncHandler(checkAuth), asyncHandler(isAdmin));
 
 router
   .route('/proverb')
@@ -26,15 +26,16 @@ router
   .patch(asyncHandler(editProvebDashboard))
   .delete(asyncHandler(deleteProvebDashboard));
 
-router.get('/stories', asyncHandler(getDashboardStories));
-router.get('/cities', asyncHandler(getDashboardCities));
+router
+  .route('/city')
+  .get(asyncHandler(getDashboardCities))
+  .post(asyncHandler(addCity))
+  .put(asyncHandler(editCityDashboard));
 
-router.post('/newcity', asyncHandler(addCity));
-
-router.patch('/story', asyncHandler(approvedStory));
-
-router.put('/city', asyncHandler(editCityDashboard));
-
-router.delete('/story/:storyId', asyncHandler(deleteCityDashboard));
+router
+  .route('/story')
+  .get(asyncHandler(getDashboardStories))
+  .patch(asyncHandler(approvedStory))
+  .delete(asyncHandler(deleteCityDashboard));
 
 module.exports = router;

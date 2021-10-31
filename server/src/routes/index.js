@@ -22,9 +22,11 @@ router.use('/dashboard', dashboardRouter);
 
 router.get('/', asyncHandler(getMainCities));
 router.get('/city/:cityId', getCityData);
+
 router.get('/families/:cityId', getFamilies); // route => /families/:cityId?letter=...
 router.get('/search', getCitiesNames); //  route =>  /search?city=...
 router.get('/proverbs', getProverbs); // /proverbs?char=...&page=1'
+
 router.post('/story', checkAuth, uploadStory);
 router.put('/story/:storyId ', checkAuth, updateStory);
 router.delete('/story/:storyId', checkAuth, deleteStory);
