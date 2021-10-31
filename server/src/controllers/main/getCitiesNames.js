@@ -1,17 +1,13 @@
 const { getCitiesNamesQuery } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 
 const getCitiesNames = async (req, res) => {
   const { city } = req.query;
-  try {
-    const { rowCount, rows } = await getCitiesNamesQuery(city);
-    if (rowCount) {
-      res.json({ data: rows });
-    } else {
-      res.json({ msg: 'لا يوجد مدينة تبدأ بهذا الحرف' });
-    }
-  } catch (error) {
-    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+  const { rowCount, rows } = await getCitiesNamesQuery(city);
+  if (rowCount) {
+    return httpResponse.ok(res, { cities: rows }, 'تم إرسال المدن التي تبدأ بهذه الحروف');
   }
+  return httpResponse.ok(res, { cities: null }, 'لا يوجد مدن تبدأ بهذه الأحرف');
 };
 
 module.exports = getCitiesNames;
