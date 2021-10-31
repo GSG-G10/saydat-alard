@@ -5,7 +5,11 @@ function ProtectedRoute(props) {
   const { isAdmin, children } = props;
 
   return (
-    isAdmin ? <Route><children /></Route> : <Redirect to={{ pathname: '/' }} />
+    isAdmin ? (
+      <Route>
+        {children}
+      </Route>
+    ) : <Redirect to={{ pathname: '/' }} />
 
   );
 }
