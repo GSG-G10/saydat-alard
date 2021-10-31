@@ -8,7 +8,6 @@ const {
 } = require('./Auth');
 const {
   checkUserExist,
-  setCookie,
   isAdmin,
   checkAuth,
 } = require('./middlewares');
@@ -33,7 +32,6 @@ module.exports = {
   signup,
   login,
   checkUserExist,
-  setCookie,
   isAdmin,
   checkAuth,
   updateStory,

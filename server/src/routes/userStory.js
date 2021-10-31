@@ -11,9 +11,10 @@ const { asyncHandler } = require('../controllers/middlewares');
 
 router.use(asyncHandler(checkAuth));
 
+router.post('/story', asyncHandler(uploadStory));
+
 router
-  .route('/story')
-  .post(asyncHandler(uploadStory))
+  .route('/story/:storyId')
   .put(asyncHandler(updateStory))
   .delete(asyncHandler(deleteStory));
 

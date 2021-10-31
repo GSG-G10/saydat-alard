@@ -32,10 +32,10 @@ router
   .post(asyncHandler(addCity))
   .put(asyncHandler(editCityDashboard));
 
+router.get('/story', asyncHandler(getDashboardStories));
+
 router
-  .route('/story')
-  .get(asyncHandler(getDashboardStories))
-  .patch(asyncHandler(approvedStory))
+  .patch('/story/:id', asyncHandler(approvedStory))
   .delete(asyncHandler(deleteCityDashboard));
 
 module.exports = router;

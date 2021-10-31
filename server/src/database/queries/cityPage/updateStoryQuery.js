@@ -1,5 +1,5 @@
 const connection = require('../../config/connection');
 
-const updateStoryQuery = (id, content, title, url) => connection.query('Update stories set content=$1,title=$2,image=$3,approved=FALSE  where id=$4 ', [content, title, url, id]);
+const updateStoryQuery = (storyId, content, title, image) => connection.query('Update stories set content=$2,title=$3,image=$4,approved=FALSE  where id=$1 ', [storyId, content, title, image]);
 
 module.exports = updateStoryQuery;
