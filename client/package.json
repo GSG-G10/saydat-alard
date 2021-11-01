@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@react-icons/all-files": "^4.1.0",
     "@craco/craco": "^6.4.0",
     "@expo-google-fonts/almarai": "^0.2.0",
+    "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
