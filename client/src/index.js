@@ -1,16 +1,14 @@
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Footer from './components/common/Footer';
+import { ConfigProvider } from 'antd';
 import App from './App';
-import Bookcomponant from './components/bookcomponant/Bookcomponant';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    <Footer />
-    <Bookcomponant />
-  </React.StrictMode>,
+  <ConfigProvider direction="rtl">
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ConfigProvider>,
   document.getElementById('root'),
 );
