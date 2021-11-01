@@ -8,7 +8,7 @@ import '../../index.css';
 function Footer() {
   return (
     <div className="footer">
-      <p className="follow">FOLLOW US</p>
+      <p className="follow ">FOLLOW US</p>
       <div className="contact">
         <img src={whatsapp} alt="whatsapp logo" />
         <img src={facebook} alt="facebook logo" />
