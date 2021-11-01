@@ -1,8 +1,7 @@
 import React from 'react';
-import facebook from './image/facebook-logo.png';
-import whatsapp from './image/whatsapp.png';
-import twitter from './image/twitter.png';
-import instagram from './image/instagram.png';
+import { BsFacebook } from 'react-icons/bs';
+import { IoLogoWhatsapp } from 'react-icons/io';
+import { AiFillTwitterCircle, AiFillInstagram } from 'react-icons/ai';
 import '../../index.css';
 
 function Footer() {
@@ -10,10 +9,10 @@ function Footer() {
     <div className="footer">
       <p className="follow ">FOLLOW US</p>
       <div className="contact">
-        <img src={whatsapp} alt="whatsapp logo" />
-        <img src={facebook} alt="facebook logo" />
-        <img src={instagram} alt="facebook logo" />
-        <img src={twitter} alt="facebook logo" />
+        <IoLogoWhatsapp className="icon" />
+        <BsFacebook className="icon" />
+        <AiFillInstagram className="icon" />
+        <AiFillTwitterCircle className="icon" />
       </div>
       <p className="email">saydat.alard@gmail.com</p>
     </div>
