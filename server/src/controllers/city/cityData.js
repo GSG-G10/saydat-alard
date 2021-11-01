@@ -1,4 +1,4 @@
-const { httpResponse } = require('../../helpers');
+const { httpResponse, boomHandler } = require('../../helpers');
 const {
   getCityDataQuery,
   getstoryDataQuery,
@@ -12,6 +12,6 @@ const getCityData = async (req, res) => {
     const { rows: stories } = await getstoryDataQuery(cityId);
     return httpResponse.ok(res, { cityData: cities[0], stories }, 'تم تحميل بيانات المدينة بنجاح');
   }
-  return httpResponse.ok(res, { cityData: null }, 'لا توجد مدينة بهذا الاسم');
+  boomHandler.notFound('لا توجد مدينة بهذا الاسم');
 };
 module.exports = getCityData;

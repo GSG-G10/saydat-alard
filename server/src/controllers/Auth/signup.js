@@ -13,6 +13,6 @@ const signup = async (req, res) => {
   const token = await asyncSign(id, name, isAdmin);
 
   res.cookie('token', token, { httponly: true, secure: true });
-  return httpResponse.created(res, { id, name, isAdmin }, 'تم إنشاء الحساب بنجاح');
+  return httpResponse.created(res, null, 'تم إنشاء الحساب بنجاح');
 };
 module.exports = signup;

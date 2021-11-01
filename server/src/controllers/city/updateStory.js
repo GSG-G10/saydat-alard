@@ -1,6 +1,6 @@
 const { uploadToCloudinary } = require('../utilities');
 const { updateStoryQuery, getUserIdQuery } = require('../../database/queries');
-const { httpResponse } = require('../../helpers');
+const { httpResponse, boomHandler } = require('../../helpers');
 
 const updateStory = async (req, res) => {
   const { storyId } = req.params;
@@ -20,8 +20,8 @@ const updateStory = async (req, res) => {
       await updateStoryQuery(storyId, content, title, image);
       return httpResponse.ok(res, { data: null }, 'تم التعديل بنجاح');
     }
-    return httpResponse.unAuthorized(res, 'غير مسموح لك بالتعديل ');
+    boomHandler.unAuthorized('غير مسموح لك بالتعديل ');
   }
-  return httpResponse.badRequest(res, 'لا يوجد قصة بهذه البيانات ');
+  boomHandler.badRequest('لا يوجد قصة بهذه البيانات ');
 };
 module.exports = updateStory;

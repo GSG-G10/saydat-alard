@@ -1,16 +1,24 @@
 const { checkEmail } = require('../../database/queries');
-const { httpResponse } = require('../../helpers');
+const { boomHandler } = require('../../helpers');
 const { schema } = require('../utilities');
 
 const checkUserExist = async (req, res, next) => {
-  const userObj = await schema.validateAsync(req.body);
-  const { email } = userObj;
-  const { rowCount } = await checkEmail(email);
-  if (rowCount) {
-    return httpResponse.badRequest(res, 'البريد الإلكتروني أو كلمة المرور خطأ');
+  try {
+    const userObj = await schema.validateAsync(req.body);
+    const { email } = userObj;
+    const { rowCount } = await checkEmail(email);
+    if (rowCount) {
+      boomHandler.badRequest('يوجد حساب بهذا الإيميل');
+    }
+    req.userObj = userObj;
+    next();
+  } catch (err) {
+    if (err.details) {
+      next(boomHandler.badRequest(err.message));
+    } else {
+      next(err);
+    }
   }
-  req.userObj = userObj;
-  next();
 };
 
 module.exports = checkUserExist;

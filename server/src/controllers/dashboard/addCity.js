@@ -2,7 +2,7 @@ const {
   addNewCityQuery,
   checkCityByNameQuery,
 } = require('../../database/queries');
-const { httpResponse } = require('../../helpers');
+const { httpResponse, boomHandler } = require('../../helpers');
 const { uploadToCloudinary } = require('../utilities');
 
 const addCity = async (req, res) => {
@@ -12,8 +12,7 @@ const addCity = async (req, res) => {
 
   const { rowCount } = await checkCityByNameQuery(cityName);
   if (rowCount) {
-    return httpResponse.badRequest(
-      res,
+    boomHandler.badRequest(
       'هذه المدينة مضافة إلى المدن، يمكنك الذهاب تعديل البيانات لها من خلال لوحة التحكم',
     );
   }

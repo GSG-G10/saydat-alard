@@ -1,5 +1,5 @@
 const { getUser } = require('../../database/queries');
-const { httpResponse } = require('../../helpers');
+const { boomHandler } = require('../../helpers');
 
 const userInfo = async (req, res) => {
   const { id } = req.userObj;
@@ -12,7 +12,7 @@ const userInfo = async (req, res) => {
       role: is_admin,
     });
   } else {
-    return httpResponse.badRequest(res, 'غير مصرح لك بالدخول');
+    boomHandler.badRequest('غير مصرح لك بالدخول');
   }
 };
 module.exports = userInfo;

@@ -1,7 +1,7 @@
 const { editFamiliesQuery, editCityQuery } = require('../../database/queries');
 const { uploadToCloudinary } = require('../utilities');
 const { getCityDataQuery } = require('../../database/queries');
-const { httpResponse } = require('../../helpers');
+const { httpResponse, boomHandler } = require('../../helpers');
 
 const editCityDashboard = async (req, res) => {
   const { id: cityId } = req.query;
@@ -24,6 +24,6 @@ const editCityDashboard = async (req, res) => {
     return httpResponse.ok(res, null, 'تم التعديل على المدينة بنجاح');
   }
 
-  return httpResponse.badRequest(res, ' هذه المدينة غير موجودة يمكنك إضافتها من خلال النقر على إضافة مدينة');
+  boomHandler.notFound(' هذه المدينة غير موجودة يمكنك إضافتها من خلال النقر على إضافة مدينة');
 };
 module.exports = editCityDashboard;
