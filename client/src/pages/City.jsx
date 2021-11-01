@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Home() {
+function City() {
   return (
     <div />
   );
 }
 
-export default Home;
+export default City;
