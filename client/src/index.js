@@ -2,13 +2,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Footer from './components/common/Footer';
+import { ConfigProvider } from 'antd';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-    <Footer />
-  </React.StrictMode>,
+  <ConfigProvider direction="rtl">
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ConfigProvider>,
   document.getElementById('root'),
 );
