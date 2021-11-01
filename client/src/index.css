@@ -24,22 +24,25 @@ code {
    bottom: 0;
    width: 100%;
    text-align: center;
-}
-.contact img{
-  width: 27px;
-  padding-bottom: 15px;
-  cursor: pointer;
-  transition: width 2s, height 4s;
-}
-.contact img:hover{
-  width: 60px;
-  cursor: pointer;
+ 
 }
 .contact{
   width: 22%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+}
+.icon{
+  padding-bottom: 15px;
+   cursor: pointer;
+   transition: width 1s, height 2s;
+   font-size: 60px;
+}
+.icon:hover{
+  width: 100px;
+  cursor: pointer;
+  font-size: 80px;
 }
 .follow{
   padding-top: 20px;
