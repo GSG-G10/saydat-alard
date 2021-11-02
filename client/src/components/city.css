@@ -32,6 +32,13 @@ div.ant-typography{
   width: 100px;
   height: 170px;
 }
+.no-data{
+  padding-top: 70px;
+  text-align: center;
+}
+h4.ant-typography{
+  color: green;
+}
 @media (max-width:1024px) {
 
   .tree{
