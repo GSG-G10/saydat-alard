@@ -1,8 +1,9 @@
 import React from 'react';
+import CityInformation from '../components/CityInformation';
 
 function City() {
   return (
-    <div />
+    <CityInformation id={1} />
   );
 }
 
