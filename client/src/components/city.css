@@ -1,0 +1,19 @@
+.city-info-container{
+  position: relative;
+  width:100%;
+  height: 100vh;
+  border: 2px solid green;
+}
+.city-information-section{
+   height: 50vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid red;
+  width:80%;
+  margin: auto;
+
+}
+
+div.ant-typography{
+  font-size: 18px;
+}
