@@ -8,12 +8,14 @@ body {
 }
 
 .site-card-border-less-wrapper {
-  padding: 30px;
-  background: #ececec;
+  padding: 20px;
+  background: #315f44;
   height: 100%;
+  border-radius: 50px;
 }
 /* ._xsi02{
-  opacity: 0.6;
-  z-index: 2;
-  transform: scale(0.9) translateX(200px);
+  border-radius: 50px ;
+}
+.ant-card{
+  background-color: #315f44;
 } */
