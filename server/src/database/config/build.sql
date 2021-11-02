@@ -17,8 +17,8 @@ CREATE TABLE users(
 
 CREATE TABLE cities(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    area VARCHAR(50),
+    name VARCHAR(255) NOT NULL,
+    area VARCHAR(255),
     location VARCHAR(255),
     image TEXT,
     quotation TEXT,
@@ -29,7 +29,7 @@ CREATE TABLE stories(
     id SERIAL PRIMARY KEY,
     image TEXT,
     content TEXT NOT NULL,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE,
     approved BOOLEAN DEFAULT FALSE
