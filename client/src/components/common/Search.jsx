@@ -1,68 +1,72 @@
 import React, { useEffect, useState } from 'react';
-import { AutoComplete, Empty } from 'antd';
-import { Redirect } from 'react-router-dom';
+import { AutoComplete } from 'antd';
+import { useHistory } from 'react-router-dom';
 import http from '../../services/httpService';
 import config from '../../services/config.json';
+import Img from './Img';
+
+import './css/search.css';
 
 const { Option } = AutoComplete;
 
 const SearchCity = () => {
   const [value, setValue] = useState('');
-  const [id, setId] = useState();
   const [expectedError, setExpectedError] = useState('');
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState([]);
 
-  useEffect(async () => {
+  const { push } = useHistory();
+
+  const getCitiesName = async () => {
     try {
       const cities = await http.get(
         `${config.apiEndPoint}/search?city=${value}`,
       );
-      if (cities.length) {
-        setResult(cities);
+      if (cities.data.data.length) {
+        setResult(cities.data.data);
       } else {
         throw new Error('لا توجد مدن تبدأ بهذه الحروف');
       }
     } catch (error) {
       setExpectedError(error.message);
     }
-  }, [value]);
+  };
 
-  useEffect(async () => {
-    try {
-      await http.get(
-        `${config.apiEndPoint}/city/${id}`,
-      );
-        <Redirect to={`/city/:${id}`} />;
-    } catch (error) {
-      <Redirect to="/notfound" />;
+  useEffect(() => {
+    if (value) {
+      getCitiesName();
     }
-  }, [id]);
+  }, [value]);
 
   const changeHandler = (searchText) => {
     setValue(searchText);
   };
 
   const selectHandler = (cityName) => {
-    const cityChoice = result.filter((city) => city.title === cityName);
-    setId(cityChoice[0].id);
+    const cityChoice = result.filter((city) => city.name === cityName);
+    push(`/city/${cityChoice[0].id}`);
   };
 
   return (
-    <AutoComplete
-      style={{ width: '80%' }}
-      allowClear
-      onSelect={selectHandler}
-      onChange={changeHandler}
-      placeholder="ابحث عن اسم مدينة"
-    >
-      {result ? (
-        result.map((city) => <Option key={city.id} value={city.title} />)
-      ) : (
-        <Option disabled>
-          <Empty description={<span>{expectedError}</span>} />
-        </Option>
-      )}
-    </AutoComplete>
+    <div className="search-container">
+      <AutoComplete
+        className="search-auto-complete"
+        allowClear
+        onSelect={selectHandler}
+        onChange={changeHandler}
+        placeholder="ابحــث عن اســـم مــدينة"
+        notFoundContent={expectedError}
+        bordered={false}
+      >
+
+        {result.length && (
+          result.map((city) => <Option key={city.id} value={city.name} />)
+        )}
+      </AutoComplete>
+      <span>
+        <Img src="/key.png" alt="key-icon" styleClass="icon-key" />
+      </span>
+    </div>
+
   );
 };
 
