@@ -1,12 +1,10 @@
 const { addProverQuery } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 
 const addProverb = async (req, res) => {
   const { content } = req.body;
-  try {
-    await addProverQuery(content);
-    res.status(201).json({ msg: 'تم الإضافة بنجاح' });
-  } catch (error) {
-    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
-  }
+
+  await addProverQuery(content);
+  httpResponse.ok(res, null, 'تم الإضافة بنجاح');
 };
 module.exports = addProverb;
