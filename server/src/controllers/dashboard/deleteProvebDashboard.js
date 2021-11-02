@@ -1,14 +1,12 @@
 const { deleteProverbDashboardQuery } = require('../../database/queries');
+const { httpResponse, boomHandler } = require('../../helpers');
 
 const deleteProvebDashboard = async (req, res) => {
-  const { proverbId } = req.params;
-  try {
-    const result = await deleteProverbDashboardQuery(proverbId);
-    if (result.rowCount > 0) {
-      res.json({ msg: 'تم الحذف بنجاح' });
-    } else res.status(400).json({ msg: 'طلب خاطئ ' });
-  } catch (error) {
-    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+  const { id } = req.query;
+  const { rowCount } = await deleteProverbDashboardQuery(id);
+  if (rowCount) {
+    return httpResponse.ok(res, null, 'تم الحذف بنجاح');
   }
+  boomHandler.notFound('طلب خاطئ ');
 };
 module.exports = deleteProvebDashboard;
