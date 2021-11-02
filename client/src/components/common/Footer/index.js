@@ -2,12 +2,12 @@ import React from 'react';
 import { BsFacebook } from 'react-icons/bs';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { AiFillTwitterCircle, AiFillInstagram } from 'react-icons/ai';
-import '../../index.css';
+import './style.css';
 
 function Footer() {
   return (
     <div className="footer">
-      <p className="follow ">FOLLOW US</p>
+      <p className="follow ">تابـــــــعونـــــا</p>
       <div className="contact">
         <IoLogoWhatsapp className="icon" />
         <BsFacebook className="icon" />
