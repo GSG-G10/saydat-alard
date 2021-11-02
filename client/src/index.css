@@ -12,3 +12,8 @@ body {
   background: #ececec;
   height: 100%;
 }
+/* ._xsi02{
+  opacity: 0.6;
+  z-index: 2;
+  transform: scale(0.9) translateX(200px);
+} */
