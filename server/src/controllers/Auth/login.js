@@ -1,42 +1,41 @@
-const bcrypt = require('bcryptjs');
+const { compare } = require('bcryptjs');
 const { getUser } = require('../../database/queries');
 const schema = require('../utilities/loginSchema');
 const { signToken } = require('../utilities/jwt');
+const { boomHandler, httpResponse } = require('../../helpers');
 
-const login = async (request, response) => {
+const login = async (req, res, next) => {
   try {
-    const value = await schema.validateAsync(request.body);
+    const value = await schema.validateAsync(req.body);
     const { rows } = await getUser(value.email);
-    const user = rows[0];
 
-    if (!user) {
-      throw new Error('خطأ في البريد الإلكتروني أو كلمة المرور');
+    if (!rows.length) {
+      boomHandler.unAuthorized('كلمة المرور أو البريد الإلكتروني خطأ');
     }
-
-    const validatedPassword = await bcrypt.compare(
+    const user = rows[0];
+    const validatedPassword = await compare(
       value.password,
       user.password,
     );
 
-    if (!validatedPassword) {
-      throw new Error('خطأ في البريد الإلكتروني أو كلمة المرور');
-    }
-
     if (validatedPassword) {
       const token = await signToken(user);
-
-      response.cookie(
+      res.cookie(
         'token',
         token,
         { maxAge: 1000 * 60 * 60 * 24 * 1 },
         { httpOnly: true },
       );
-      response.json({ msg: ' تم تسجيل الدخول بنجاح ' });
+      httpResponse.created(res, null, 'تم تسجيل الدخول بنجاح');
     } else {
-      throw new Error('خطأ في البريد الإلكتروني أو كلمة المرور');
+      boomHandler.unAuthorized('كلمة المرور أو البريد الإلكتروني خطأ');
     }
   } catch (error) {
-    response.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+    if (error.details) {
+      next(boomHandler.badRequest(error.message));
+    } else {
+      next(error);
+    }
   }
 };
 module.exports = login;

@@ -1,13 +1,13 @@
 const { getDashboardCitiesQuery } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 
 const getDashboardCities = async (req, res) => {
   const { page } = req.query;
-  try {
-    const { rows } = await getDashboardCitiesQuery(page);
-    res.json({ cities: rows });
-  } catch (error) {
-    res.status(500).json({ msg: 'حدث خطأ ما في السيرفر' });
+  const { rows, rowCount } = await getDashboardCitiesQuery(page);
+  if (rowCount) {
+    return httpResponse.ok(res, { cities: rows }, 'تم الطلب بنجاح');
   }
+  return httpResponse.ok(res, { citites: null }, 'لا يوجد مدن في هذه الصفحة');
 };
 
 module.exports = getDashboardCities;

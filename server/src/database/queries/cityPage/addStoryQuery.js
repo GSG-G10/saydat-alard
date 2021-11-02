@@ -1,5 +1,5 @@
 const connection = require('../../config/connection');
 
-const addStoryQuery = (content, title, image, user_id, city_id) => connection.query('INSERT INTO stories (content, title, image, user_id, city_id) values ($1, $2, $3, $4 ,$5)', [content, title, image, user_id, city_id]);
+const addStoryQuery = (content, title, image, cityId, id) => connection.query('INSERT INTO stories (content, title, image, city_id, user_id) VALUES ($1, $2, $3, $4 ,$5)', [content, title, image, cityId, id]);
 
 module.exports = addStoryQuery;
