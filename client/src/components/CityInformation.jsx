@@ -27,29 +27,19 @@ function CityInformation({ id }) {
     <div className="city-info-container">
 
       <Img
-        src="/tree1.jpg"
+        src="/tree1.png"
         alt="tree-design"
         styleClass="tree"
-        style={{
-          position: 'absolute',
-          top: '60px',
-          right: '30px',
-        }}
       />
       <Img
         src="/tree.png"
         alt="tree-design"
-        styleClass="tree"
-        style={{
-          position: 'absolute',
-          bottom: '60px',
-          left: '30px',
-        }}
+        styleClass="tree1"
       />
       <div className="city-information-section">
-        <ParagraphText text={`المساحة ${cityInfo.area} كم `} strong={false} />
-        <ParagraphText text={`الموقع ${cityInfo.location}  `} strong={false} />
-        <ParagraphText text=" تشتهر ب الصناعة و التجارة " strong={false} />
+        <ParagraphText text={`المساحة : ${cityInfo.area} كم `} strong={false} />
+        <ParagraphText text={`الموقع  : ${cityInfo.location}  `} strong={false} />
+        <ParagraphText text=" تشتهر ب  : الصناعة و التجارة " strong={false} />
         <ParagraphText text="العائلات الفلسطينية في هذه القرية / المدينة " strong={false} />
         <div className="families">
           <ul />
