@@ -6,7 +6,9 @@ import App from './App/index';
 
 ReactDOM.render(
   <ConfigProvider direction="rtl">
-    <App />
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </ConfigProvider>,
   document.getElementById('root'),
 );
