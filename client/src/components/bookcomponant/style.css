@@ -1,0 +1,6 @@
+.demoPage, .stf__item{
+transform: rotate(180deg) !important;
+}
+.book-page{
+  padding: 20px;
+}

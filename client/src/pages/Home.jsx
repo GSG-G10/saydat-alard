@@ -1,8 +1,10 @@
 import React from 'react';
-
+import Bookcomponant from '../components/bookcomponant/Bookcomponant';
 function Home() {
   return (
-    <div />
+    <div >
+      <Bookcomponant />
+    </div>
   );
 }
 

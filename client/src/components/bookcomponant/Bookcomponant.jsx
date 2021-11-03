@@ -81,6 +81,7 @@ function Bookcomponant() {
   useEffect(() => {
     getProverbs();
   }, []);
+
   return (
 
     // <div>Hi</div>
@@ -93,7 +94,7 @@ function Bookcomponant() {
       maxHeight={1533}
       maxShadowOpacity={0.5}
       style={{
-        boxShadow: '0px 0px 20px 5px', margin: '100px auto',
+        boxShadow: '0px 0px 20px 5px', margin: '100px auto', transform: 'rotate(180deg)',
       }}
       // className="demo-book"
     >
