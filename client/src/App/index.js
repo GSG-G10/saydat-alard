@@ -16,6 +16,7 @@ import Login from '../pages/Login';
 import Error from '../pages/Error';
 
 import AuthProvider from '../context/AuthContext';
+import CityProvider from '../context/CityContext';
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
       <Router>
         <Switch>
           <Route path="/city/:id">
-            <City />
+            <CityProvider>
+              <City />
+            </CityProvider>
           </Route>
           <ProtectedRoute path="/dashboard">
             <Dashboard />
