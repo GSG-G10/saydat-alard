@@ -10,18 +10,21 @@ function City() {
   const [userRole, setUserRole] = useState();
 
   const userInfo = useContext(AuthContext);
-  setUserRole(userInfo);
-
   const { cityData: cityInfo } = useContext(CityContext);
   const { cityData, stories } = cityInfo;
-  setCity(cityData);
-  setStoriesOfCity(stories);
+
+  useEffect(() => {
+    if (cityInfo) {
+      setUserRole(userInfo);
+      setCity(cityData);
+      setStoriesOfCity(stories);
+    }
+  }, [cityInfo]);
 
   return (
     <>
-      {storiesOfCity
-        && storiesOfCity.length
-        && storiesOfCity.map((story) => <StoryCard storyInfo={story} />)}
+      {storiesOfCity && storiesOfCity.length > 0
+        && stories.map((story) => <StoryCard key={story.id} storyInfo={story} />)}
     </>
   );
 }
