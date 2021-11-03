@@ -1,8 +1,6 @@
-/* eslint-disable no-multiple-empty-lines */
-
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import httpService from '../services/httpService';
+import httpService from '../services/httpService';
 
 export const AuthContext = createContext();
 
@@ -10,12 +8,7 @@ function AuthProvider({ children }) {
   const [userData, setUserData] = useState({});
   useEffect(() => {
     const getData = async () => {
-      // const { data } = await httpService.get('/userinfo');
-      const data = {
-        id: 2,
-        name: 'Reem',
-        role: false,
-      };
+      const { data } = await httpService.get('/userinfo');
       setUserData(data);
     };
     getData();
