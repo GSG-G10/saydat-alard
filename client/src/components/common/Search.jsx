@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AutoComplete } from 'antd';
+import { AutoComplete, message } from 'antd';
 import { useHistory } from 'react-router-dom';
 import http from '../../services/httpService';
 import config from '../../services/config.json';
@@ -11,21 +11,22 @@ const { Option } = AutoComplete;
 
 const SearchCity = () => {
   const [value, setValue] = useState('');
-  const [expectedError, setExpectedError] = useState('لاتوجد مدن تبدأ بهذا الحرف');
   const [result, setResult] = useState([]);
 
   const { push } = useHistory();
 
   const getCitiesName = async () => {
     try {
-      const cities = await http.get(
+      const { data } = await http.get(
         `${config.apiEndPoint}/search?city=${value}`, { canelToken: http.source.token },
       );
-      if (cities.data.data.length) {
-        setResult(cities.data.data);
+      if (data.cities.length) {
+        setResult(data.cities);
       }
     } catch (error) {
-      setExpectedError(error.message);
+      if (error.status >= 400 && error.status <= 500) {
+        message.error(error.message);
+      }
     }
   };
 
@@ -46,7 +47,6 @@ const SearchCity = () => {
     const cityChoice = result.filter((city) => city.name === cityName);
     push(`/city/${cityChoice[0].id}`);
   };
-
   return (
     <div className="search-container">
       <AutoComplete
@@ -60,7 +60,7 @@ const SearchCity = () => {
 
         {result.length ? (
           result.map((city) => <Option key={city.id} value={city.name} />)
-        ) : <Option disabled key={expectedError} value={expectedError} />}
+        ) : <Option disabled>لا توجد مدن تبدأ بهذا الحرف</Option>}
       </AutoComplete>
       <span>
         <Img src="/key.png" alt="key-icon" styleClass="icon-key" />
