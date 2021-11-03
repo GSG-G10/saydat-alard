@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
-import StoryModal from '../components/Story/StoryModal';
+import StoryModal from '../components/Story';
 
 function City() {
   const [visible, setVisible] = useState(false);
