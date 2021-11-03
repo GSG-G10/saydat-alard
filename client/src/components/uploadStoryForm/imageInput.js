@@ -22,7 +22,7 @@ function Upload() {
 
   const uploadImage = async (base64EncodedImage) => {
     try {
-      await fetch('/api/story', {
+      await fetch('/api/v1/story', {
         method: 'POST',
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { 'Content-Type': 'application/json' },
@@ -30,7 +30,7 @@ function Upload() {
       setFileInputState('');
       setPreviewSource('');
     } catch (err) {
-      console.error(err);
+      throw new Error(`Error ${err}`);
     }
   };
   const handleSubmitFile = (e) => {
@@ -73,3 +73,7 @@ function Upload() {
 }
 
 export default Upload;
+
+/* display flex - (flex column - alin items center)
+border radues - box shadow
+text alin center center - start */
