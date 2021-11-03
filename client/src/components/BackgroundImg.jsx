@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from './common/Img';
 import ParagraphText from './common/Paragraph';
+import HeaderTitle from './common/Title';
 import './city.css';
 
 function BackgroundImg(props) {
@@ -9,9 +10,10 @@ function BackgroundImg(props) {
     img, quotation, cityName,
   } = props;
   return (
-    <div className="backgroundImg" style={{ backgroundImage: `url(${img})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
-      <ParagraphText text={quotation} strong />
-      <ParagraphText text={cityName} strong />
+    <div className="background-img-section">
+      <Img styleClass="background-img" src={img} alt={`${cityName}img`} />
+      <ParagraphText text={quotation} strong className="quotation" />
+      <HeaderTitle text={cityName} strong className="cityname" level={1} />
     </div>
   );
 }
