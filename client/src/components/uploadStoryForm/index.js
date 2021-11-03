@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Input } from 'antd';
 import './styles.css';
+// import axios from 'axios';
 
 const { TextArea } = Input;
 
@@ -72,18 +73,20 @@ function StoryForm() {
         okText="موافق"
         cancelText="الغاء"
         onCancel={() => setVisible(false)}
-        width={800}
+        width={500}
       >
         <Input
           onChange={(e) => setStory((prev) => ({ ...prev, title: e.target.value }))}
+          placeholder="العنوان"
         />
         <>
           <TextArea
             rows={4}
+            placeholder="القصة"
             onChange={(e) => setStory((prev) => ({ ...prev, content: e.target.value }))}
           />
           <form onSubmit={handleFileInputChange} className="form">
-            <button type="button">
+            <button type="button" className="buttonS">
               <dev className="inputForm">
                 <label htmlFor="fileInput">تحميل الصورة</label>
                 <input
