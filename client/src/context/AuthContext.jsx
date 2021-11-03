@@ -1,3 +1,5 @@
+/* eslint-disable no-multiple-empty-lines */
+
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import httpService from '../services/httpService';
