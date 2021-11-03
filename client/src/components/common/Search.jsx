@@ -11,7 +11,7 @@ const { Option } = AutoComplete;
 
 const SearchCity = () => {
   const [value, setValue] = useState('');
-  const [expectedError, setExpectedError] = useState('');
+  const [expectedError, setExpectedError] = useState('لاتوجد مدن تبدأ بهذا الحرف');
   const [result, setResult] = useState([]);
 
   const { push } = useHistory();
@@ -23,8 +23,6 @@ const SearchCity = () => {
       );
       if (cities.data.data.length) {
         setResult(cities.data.data);
-      } else {
-        throw new Error('لا توجد مدن تبدأ بهذه الحروف');
       }
     } catch (error) {
       setExpectedError(error.message);
@@ -57,13 +55,12 @@ const SearchCity = () => {
         onSelect={selectHandler}
         onChange={changeHandler}
         placeholder="ابحــث عن اســـم مــدينة"
-        notFoundContent={expectedError}
         bordered={false}
       >
 
-        {result.length && (
+        {result.length ? (
           result.map((city) => <Option key={city.id} value={city.name} />)
-        )}
+        ) : <Option disabled key={expectedError} value={expectedError} />}
       </AutoComplete>
       <span>
         <Img src="/key.png" alt="key-icon" styleClass="icon-key" />
