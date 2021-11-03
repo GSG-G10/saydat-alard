@@ -3,7 +3,7 @@ import CityInformation from '../components/CityInformation';
 
 function City() {
   return (
-    <CityInformation id={1} />
+    <CityInformation />
   );
 }
 

@@ -1,6 +1,7 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
+import {
+  useParams,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import httpService from '../services/httpService';
 import Img from './common/Img';
@@ -8,7 +9,8 @@ import ParagraphText from './common/Paragraph';
 import HeaderTitle from './common/Title';
 import './city.css';
 
-function CityInformation({ id }) {
+function CityInformation() {
+  const { id } = useParams();
   const [cityInfo, setcityInfo] = useState({});
   const [families, setfamilies] = useState([]);
   useEffect(() => {
@@ -61,7 +63,5 @@ function CityInformation({ id }) {
     </div>
   );
 }
-CityInformation.propTypes = {
-  id: PropTypes.number.isRequired,
-};
+
 export default CityInformation;
