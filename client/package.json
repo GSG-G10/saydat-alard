@@ -2,9 +2,11 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/", 
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
     "@craco/craco": "^6.4.0",
     "@expo-google-fonts/almarai": "^0.2.0",
     "@makotot/ghostui": "^2.0.0",
@@ -54,6 +56,7 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
