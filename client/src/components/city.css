@@ -23,15 +23,23 @@
   font-size: 25px;
   position: absolute;
   top:40%;
-  right:15%;
+  left:40%;
   color: #fff;
 }
-.cityname{
+.cityName{
+  color: #fff;
   position: absolute;
   bottom: 10%;
   right: 5%;
-  color: #fff;
 }
-.ant-typography{
-  color: #fff;
+.ant-typography .ant-typography-rtl {
+ color: white;
+}
+@media (max-width:760px) {
+  .quotation{
+    right: 10%;
+    left:3%;
+    font-size: 17px;
+  }
+  
 }

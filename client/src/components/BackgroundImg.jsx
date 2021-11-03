@@ -13,7 +13,7 @@ function BackgroundImg(props) {
     <div className="background-img-section">
       <Img styleClass="background-img" src={img} alt={`${cityName}img`} />
       <ParagraphText text={quotation} strong className="quotation" />
-      <HeaderTitle text={cityName} strong className="cityname" level={1} />
+      <HeaderTitle text={cityName} strong className="cityName" level={1} />
     </div>
   );
 }
