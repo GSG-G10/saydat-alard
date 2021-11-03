@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useRef } from 'react';
 import { Scrollspy } from '@makotot/ghostui';
+import PropTypes from 'prop-types';
 import './css/scrollSpy.css';
 
-const arr = ['nizar', 'ahmed', 'master'];
-
-const ScrollSpy = () => {
+const ScrollSpy = ({ eleOfList }) => {
+  const arr = eleOfList;
   const sectionRefs = [
     useRef(null),
     useRef(null),
@@ -63,4 +63,9 @@ const ScrollSpy = () => {
   );
 };
 
+Scrollspy.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  eleOfList: PropTypes.array.isRequired,
+
+};
 export default ScrollSpy;
