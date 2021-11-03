@@ -7,10 +7,8 @@ import StoryForm from './components/uploadStoryForm';
 
 ReactDOM.render(
   <ConfigProvider direction="rtl">
-    <React.StrictMode>
-      <App />
-      <StoryForm />
-    </React.StrictMode>
+    <App />
+    <StoryForm />
   </ConfigProvider>,
   document.getElementById('root'),
 );
