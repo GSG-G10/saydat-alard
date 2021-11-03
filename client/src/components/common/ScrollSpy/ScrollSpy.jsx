@@ -1,8 +1,7 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useRef } from 'react';
 import { Scrollspy } from '@makotot/ghostui';
 import PropTypes from 'prop-types';
-import './css/scrollSpy.css';
+import './scrollSpy.css';
 
 const ScrollSpy = ({ eleOfList }) => {
   const arr = eleOfList;
@@ -21,7 +20,7 @@ const ScrollSpy = ({ eleOfList }) => {
           >
             {arr.map((ele, i) => (
               <li
-                key={i}
+                key={ele}
                 className={
                     currentElementIndexInViewport === i ? 'active' : ''
                   }
@@ -46,7 +45,7 @@ const ScrollSpy = ({ eleOfList }) => {
             {arr.map((ele, i) => (
               <section
                 id={`section-${i}`}
-                key={i}
+                key={ele}
                 ref={sectionRefs[i]}
                 className={
                     currentElementIndexInViewport === i ? 'active' : ''
@@ -64,7 +63,6 @@ const ScrollSpy = ({ eleOfList }) => {
 };
 
 Scrollspy.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   eleOfList: PropTypes.array.isRequired,
 
 };

@@ -1,9 +1,9 @@
 import React from 'react';
-import SearchCity from '../components/common/Search';
+import ScrollSpy from '../components/common/ScrollSpy/ScrollSpy';
 
 function City() {
   return (
-    <SearchCity />
+    <ScrollSpy />
   );
 }
 
