@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import oldpage from './image/oldp.jpg';
 
 const Page = React.forwardRef((props, ref) => {
   console.log(props);
