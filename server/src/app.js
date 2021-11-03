@@ -4,6 +4,7 @@ const express = require('express');
 const { join } = require('path');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const router = require('./routes');
 const { error404, errors } = require('./controllers/errors');
@@ -12,6 +13,7 @@ const app = express();
 
 app.set('port', process.env.PORT || 5000);
 app.disable('x-powered-by');
+app.use(cors());
 app.use(compression());
 app.use(cookieParser());
 app.use(express.json({ limit: '50mb' }));

@@ -4,7 +4,6 @@ import { StackedCarousel } from 'react-stacked-carousel';
 import style from 'react-stacked-carousel/dist/index.css';
 import http from '../../services/httpService';
 import Card from '../common/CityCard/card';
-import './styles.css';
 
 function Slider() {
   const [cities, setCities] = useState([]);
@@ -24,7 +23,6 @@ function Slider() {
         if (response) {
           const { data } = response;
           setCities(data.data.cities);
-          console.log(data.data.cities);
         }
       });
   }, []);
