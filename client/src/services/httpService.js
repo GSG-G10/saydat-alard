@@ -1,7 +1,7 @@
 import axios from 'axios';
 import errorAlert from './errorAlert';
 
-axios.interceptors.response.use(null, (error) => {
+axios.interceptors.response.use((response) => response.data, (error) => {
   const expectedError = error.response
     && error.response.status >= 400
     && error.response.status < 500;
@@ -19,4 +19,6 @@ export default {
   put: axios.put,
   delete: axios.delete,
   patch: axios.patch,
+  source: axios.CancelToken.source(),
+
 };
