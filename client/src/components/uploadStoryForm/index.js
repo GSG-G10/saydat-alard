@@ -1,7 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable */
 import React, { useState } from 'react';
 import { Modal, Button, Input } from 'antd';
 import './styles.css';
+import httpService from '../../services/httpService';
 // import axios from 'axios';
 
 const { TextArea } = Input;
@@ -34,15 +35,13 @@ function StoryForm() {
 
   const uploadImage = async (base64EncodedImage) => {
     try {
-      await fetch('/api/v1/story', {
-        method: 'POST',
-        body: JSON.stringify({
-          data: base64EncodedImage,
+      await httpService.post('/api/v1/story', {
+        data: base64EncodedImage,
           title: story.title,
           content: story.content,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+      },
+       { headers: { 'Content-Type': 'application/json' }}
+      );
       setFileInputState('');
       setPreviewSource('');
     } catch (err) {
