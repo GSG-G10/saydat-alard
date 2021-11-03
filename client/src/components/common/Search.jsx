@@ -19,7 +19,7 @@ const SearchCity = () => {
   const getCitiesName = async () => {
     try {
       const cities = await http.get(
-        `${config.apiEndPoint}/search?city=${value}`,
+        `${config.apiEndPoint}/search?city=${value}`, { canelToken: http.source.token },
       );
       if (cities.data.data.length) {
         setResult(cities.data.data);
@@ -35,6 +35,9 @@ const SearchCity = () => {
     if (value) {
       getCitiesName();
     }
+    return () => {
+      http.source.cancel('request stopped by user');
+    };
   }, [value]);
 
   const changeHandler = (searchText) => {
