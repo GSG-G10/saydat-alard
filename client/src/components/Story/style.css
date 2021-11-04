@@ -1,0 +1,19 @@
+.storyModal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+}
+.storyPic{
+    height: 500px;
+    border-radius:20px ;
+}
+.text{
+    margin-top: 100px;
+    width:80%
+}
+.userName{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
