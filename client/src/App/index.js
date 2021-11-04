@@ -1,11 +1,9 @@
-/* eslint-disable no-console */
 import React from 'react';
 import './App.less';
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  // Redirect,
 } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../pages/Dashboard';

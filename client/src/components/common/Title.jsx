@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 
 const { Title } = Typography;
 
-const headerTitle = ({ text, level }) => (
-  <Title level={level}>{text}</Title>
+const HeaderTitle = ({ text, level, className }) => (
+  <Title level={level} className={className}>{text}</Title>
 );
 
-headerTitle.propTypes = {
+HeaderTitle.propTypes = {
   text: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
-export default headerTitle;
+export default HeaderTitle;

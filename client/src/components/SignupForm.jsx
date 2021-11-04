@@ -1,40 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Form, Input, Button, message,
 } from 'antd';
 import { Link } from 'react-router-dom';
-import httpService from '../services/httpService';
+import http from '../services/httpService';
 import Img from './common/Img';
 import ParagraphText from './common/Paragraph';
 import HeaderTitle from './common/Title';
-import 'antd/dist/antd.css';
 import './signup.css';
 
-function SignupForm() {
-  const [errorMsg, setErrorMsg] = useState('');
-  const errorlert = (erroMsg) => {
-    message.error(erroMsg);
-  };
-  const postData = async (userInfo) => {
-    try {
-      const { msg } = await httpService.post('/api/v1/signup', userInfo);
-      setErrorMsg(msg);
-    } catch (error) {
-      setErrorMsg(error);
+const postData = async (userInfo) => {
+  try {
+    await http.post('/api/v1/signup', userInfo);
+  } catch (error) {
+    if (error.status >= 400 && error.status <= 500) {
+      message.error(error.message);
     }
-  };
+  }
+};
 
+function SignupForm() {
+  const { Password } = Input;
+  const { Item } = Form;
   const onFinish = (values) => {
     const { confirmPassword, password } = values;
     if (confirmPassword === password) {
       postData(values);
-    }
+    } else message.warning('كلمتا المرور غير متطابقتان ');
   };
   return (
     <div className="signupContainer">
 
       <div className="signup">
-        {errorMsg ? errorlert(errorMsg) : ''}
         <Form
           name="basic"
           labelCol={{ span: 8 }}
@@ -45,50 +42,51 @@ function SignupForm() {
           className="signupForm"
         >
           <HeaderTitle text="إنشاء حساب" level={2} className="signupTitle" />
-          <Form.Item
+          <Item
             name="name"
             rules={[{ required: true, message: 'اسم المستخدم مطلوب' }]}
           >
             <Input placeholder="اسم المستخدم " className="signupInput" />
-          </Form.Item>
-          <Form.Item
+          </Item>
+          <Item
             name="email"
             rules={[{ required: true, message: 'البريد الإلكتروني مطلوب' }]}
           >
             <Input placeholder=" البريد الإلكتروني  " className="signupInput" />
-          </Form.Item>
+          </Item>
 
-          <Form.Item
+          <Item
             placeholder="كلمة المرور "
             name="password"
             rules={[{ required: true, message: 'كلمة المرور مطلوبة' }]}
           >
-            <Input.Password placeholder=" كلمة المرور " className="signupInput" />
-          </Form.Item>
-          <Form.Item
+            <Password placeholder=" كلمة المرور " className="signupInput" />
+          </Item>
+          <Item
             name="confirmPassword"
             rules={[{ required: true, message: '  تأكيد كلمة المرور مطلوبة' }]}
           >
-            <Input.Password placeholder=" تأكيد كلمة المرور " className="signupInput" />
-          </Form.Item>
-          <Form.Item
+            <Password placeholder=" تأكيد كلمة المرور " className="signupInput" />
+          </Item>
+          <Item
             name="originalCity"
             rules={[{ required: true, message: '  البلدة الأصلية مطلوبة' }]}
           >
             <Input placeholder="  البلدة الأصلية   " className="signupInput" />
-          </Form.Item>
+          </Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit" className="signupSubmit signupBtn">
-              إنشاء حساب
-            </Button>
-            <Button type="primary" htmlType="submit" className="homePageButton signupBtn">
-              الصفحة الرئيسية
-            </Button>
-          </Form.Item>
+          <Item wrapperCol={{ offset: 8, span: 16 }}>
+            <div className="signupBtns">
+              <Button type="primary" htmlType="submit" className="signupSubmit signupBtn">
+                إنشاء حساب
+              </Button>
+              <Link to="/" className="homePageButton signupBtn">تسجيل الدخول</Link>
+
+            </div>
+          </Item>
           <div className="signupRedirect">
             <ParagraphText text="هل تمتلك حساب ؟" strong={false} />
-            <Link to="/api/v1/signup" className="loginLink">تسجيل الدخول</Link>
+            <Link to="/signup" className="loginLink">تسجيل الدخول</Link>
           </div>
         </Form>
         <Img
