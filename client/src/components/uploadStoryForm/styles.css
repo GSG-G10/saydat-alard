@@ -25,3 +25,6 @@
     display: flex;
     align-items: center;
 }
+.ant-btn-primary{
+    color: azure;
+}
