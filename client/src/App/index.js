@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  // Redirect,
 } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../pages/Dashboard';
@@ -18,29 +18,58 @@ import Error from '../pages/Error';
 import AuthProvider from '../context/AuthContext';
 
 function App() {
+  const routes = [
+    {
+      path: '/city/:id',
+      children: <City />,
+      public: true,
+      exact: true,
+    },
+    {
+      path: '/dashboard',
+      children: <Dashboard />,
+      public: false,
+      exact: true,
+    },
+    {
+      path: '/login',
+      children: <Login />,
+      public: true,
+      exact: true,
+    },
+    {
+      path: '/signup',
+      children: <SignUp />,
+      public: true,
+      exact: true,
+    },
+    {
+      path: '/notfound',
+      children: <Error />,
+      public: true,
+      exact: false,
+    },
+    {
+      path: '/',
+      children: <Home />,
+      public: true,
+      exact: true,
+    },
+  ];
   return (
     <AuthProvider>
       <Router>
         <Switch>
-          <Route path="/city/:id">
-            <City />
-          </Route>
-          <ProtectedRoute path="/dashboard">
-            <Dashboard />
-          </ProtectedRoute>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-          <Route path="/notfound">
-            <Error />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Redirect to="/notfound" />
+          {
+          routes.map((route) => (route.public
+            ? <Route key={route.path} exact={route.exact} path={route.path}>{route.children}</Route>
+            : (
+              <ProtectedRoute key={route.path} exact={route.exact} path={route.path}>
+                {route.children}
+
+              </ProtectedRoute>
+            )))
+        }
         </Switch>
       </Router>
     </AuthProvider>
