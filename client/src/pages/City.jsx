@@ -11,7 +11,7 @@ function City() {
       <ScrollSpy />
 
       <BackgroundImg
-        img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkpHCGUepyja_eF2w1T-F40NtrU_XGTtznIw&usqp=CAU"
+        img="https://www.alquds.co.uk/wp-content/uploads/2021/09/20210910112926afpp-afp_9mk4vg.h-730x438.jpg"
         quotation="أجمل المدن القديمة و أقدم المدن الجميلة "
         cityName="عكاا"
       />
@@ -21,7 +21,6 @@ function City() {
         </Button>
         <StoryModal visible={visible} setVisible={setVisible} text="هي اليوم مدينة صغيرة وفقيرة ومهمّشة، لا يتجاوز عدد سكانها 50 ألف نسمة، ثلثهم من العرب، وهي مقسّمة إلى أربعة أحياء أساسيّة: حيّ عكا القديمة، حيّ عكا الانتدابيّة - مركز المدينة (حي الرشاديّة)، الحيّ الشماليّ والحيّ الشرقيّ. وجميع سكان عكا القديمة من العرب الفلسطينيّين/ أما الحيّ الشرقيّ فجميع سكانه، تقريبًا، من اليهود. " userName="نادية التميمي" />
       </div>
-      <ScrollSpy />
 
     </>
   );

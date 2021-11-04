@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from './common/Img';
-import ParagraphText from './common/Paragraph';
 import HeaderTitle from './common/Title';
 import './city.css';
 
@@ -12,7 +11,7 @@ function BackgroundImg(props) {
   return (
     <div className="background-img-section">
       <Img styleClass="background-img" src={img} alt={`${cityName}img`} />
-      <ParagraphText text={quotation} strong className="quotation" />
+      <HeaderTitle text={quotation} strong className="quotation" level={1} />
       <HeaderTitle text={cityName} strong className="cityName" level={1} />
     </div>
   );
