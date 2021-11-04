@@ -1,13 +1,13 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { message } from 'antd';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import http from '../services/httpService';
 import { apiEndPoint } from '../services/config.json';
 
 export const CityContext = createContext();
 function CityProvider({ children }) {
-  const id = useLocation().pathname.split('/')[2];
+  const { id } = useParams();
 
   const [cityData, setCityData] = useState({});
   useEffect(() => {

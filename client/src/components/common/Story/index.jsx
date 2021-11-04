@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import Img from '../Img';
-import 'antd/dist/antd.min.css';
 import './story.css';
 
 const StoryCard = ({ storyInfo, userInfo }) => {
@@ -28,7 +27,7 @@ const StoryCard = ({ storyInfo, userInfo }) => {
         onMouseOver={hoverHandler}
         onMouseOut={nonHoverHandler}
         cover={(
-          <>
+          <div className="card-container">
             <div
               className={coverClass}
             >
@@ -42,8 +41,7 @@ const StoryCard = ({ storyInfo, userInfo }) => {
               alt={storyInfo.title}
               styleClass="card-img"
             />
-
-          </>
+          </div>
         )}
 
       />
