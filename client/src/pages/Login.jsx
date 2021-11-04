@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Form, Input, Button,
   message,
 } from 'antd';
+import Img from '../components/common/Img';
+import Title from '../components/common/Title';
 import flower from './img/flower.png';
 import './login.css';
 import http from '../services/httpService';
 
+const { Item } = Form;
 const Login = () => {
   const [value, setValue] = useState({ email: '', password: '' });
   const history = useHistory();
@@ -31,9 +34,9 @@ const Login = () => {
   return (
     <div className="container">
       <div className="loginContainer">
-        <div><img className="loginImg" src={flower} alt="flower" /></div>
+        <div><Img styleClass="loginImg" src={flower} alt="flower" /></div>
         <div className="formLogin">
-          <h1>تسجيـــل الــدخول</h1>
+          <Title text="تسجيـــل الــدخول" level={1} />
           <Form
             name="basic"
             labelCol={{
@@ -45,7 +48,7 @@ const Login = () => {
             onFinish={onFinish}
             autoComplete="off"
           >
-            <Form.Item
+            <Item
               label="البريد الإلكتروني"
               name="email"
               rules={[
@@ -57,9 +60,9 @@ const Login = () => {
               ]}
             >
               <Input />
-            </Form.Item>
+            </Item>
 
-            <Form.Item
+            <Item
               label="كلمة المرور"
               name="password"
               rules={[
@@ -70,9 +73,9 @@ const Login = () => {
               ]}
             >
               <Input.Password />
-            </Form.Item>
+            </Item>
 
-            <Form.Item
+            <Item
               name="remember"
               valuePropName="checked"
               wrapperCol={{
@@ -81,7 +84,7 @@ const Login = () => {
               }}
             />
 
-            <Form.Item
+            <Item
               wrapperCol={{
                 offset: 8,
                 span: 16,
@@ -96,7 +99,7 @@ const Login = () => {
                 </Button>
               </div>
 
-            </Form.Item>
+            </Item>
 
           </Form>
           <div className="loginLinks">
