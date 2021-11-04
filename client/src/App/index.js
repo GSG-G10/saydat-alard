@@ -16,12 +16,13 @@ import Login from '../pages/Login';
 import Error from '../pages/Error';
 
 import AuthProvider from '../context/AuthContext';
+import CityProvider from '../context/CityContext';
 
 function App() {
   const routes = [
     {
       path: '/city/:id',
-      children: <City />,
+      children: <CityProvider><City /></CityProvider>,
       public: true,
       exact: true,
     },

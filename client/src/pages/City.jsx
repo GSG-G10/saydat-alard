@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from 'antd';
+import StoryCard from '../components/common/Story';
+import { AuthContext } from '../context/AuthContext';
+import { CityContext } from '../context/CityContext';
 import StoryModal from '../components/Story';
-import ScrollSpy from '../components/common/ScrollSpy/ScrollSpy';
 
 function City() {
   const [visible, setVisible] = useState(false);
+  const { userData } = useContext(AuthContext);
+  const { cityData: cityInfo } = useContext(CityContext);
+  const { stories } = cityInfo;
   return (
-    <>
+    <div>
       <div>
         <Button type="primary" onClick={() => setVisible(true)}>
           Open Modal of 1000px width
         </Button>
-        <StoryModal visible={visible} setVisible={setVisible} text="هي اليوم مدينة صغيرة وفقيرة ومهمّشة، لا يتجاوز عدد سكانها 50 ألف نسمة، ثلثهم من العرب، وهي مقسّمة إلى أربعة أحياء أساسيّة: حيّ عكا القديمة، حيّ عكا الانتدابيّة - مركز المدينة (حي الرشاديّة)، الحيّ الشماليّ والحيّ الشرقيّ. وجميع سكان عكا القديمة من العرب الفلسطينيّين/ أما الحيّ الشرقيّ فجميع سكانه، تقريبًا، من اليهود. " userName="نادية التميمي" />
+        <StoryModal
+          visible={visible}
+          setVisible={setVisible}
+          text="هي اليوم مدينة صغيرة وفقيرة ومهمّشة، لا يتجاوز عدد سكانها 50 ألف نسمة، ثلثهم من العرب، وهي مقسّمة إلى أربعة أحياء أساسيّة: حيّ عكا القديمة، حيّ عكا الانتدابيّة - مركز المدينة (حي الرشاديّة)، الحيّ الشماليّ والحيّ الشرقيّ. وجميع سكان عكا القديمة من العرب الفلسطينيّين/ أما الحيّ الشرقيّ فجميع سكانه، تقريبًا، من اليهود. "
+          userName="نادية التميمي"
+        />
       </div>
-      <ScrollSpy />
-
-    </>
+      {stories?.length && stories.map((story) => (
+        <StoryCard key={story.id} storyInfo={story} userInfo={userData.id} />
+      ))}
+    </div>
   );
 }
 
