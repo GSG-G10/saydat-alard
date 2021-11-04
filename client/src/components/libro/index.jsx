@@ -1,14 +1,36 @@
-import React, { useState } from 'react';
-import FlippingPages from 'flipping-pages';
+import React, { useState, useEffect } from 'react';
 import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
+import FlippingPages from 'flipping-pages';
+import http from '../../services/httpService';
 
 /* IMPORTANT */
 import 'flipping-pages/FlippingPages.css';
 
 import './libro.css';
 
-function Libro({ totalPages = 10 }) {
+function Libro() {
+  const [proverbs, setProverbs] = useState([]);
   const [selected, setSelected] = useState(0);
+  const totalPages = proverbs.length ? Math.floor(proverbs.length / 10 + 1) : 1;
+  console.log(totalPages);
+
+  const getProverbs = async () => {
+    try {
+      const proverbsData = await http.get('api/v1/proverbs?char=ا&page=1');
+      if (proverbsData.data.proverbs.length) {
+        setProverbs(proverbsData.data.proverbs);
+        console.log(proverbsData.data.proverbs);
+      } else {
+        throw new Error(' لا توجد أمثال تبدأ بهذا الحرف');
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getProverbs();
+  }, []);
 
   const handleSelectedChange = (select) => {
     setSelected(select);
@@ -21,41 +43,54 @@ function Libro({ totalPages = 10 }) {
   const next = () => {
     setSelected((state) => state + 1);
   };
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
+
     <div className="App">
-      <div onClick={next}
-        disabled={selected + 1 === totalPages}>
+      <button
+        type="button"
+        onClick={next}
+        disabled={selected + 1 === totalPages}
+      >
         <RightCircleOutlined />
-      </div>
+      </button>
       <FlippingPages
         className="App-pages"
         direction="horizontal"
         selected={selected}
         onSelectedChange={handleSelectedChange}
         touch-action="none"
-        reverse={true}
+        reverse
       >
-        <div className="App-page App-page_red rigth-left"><div className="rigth">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae dolorum quos itaque voluptatibus dicta rerum reiciendis possimus? Dolore temporibus quis tenetur iste officiis </div><div className="left">voluptate odio modi consequatur? Vitae, in ad.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et optio quidem quia, est atque perferendis quo beatae. Labore earum neque soluta veritatis? Id ea dolorem obcaecati sint, molestias dignissimos consequuntur?</div></div>
-        <div className="App-page App-page_green">1</div>
-        <div className="App-page App-page_blue">2</div>
-        <div className="App-page App-page_orange">3</div>
-        <div className="App-page App-page_orange">4</div>
-        <div className="App-page App-page_orange">5</div>
-        <div className="App-page App-page_orange">6</div>
-        <div className="App-page App-page_orange">7</div>
-        <div className="App-page App-page_orange">8</div>
-        <div className="App-page App-page_orange">9</div>
-        <div className="App-page App-page_orange">10</div>
+        {proverbs.length > 0
+          ? numbers.map((ele, i) => ((ele * 10 >= proverbs.length)
+            ? (
+              <div>
+                {
+                    proverbs.map((element, index) => ((index <= ele * 10 && index >= i * 10)
+                      ? (
+                        <p>
+                          {' '}
+                          {element.content}
+                          {' '}
+                        </p>
+                      )
+                      : ''))
+                }
+              </div>
+            ) : '')) : <p>لا توجد أمثال</p>}
       </FlippingPages>
       {/* Buttons are required for keyboard navigation */}
 
-      <div onClick={previous}
-          disabled={selected === 0}>
-          <LeftCircleOutlined />
-      </div>
-      </div>
+      <button
+        type="button"
+        onClick={previous}
+        disabled={selected === 0}
+      >
+        <LeftCircleOutlined />
+      </button>
+    </div>
   );
 }
 
