@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import BackgroundImg from '../components/BackgroundImg';
 
 function City() {
@@ -9,6 +10,13 @@ function City() {
       cityName="عكاا"
     />
 
+=======
+import ScrollSpy from '../components/common/ScrollSpy/ScrollSpy';
+
+function City() {
+  return (
+    <ScrollSpy />
+>>>>>>> df5f5270dfede5630704d6655b13e96f46882a9c
   );
 }
 
