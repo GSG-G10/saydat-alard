@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {
   useParams,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import httpService from '../services/httpService';
 import Img from './common/Img';
 import ParagraphText from './common/Paragraph';
