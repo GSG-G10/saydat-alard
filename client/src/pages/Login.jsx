@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   Form, Input, Button,
   message,
@@ -100,9 +100,9 @@ const Login = () => {
 
           </Form>
           <div className="loginLinks">
-            <Link to="/signup">
+            <a href="/signup">
               إنشاء حساب
-            </Link>
+            </a>
           </div>
         </div>
       </div>
