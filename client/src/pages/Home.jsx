@@ -1,8 +1,11 @@
 import React from 'react';
+import WhoAreWe from '../components/sections/whoAreWe/WhoAreWe';
 
 function Home() {
   return (
-    <div />
+    <div>
+      <WhoAreWe />
+    </div>
   );
 }
 
