@@ -1,62 +1,64 @@
 import React, { useState } from 'react';
 import {
-  Modal, Button, Input, message,
+  Modal, Button, Input, message,Form,
 } from 'antd';
 import './proverb.css';
 import http from '../../services/httpService';
+import PropTypes from 'prop-types';
 
-function Addproverbs() {
-  const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState({ proverb: '' });
-  const handleChange = (e) => setValue({ proverb: e.target.value });
-  console.log(value);
+function Addproverbs({visible, setVisible}) {
+  const [form] = Form.useForm();
 
-  const sendProverb = async () => {
+  const sendProverb = async (values) => {
     try {
-      if (value.proverb !== '') {
-        const proverb = await http.post('api/v1/proverb', value);
+        const proverb = await http.post('/api/v1/proverb', values);
         message.success(proverb.response.data.message);
-      } else {
-        setVisible(true);
-        throw new Error('يجب عليك إضافة مثل');
-      }
     } catch (error) {
       message.error(error.response.data.message);
-      console.log(error);
     }
   };
-  const handleOpen = () => {
-    setVisible(false);
-    sendProverb();
-  };
   return (
-    <>
-      <Button type="secondary" onClick={() => setVisible(true)}>
-        إضافة مثل
-      </Button>
       <Modal
         title="أضف المثل"
         centered
         visible={visible}
-        onOk={() => setVisible(false)}
+        onOk={() => {
+          form
+            .validateFields()
+            .then((values) => {
+              form.resetFields();
+              sendProverb(values);
+            })
+            .catch((info) => {
+              massage.error(info);
+            });
+        }}
         onCancel={() => setVisible(false)}
         width={1000}
-        footer={null}
+        okText='إضــــافة'
+        cancelText='إلغــــاء'
       >
-        <div className="proverbcontainer">
-          <div><Input type="text" onChange={handleChange} className="input" placeholder="أضف هنا المثال" required /></div>
-          <div className="btns">
-            <Button size="large" type="primary" onClick={handleOpen} style={{ backgroundColor: 'rgb(24, 85, 3)', borderRadius: '8px', padding: '0px 40px' }}>
-              إضــــافة
-            </Button>
-            <Button size="large" type="secondary" onClick={() => setVisible(false)} style={{ borderRadius: '8px', padding: '0px 40px' }}>
-              إلــــغاء
-            </Button>
-          </div>
-        </div>
+        <Form 
+        form = {form}
+        className="proverbcontainer">
+          <Form.Item
+           name="proverb"
+           label="أضف هنا المثال"
+           rules={[
+             {
+               required:true,
+               message: 'يجب عليك إضافة مثل',
+             },
+           ]}>
+            <Input type="text" placeholder='أضف هنا المثل' className="input" required />
+            </Form.Item>
+        </Form>
       </Modal>
-    </>
   );
+}
+Addproverbs.propType = {
+  visible: PropTypes.bool.isRequired,
+  setVisible: PropTypes.func.isRequired,
 }
 
 export default Addproverbs;
