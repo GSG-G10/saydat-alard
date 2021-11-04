@@ -49,7 +49,10 @@ const StoryCard = ({ storyInfo, userInfo }) => {
   );
 };
 StoryCard.propTypes = {
-  storyInfo: PropTypes.element.isRequired,
-  userInfo: PropTypes.element.isRequired,
+  userInfo: PropTypes.number.isRequired,
+  storyInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    user_id: PropTypes.number.isRequired,
+  }).isRequired,
 };
 export default StoryCard;
