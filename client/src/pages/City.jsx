@@ -4,10 +4,6 @@ import { AuthContext } from '../context/AuthContext';
 import { CityContext } from '../context/CityContext';
 
 function City() {
-  // const [city, setCity] = useState();
-  // const [storiesOfCity, setStoriesOfCity] = useState([]);
-  // const [userRole, setUserRole] = useState(null);
-
   const { userData } = useContext(AuthContext);
   const { cityData: cityInfo } = useContext(CityContext);
   const { cityData, stories } = cityInfo;
