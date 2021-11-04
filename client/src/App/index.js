@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  // Redirect,
 } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../pages/Dashboard';
@@ -23,31 +23,37 @@ function App() {
       path: '/city/:id',
       children: <City />,
       public: true,
+      exact: true,
     },
     {
       path: '/dashboard',
       children: <Dashboard />,
       public: false,
+      exact: true,
     },
     {
       path: '/login',
       children: <Login />,
       public: true,
+      exact: true,
     },
     {
       path: '/signup',
       children: <SignUp />,
       public: true,
+      exact: true,
     },
     {
       path: '/notfound',
       children: <Error />,
       public: true,
+      exact: false,
     },
     {
       path: '/',
       children: <Home />,
       public: true,
+      exact: true,
     },
   ];
   return (
@@ -56,15 +62,14 @@ function App() {
         <Switch>
           {
           routes.map((route) => (route.public
-            ? <Route exact path={route.path}>{route.children}</Route>
+            ? <Route key={route.path} exact={route.exact} path={route.path}>{route.children}</Route>
             : (
-              <ProtectedRoute exact path={route.path}>
+              <ProtectedRoute key={route.path} exact={route.exact} path={route.path}>
                 {route.children}
 
               </ProtectedRoute>
             )))
         }
-          <Redirect to="/notfound" />
         </Switch>
       </Router>
     </AuthProvider>
