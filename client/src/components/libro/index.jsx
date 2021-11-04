@@ -12,14 +12,12 @@ function Libro() {
   const [proverbs, setProverbs] = useState([]);
   const [selected, setSelected] = useState(0);
   const totalPages = proverbs.length ? Math.floor(proverbs.length / 10 + 1) : 1;
-  console.log(totalPages);
 
   const getProverbs = async () => {
     try {
       const proverbsData = await http.get('api/v1/proverbs?char=ا&page=1');
       if (proverbsData.data.proverbs.length) {
         setProverbs(proverbsData.data.proverbs);
-        console.log(proverbsData.data.proverbs);
       } else {
         throw new Error(' لا توجد أمثال تبدأ بهذا الحرف');
       }
