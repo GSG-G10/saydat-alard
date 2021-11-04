@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.27.1",
     "compression": "^1.7.4",
@@ -7,6 +8,7 @@
     "cross-env": "^7.0.3",
     "env2": "^2.2.2",
     "express": "^4.17.1",
+    "http-status-codes": "^2.1.4",
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1"
@@ -19,7 +21,8 @@
     "start": "cross-env NODE_ENV=production node src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "cross-env NODE_ENV=test jest test/test.js",
-    "lint": "eslint ./src --fix"
+    "lint": "eslint ./src --fix",
+    "db:build": "cross-env NODE_ENV=development node src/database/config/build.js"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,4 @@
+const getCityDataQuery = require('./getCityDataQuery');
 const updateStoryQuery = require('./updateStoryQuery');
 const getFamiliesQuery = require('./getFamiliesQuery');
 const getUserIdQuery = require('./getUserIdQuery');
@@ -9,5 +10,6 @@ module.exports = {
   getFamiliesQuery,
   getUserIdQuery,
   deleteStoryQuery,
+  getCityDataQuery,
   addStoryQuery,
 };

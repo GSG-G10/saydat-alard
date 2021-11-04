@@ -2,40 +2,33 @@ const {
   addNewCityQuery,
   checkCityByNameQuery,
 } = require('../../database/queries');
+const { httpResponse, boomHandler } = require('../../helpers');
 const { uploadToCloudinary } = require('../utilities');
 
 const addCity = async (req, res) => {
   const {
-    cityName, area, location, data, quotation, is_main,
+    cityName, area, location, image, quotation, isMain,
   } = req.body;
 
-  try {
-    const { rowCount } = await checkCityByNameQuery(cityName);
-    if (rowCount) {
-      res
-        .status(400)
-        .json(
-          'هذه المدينة مضافة إلى المدن، يمكنك الذهاب تعديل البيانات لها من خلال لوحة التحكم',
-        );
-    } else {
-      const uploadResponse = await uploadToCloudinary(data, {
-        upload_preset: 'dev_setup',
-      });
-      const { url } = uploadResponse;
-
-      await addNewCityQuery({
-        cityName,
-        area,
-        location,
-        url,
-        quotation,
-        is_main,
-      });
-      res.status(201).json({ msg: 'تم إضافة المدينة بنجاح' });
-    }
-  } catch (error) {
-    res.status(500).json({ errMsg: ' خطأ ما في السيرفر' });
+  const { rowCount } = await checkCityByNameQuery(cityName);
+  if (rowCount) {
+    boomHandler.badRequest(
+      'هذه المدينة مضافة إلى المدن، يمكنك الذهاب تعديل البيانات لها من خلال لوحة التحكم',
+    );
   }
+  const { url } = await uploadToCloudinary(image, {
+    upload_preset: 'dev_setup',
+  });
+
+  await addNewCityQuery({
+    cityName,
+    area,
+    location,
+    url,
+    quotation,
+    isMain,
+  });
+  httpResponse.created(res, null, 'تم إضافة المدينة بنجاح');
 };
 
 module.exports = addCity;

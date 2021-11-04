@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "husky": "^4.3.8",
     "pre-commit": "^1.2.2"
   },
   "name": "saydat-alard",
@@ -8,6 +9,7 @@
   "main": "index.js",
   "dependencies": {
     "buffer-from": "^1.1.2",
+    "cloudinary": "^1.27.1",
     "concat-stream": "^1.6.2",
     "core-util-is": "^1.0.3",
     "cross-spawn": "^5.1.0",

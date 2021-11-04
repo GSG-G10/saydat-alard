@@ -1,11 +1,9 @@
 const { getProverbQuery } = require('../../database/queries');
+const { httpResponse } = require('../../helpers');
 
 const getProverbs = async (req, res) => {
-  const { char, page } = req.query;
-  try {
-    const data = await getProverbQuery(char, page);
-    const { rows } = data;
-    res.json({ proverbs: rows });
-  } catch (error) { res.status(500).json({ msg: 'Server Error' }); }
+  const { char: letter, page } = req.query;
+  const { rows } = await getProverbQuery(letter, page);
+  return httpResponse.ok(res, { proverbs: rows }, 'تم الطلب بنجاح');
 };
 module.exports = getProverbs;
