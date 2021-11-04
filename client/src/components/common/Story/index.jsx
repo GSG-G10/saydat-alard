@@ -10,7 +10,7 @@ const StoryCard = ({ storyInfo, userInfo }) => {
   const [coverClass, setCoverClass] = useState('card-cover deactive-hover');
 
   const hoverHandler = () => {
-    if (userInfo.id === storyInfo.user_id) {
+    if (userInfo === storyInfo.user_id) {
       setCoverClass('card-cover active-hover');
     }
   };
@@ -49,10 +49,14 @@ const StoryCard = ({ storyInfo, userInfo }) => {
   );
 };
 StoryCard.propTypes = {
-  userInfo: PropTypes.number.isRequired,
+  userInfo: PropTypes.number,
   storyInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     user_id: PropTypes.number.isRequired,
   }).isRequired,
+};
+StoryCard.defaultProps = {
+  userInfo: 0,
+
 };
 export default StoryCard;

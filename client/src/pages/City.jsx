@@ -9,11 +9,9 @@ function City() {
   const { stories } = cityInfo;
   return (
     <div>
-      {stories
-    && stories.length
-    && stories.map((story) => (
-      <StoryCard key={story.id} storyInfo={story} userInfo={userData.id} />
-    ))}
+      {stories?.length && stories.map((story) => (
+        <StoryCard key={story.id} storyInfo={story} userInfo={userData.id} />
+      ))}
     </div>
   );
 }
