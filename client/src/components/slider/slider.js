@@ -4,6 +4,7 @@ import { StackedCarousel } from 'react-stacked-carousel';
 import style from 'react-stacked-carousel/dist/index.css';
 import http from '../../services/httpService';
 import Card from '../common/CityCard/card';
+import './style.css';
 
 function Slider() {
   const [cities, setCities] = useState([]);
@@ -33,14 +34,14 @@ function Slider() {
         autoRotate={false}
         containerClassName={style.container}
         cardClassName={style.card}
-        leftButton={<button type="button">Left</button>}
-        rightButton={<button type="button">Right</button>}
+        leftButton={<button type="button">{ '<' }</button>}
+        rightButton={<button type="button">{ '>' }</button>}
         style={{
-          borderRadius: '50px',
-          height: '733px',
-          width: '727px',
+          borderRadius: '10px',
+          height: '400px',
+          width: '400px',
           margin: 'auto',
-          marginTop: '9%',
+          marginTop: '10%',
         }}
       >
         {cities.map((city) => (
