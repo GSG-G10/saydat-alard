@@ -1,0 +1,21 @@
+.nav-wrapper {
+  list-style: none;
+  position: sticky;
+  top: 0;
+  display: flex;
+  width: 90%;
+  height:6vh;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 2rem;
+  margin: auto;
+
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  font-size: 2rem;
+}
