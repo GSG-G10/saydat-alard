@@ -1,30 +1,24 @@
-/* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
-import StoryCard from '../components/common/StoryCard';
+import React, { useContext } from 'react';
+import StoryCard from '../components/common/Story/StoryCard';
 import { AuthContext } from '../context/AuthContext';
 import { CityContext } from '../context/CityContext';
 
 function City() {
-  const [city, setCity] = useState();
-  const [storiesOfCity, setStoriesOfCity] = useState([]);
-  const [userRole, setUserRole] = useState();
+  // const [city, setCity] = useState();
+  // const [storiesOfCity, setStoriesOfCity] = useState([]);
+  // const [userRole, setUserRole] = useState(null);
 
-  const userInfo = useContext(AuthContext);
+  const { userData } = useContext(AuthContext);
   const { cityData: cityInfo } = useContext(CityContext);
   const { cityData, stories } = cityInfo;
 
-  useEffect(() => {
-    if (cityInfo) {
-      setUserRole(userInfo);
-      setCity(cityData);
-      setStoriesOfCity(stories);
-    }
-  }, [cityInfo]);
-
   return (
     <>
-      {storiesOfCity && storiesOfCity.length > 0
-        && stories.map((story) => <StoryCard key={story.id} storyInfo={story} />)}
+      {stories
+    && stories.length
+    && stories.map((story) => (
+      <StoryCard key={story.id} storyInfo={story} userInfo={userData} />
+    ))}
     </>
   );
 }

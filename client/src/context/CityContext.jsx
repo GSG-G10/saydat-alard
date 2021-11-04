@@ -1,7 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { message } from 'antd';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import httpService from '../services/httpService';
+import http from '../services/httpService';
+import { apiEndPoint } from '../services/config.json';
 
 export const CityContext = createContext();
 function CityProvider({ children }) {
@@ -10,16 +12,25 @@ function CityProvider({ children }) {
   const [cityData, setCityData] = useState({});
   useEffect(() => {
     const getCityData = async () => {
-      const { data } = await httpService.get(`/api/v1/city/${id}`);
-      setCityData(data);
+      try {
+        const { data } = await http.get(`${apiEndPoint}/city/${id}`, {
+          canelToken: http.source.token,
+        });
+        setCityData(data);
+      } catch (error) {
+        if (error.status >= 400 && error.status <= 500) {
+          message.error(error.message);
+        }
+      }
+      return () => {
+        http.source.cancel('request stopped by user');
+      };
     };
     getCityData();
   }, []);
 
   return (
-    <CityContext.Provider value={{ cityData }}>
-      {children}
-    </CityContext.Provider>
+    <CityContext.Provider value={{ cityData }}>{children}</CityContext.Provider>
   );
 }
 CityProvider.propTypes = {
