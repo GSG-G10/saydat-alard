@@ -80,7 +80,7 @@ function SignupForm() {
               <Button type="primary" htmlType="submit" className="signupSubmit signupBtn">
                 إنشاء حساب
               </Button>
-              <Link to="/" className="homePageButton signupBtn">تسجيل الدخول</Link>
+              <Link to="/" className="homePageButton signupBtn"> الصفحة الرئيسية </Link>
 
             </div>
           </Item>
