@@ -5,9 +5,13 @@ import style from 'react-stacked-carousel/dist/index.css';
 import http from '../../services/httpService';
 import Card from '../common/CityCard/card';
 import './style.css';
+import pic from './leaves.png';
 
 function Slider() {
+  // const [card, setCard] = useState(null);
   const [cities, setCities] = useState([]);
+
+  const onCardChange = () => { };
 
   const getMainCities = () => {
     const url = '/api/v1/';
@@ -29,11 +33,14 @@ function Slider() {
   }, []);
 
   return (
-    <div>
+    <div className="sliderDiv">
+      <img src={pic} alt="dsfsdf" className="leavesImg" />
       <StackedCarousel
-        autoRotate={false}
+        autoRotate
+        onCardChange={onCardChange}
         containerClassName={style.container}
         cardClassName={style.card}
+        rotationInterval="3000"
         leftButton={<button type="button">{ '<' }</button>}
         rightButton={<button type="button">{ '>' }</button>}
         style={{
