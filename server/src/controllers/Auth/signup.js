@@ -5,10 +5,10 @@ const { hashPassword } = require('../utilities');
 
 const signup = async (req, res) => {
   const {
-    name, email, password, orginialTown,
+    name, email, password, originalCity,
   } = req.userObj;
   const hashedPassword = await hashPassword(password);
-  const { rows } = await addNewUser(name, email, hashedPassword, orginialTown);
+  const { rows } = await addNewUser(name, email, hashedPassword, originalCity);
   const { id, is_admin: isAdmin } = rows[0];
   const token = await asyncSign(id, name, isAdmin);
 
