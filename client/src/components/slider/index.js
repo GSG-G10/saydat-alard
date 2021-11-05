@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StackedCarousel } from 'react-stacked-carousel';
 import { Link } from 'react-router-dom';
 import 'react-stacked-carousel/dist/index.css';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import http from '../../services/httpService';
 import Card from '../common/CityCard/card';
 import './style.css';
@@ -12,14 +12,14 @@ import pic from './leaves.png';
 function Slider() {
   const [cities, setCities] = useState([]);
 
-  const getMainCities = () => {
+  const getMainCities = async () => {
     const url = '/api/v1/';
-    return http
+    const response = await http
       .get(url)
-      .then((response) => response)
       .catch((err) => {
-        throw new Error(`Error in fetching products ${err}`);
+        message.error(err.message);
       });
+    return response;
   };
   useEffect(() => {
     getMainCities().then((response) => {
