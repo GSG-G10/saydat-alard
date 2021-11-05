@@ -14,7 +14,7 @@ function Card({ title, children, className }) {
           textAlign: 'center',
           fontSize: '50px',
           borderWidth: 0,
-          paddingTop: '100px',
+          paddingTop: '65px',
         }}
         style={{
           display: 'flex',

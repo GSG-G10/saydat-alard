@@ -44,4 +44,9 @@ p {
   width: 68px;
 }
 
-
+button.cardButton {
+  width: 160px;
+  margin: auto;
+  height: 40px;
+  border-radius: 50px;
+}

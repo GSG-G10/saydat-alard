@@ -72,7 +72,7 @@ function Slider() {
               {' '}
               {city.location}
             </p>
-            <Button type="button" className="cardButton" style={{ borderRadius: '50px' }}>
+            <Button type="button" className="cardButton">
               <Link to={`/city/${city.id}`}>إقرأ المزيد</Link>
             </Button>
           </Card>
