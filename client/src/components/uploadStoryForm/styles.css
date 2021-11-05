@@ -1,30 +1,14 @@
-.form-input{
-    
-    display: contents;
+input[type="file"] {
+    display: none;
 }
-.ant-modal-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.ant-form input[type='file']{
+    display: none;
 }
-.form{
-    display: flex;
-    flex-direction: column;
-}
-.buttonS{
-    color: #185503;
-    border: solid;
-    border-radius: 20px;
-    background-color: white;
-    margin-bottom: 20px;
-}
-.ant-input{
-    margin: 10px 0 ;
-}
-.ant-input .ant-input-rtl{
-    display: flex;
-    align-items: center;
-}
-.ant-btn-primary{
-    color: azure;
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
 }

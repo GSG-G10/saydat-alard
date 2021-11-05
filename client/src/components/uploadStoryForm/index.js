@@ -1,115 +1,124 @@
-/* eslint-disable */
 import React, { useState } from 'react';
-import { Modal, Button, Input } from 'antd';
+import {
+  Modal, Input, Form, message,
+} from 'antd';
+import PropTypes from 'prop-types';
 import './styles.css';
 import httpService from '../../services/httpService';
-// import axios from 'axios';
+import previewFile from '../../utils';
 
 const { TextArea } = Input;
-
-function StoryForm() {
-  const [fileInputState, setFileInputState] = useState('');
-  const [selectedFile, setSelectedFile] = useState();
+function StoryForm({ visible, setVisible }) {
   const [previewSource, setPreviewSource] = useState('');
-  const [visible, setVisible] = useState(false);
-  const [story, setStory] = useState({
-    title: null,
-    content: null,
-    data: null,
-  });
 
-  const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
+  const [form] = Form.useForm();
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
-    previewFile(file);
-    setSelectedFile(file);
-    setFileInputState(e.target.value);
+    previewFile(file, setPreviewSource);
   };
 
-  const uploadImage = async (base64EncodedImage) => {
+  const uploadImage = async (body) => {
     try {
-      await httpService.post('/api/v1/story', {
-        data: base64EncodedImage,
-          title: story.title,
-          content: story.content,
-      },
-       { headers: { 'Content-Type': 'application/json' }}
-      );
-      setFileInputState('');
-      setPreviewSource('');
+      const { data } = await httpService.post('/api/v1/story', body,
+        { headers: { 'Content-Type': 'application/json' } });
+      setVisible(false);
+      message.success(data.message);
     } catch (err) {
-      throw new Error(`Error ${err}`);
+      message.error(err.message);
     }
-  };
-  const handleSubmitFile = (e) => {
-    e.preventDefault();
-    if (!selectedFile) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-    setVisible(false);
-    reader.onloadend = () => {
-      uploadImage(reader.result);
-    };
   };
 
   return (
-    <>
-      <Button type="primary" onClick={() => setVisible(true)}>
-        أضف قصتك
-      </Button>
-      <Modal
-        title="اضف قصتك"
-        centered
-        visible={visible}
-        onOk={handleSubmitFile}
-        okText="موافق"
-        cancelText="الغاء"
-        onCancel={() => setVisible(false)}
-        width={500}
+    <Modal
+      title="اضف قصتك"
+      centered
+      visible={visible}
+      okText="موافق"
+      cancelText="الغاء"
+      onCancel={() => setVisible(false)}
+      width={500}
+      onOk={() => {
+        form
+          .validateFields()
+          .then(({ title, content }) => {
+            form.resetFields();
+            uploadImage({ data: previewSource, title, content });
+          })
+          .catch((info) => {
+            message.error(info);
+          });
+      }}
+      style={{ padding: '20px' }}
+    >
+      <Form
+        form={form}
+        layout="vertical"
+        name="form_in_modal"
       >
-        <Input
-          onChange={(e) => setStory((prev) => ({ ...prev, title: e.target.value }))}
-          placeholder="العنوان"
-        />
-        <>
+        <Form.Item
+          name="title"
+          rules={[
+            {
+              required: true,
+              message: 'يجب إدخال عنوان لقصتك',
+            },
+          ]}
+        >
+
+          <Input
+            placeholder="العنوان"
+          />
+        </Form.Item>
+        <Form.Item
+          name="content"
+          rules={[
+            {
+              required: true,
+              message: 'يجب إدخال محتوى لقصتك',
+            },
+          ]}
+        >
           <TextArea
             rows={4}
             placeholder="القصة"
-            onChange={(e) => setStory((prev) => ({ ...prev, content: e.target.value }))}
           />
-          <form onSubmit={handleFileInputChange} className="form">
-            <button type="button" className="buttonS">
-              <dev className="inputForm">
-                <label htmlFor="fileInput">تحميل الصورة</label>
-                <input
-                  id="fileInput"
-                  type="file"
-                  name="image"
-                  value={fileInputState}
-                  className="form-input"
-                  onChange={handleFileInputChange}
-                />
-              </dev>
-            </button>
-            {previewSource && (
-            <img
-              src={previewSource}
-              alt="chosen"
-              style={{ height: '300px' }}
+        </Form.Item>
+        <Form.Item
+          name="data"
+          rules={[
+            {
+              required: true,
+              message: 'يجب تحميل صورة لقصتك',
+            },
+          ]}
+        >
+
+          <label htmlFor="file" className="custom-file-upload">
+            <input
+              type="file"
+              id="file"
+              onChange={handleFileInputChange}
             />
-            )}
-          </form>
-        </>
-      </Modal>
-    </>
+            إضـــــافة صورة
+          </label>
+        </Form.Item>
+
+      </Form>
+      {previewSource && (
+        <img
+          src={previewSource}
+          alt="chosen"
+          style={{ height: '300px', width: '100%' }}
+        />
+      )}
+    </Modal>
   );
 }
+
+StoryForm.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  setVisible: PropTypes.func.isRequired,
+};
 
 export default StoryForm;

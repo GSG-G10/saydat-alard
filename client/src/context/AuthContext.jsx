@@ -8,8 +8,12 @@ function AuthProvider({ children }) {
   const [userData, setUserData] = useState({});
   useEffect(() => {
     const getData = async () => {
-      const data = await httpService.get('/api/v1/userinfo');
-      setUserData(data);
+      try {
+        const data = await httpService.get('/api/v1/userinfo');
+        setUserData(data);
+      } catch (err) {
+        setUserData(null);
+      }
     };
     getData();
   }, []);
