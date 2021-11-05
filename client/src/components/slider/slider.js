@@ -25,7 +25,9 @@ function Slider() {
     getMainCities().then((response) => {
       if (response) {
         const { data } = response;
-        setCities(data.data.cities);
+        if (data?.cities) {
+          setCities(data.cities);
+        }
       }
     });
   }, []);
