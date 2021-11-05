@@ -2,16 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
 import FlippingPages from 'flipping-pages';
 import http from '../../services/httpService';
-
-/* IMPORTANT */
 import 'flipping-pages/FlippingPages.css';
-
 import './libro.css';
 
 function Libro() {
   const [proverbs, setProverbs] = useState([]);
   const [selected, setSelected] = useState(0);
-  const totalPages = proverbs.length ? Math.floor(proverbs.length / 10 + 1) : 1;
+  const totalPages = proverbs.length ? Math.ceil(proverbs.length / 10) : 1;
 
   const getProverbs = async () => {
     try {
@@ -42,46 +39,40 @@ function Libro() {
     setSelected((state) => state + 1);
   };
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
   return (
 
     <div className="App">
       <button
+        className="btn"
         type="button"
         onClick={next}
         disabled={selected + 1 === totalPages}
       >
         <RightCircleOutlined />
       </button>
-      <FlippingPages
-        className="App-pages"
-        direction="horizontal"
-        selected={selected}
-        onSelectedChange={handleSelectedChange}
-        touch-action="none"
-        reverse
-      >
-        {proverbs.length > 0
-          ? numbers.map((ele, i) => ((ele * 10 >= proverbs.length)
-            ? (
-              <div>
-                {
-                    proverbs.map((element, index) => ((index <= ele * 10 && index >= i * 10)
-                      ? (
-                        <p>
-                          {' '}
-                          {element.content}
-                          {' '}
-                        </p>
-                      )
-                      : ''))
-                }
-              </div>
-            ) : '')) : <p>لا توجد أمثال</p>}
-      </FlippingPages>
-      {/* Buttons are required for keyboard navigation */}
-
+      <div>
+        <FlippingPages
+          className="App-pages"
+          direction="horizontal"
+          selected={selected}
+          onSelectedChange={handleSelectedChange}
+          touch-action="none"
+          reverse
+        >
+          {proverbs.length > 0
+            ? numbers.map((ele, i) => ((ele <= totalPages)
+              ? (
+                <div className="container">
+                  <h3>الأمثـــــــال الشعبــيــة</h3>
+                  <div className="proverbs">
+                    {proverbs.map((element, index) => ((index < ele * 10 && i * 10 <= index) ? <p>{element.content}</p> : ''))}
+                  </div>
+                </div>
+              ) : '')) : <p>لا توجد أمثال</p>}
+        </FlippingPages>
+      </div>
       <button
+        className="btn"
         type="button"
         onClick={previous}
         disabled={selected === 0}
