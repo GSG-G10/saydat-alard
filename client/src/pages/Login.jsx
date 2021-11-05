@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   Form, Input, Button,
   message,
 } from 'antd';
 import Img from '../components/common/Img';
-import Title from '../components/common/Title';
+// import Title from '../components/common/Title';
 import flower from './img/flower.png';
 import './login.css';
 import http from '../services/httpService';
@@ -36,7 +36,8 @@ const Login = () => {
       <div className="loginContainer">
         <div><Img styleClass="loginImg" src={flower} alt="flower" /></div>
         <div className="formLogin">
-          <Title text="تسجيـــل الــدخول" level={1} />
+
+          <h1>تسجيـــل الــدخول</h1>
           <Form
             name="basic"
             labelCol={{
@@ -90,8 +91,9 @@ const Login = () => {
                 span: 16,
               }}
             >
+
               <div className="btn">
-                <Button type="primary" htmlType="submit" style={{ backgroundColor: 'green', borderRadius: '5px' }}>
+                <Button type="primary" htmlType="submit" style={{ backgroundColor: 'green', borderRadius: '5px', margin: '0px 0px' }}>
                   تسجيل لدخول
                 </Button>
                 <Button type="secondary" htmlType="submit" style={{ borderRadius: '5px' }}>
@@ -103,9 +105,9 @@ const Login = () => {
 
           </Form>
           <div className="loginLinks">
-            <Link to="/signup">
+            <a href="/signup">
               إنشاء حساب
-            </Link>
+            </a>
           </div>
         </div>
       </div>
