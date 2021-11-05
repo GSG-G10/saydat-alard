@@ -2,16 +2,44 @@ li {
   border-radius: 100px !important;
   box-shadow: 0;
 }
-div{
-  border-radius: 40px !important; 
- }
-.leavesImg{
-  width: 700px;
-  height: 700px;
-  margin-left: 25%;
-  position: absolute;
+div {
+  border-radius: 40px !important;
 }
-.sliderDiv{
-  margin-top: 100px;
-  /* display: flex; */
+.leavesImg {
+  position: absolute;
+  max-width: 100%;
+  max-height: calc(100% - 2rem);
+  min-width: 40rem;
+}
+
+p {
+  text-align: right;
+}
+
+.sliderDiv {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.sliderDiv > div {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.left-button,
+.right-button {
+  border-radius: 50%;
+  background: transparent;
+  color: #000000;
+  border: #000000 solid 2px;
+  font-size: 31px;
+  height: 71px;
+  width: 68px;
 }
