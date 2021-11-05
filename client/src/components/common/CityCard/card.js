@@ -11,15 +11,37 @@ function Card({ title, children, className }) {
         title={title}
         bordered={false}
         headStyle={{
-          textAlign: 'center', fontSize: '50px', borderWidth: 0, paddingTop: '100px',
+          textAlign: 'center',
+          fontSize: '50px',
+          borderWidth: 0,
+          paddingTop: '100px',
         }}
         style={{
-          display: 'flex', flexDirection: 'column', alignItems: 'center', width: 'auto', height: '100%', borderRadius: '100px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: 'auto',
+          height: '100%',
+          borderRadius: '100px',
         }}
         bodyStyle={{ margin: 'auto' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div dir="rtl" style={{ height: '50%', borderRadius: '100px' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            dir="rtl"
+            style={{
+              height: '50%',
+              borderRadius: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             {children}
           </div>
         </div>
@@ -37,7 +59,6 @@ Card.propTypes = {
 Card.defaultProps = {
   children: null,
   className: '',
-
 };
 
 export default Card;

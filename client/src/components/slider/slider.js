@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import { StackedCarousel } from 'react-stacked-carousel';
+import { Link } from 'react-router-dom';
 import 'react-stacked-carousel/dist/index.css';
+import { Button } from 'antd';
 import http from '../../services/httpService';
 import Card from '../common/CityCard/card';
 import './style.css';
@@ -68,6 +70,9 @@ function Slider() {
               {' '}
               {city.location}
             </p>
+            <Button type="button" className="cardButton" style={{ borderRadius: '50px' }}>
+              <Link to={`/city/${city.id}`}>إقرأ المزيد</Link>
+            </Button>
           </Card>
         ))}
       </StackedCarousel>
