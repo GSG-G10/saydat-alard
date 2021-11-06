@@ -3,19 +3,17 @@ import {
   Form, Input, Button, message,
 } from 'antd';
 import { Link } from 'react-router-dom';
-import http from '../services/httpService';
-import Img from './common/Img';
-import ParagraphText from './common/Paragraph';
-import HeaderTitle from './common/Title';
+import http from '../../services/httpService';
+import Img from '../../components/common/Img';
+import ParagraphText from '../../components/common/Paragraph';
+import HeaderTitle from '../../components/common/Title';
 import './signup.css';
 
 const postData = async (userInfo) => {
   try {
     await http.post('/api/v1/signup', userInfo);
   } catch (error) {
-    if (error.status >= 400 && error.status <= 500) {
-      message.error(error.message);
-    }
+    message.error(error);
   }
 };
 
