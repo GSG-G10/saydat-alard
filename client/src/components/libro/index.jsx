@@ -19,6 +19,7 @@ function Libro() {
         throw new Error(' لا توجد أمثال تبدأ بهذا الحرف');
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error.message);
     }
   };
