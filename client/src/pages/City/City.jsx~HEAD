@@ -1,17 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from 'antd';
-import BackgroundImg from '../components/BackgroundImg';
-import StoryCard from '../components/common/Story';
-import { AuthContext } from '../context/AuthContext';
-import { CityContext } from '../context/CityContext';
-import StoryModal from '../components/Story';
+import BackgroundImg from '../../components/BackgroundImg';
+import StoryCard from '../../components/common/Story';
+import { AuthContext } from '../../context/AuthContext';
+import { CityContext } from '../../context/CityContext';
+import StoryModal from '../../components/Story';
 
 function City() {
   const [visible, setVisible] = useState(false);
   const { userData } = useContext(AuthContext);
   const { cityData: cityInfo } = useContext(CityContext);
   const { stories } = cityInfo;
-
   return (
     <>
       <BackgroundImg
