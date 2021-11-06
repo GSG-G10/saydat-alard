@@ -13,8 +13,6 @@ function City() {
   const { stories } = cityInfo;
   return (
     <>
-      <ScrollSpy />
-
       <BackgroundImg
         img="https://www.alquds.co.uk/wp-content/uploads/2021/09/20210910112926afpp-afp_9mk4vg.h-730x438.jpg"
         quotation="أجمل المدن القديمة و أقدم المدن الجميلة "
