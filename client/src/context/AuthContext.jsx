@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { message } from 'antd';
 import http from '../services/httpService';
 
 export const AuthContext = createContext();
@@ -23,7 +22,7 @@ function AuthProvider({ children }) {
     };
   }, []);
   return (
-    <AuthContext.Provider value={{ userData }}>
+    <AuthContext.Provider value={{ userData, setUserData }}>
       {children}
     </AuthContext.Provider>
   );

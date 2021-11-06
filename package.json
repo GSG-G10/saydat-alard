@@ -12,6 +12,7 @@
     "cloudinary": "^1.27.1",
     "concat-stream": "^1.6.2",
     "core-util-is": "^1.0.3",
+    "cors": "^2.8.5",
     "cros": "^1.0.1",
     "cross-spawn": "^5.1.0",
     "http-status-codes": "^2.1.4",

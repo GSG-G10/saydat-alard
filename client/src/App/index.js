@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
 import React from 'react';
-import 'antd/dist/antd.css';
+import './App.less';
 import {
   BrowserRouter as Router,
   Route,
@@ -10,7 +9,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../pages/Dashboard';
 import City from '../pages/City/City';
 import Home from '../pages/Home';
-import SignUp from '../pages/SignUp';
+import SignUp from '../pages/signup/SignUp';
 import Login from '../pages/Login';
 import Error from '../pages/Error';
 
