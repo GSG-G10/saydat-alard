@@ -14,6 +14,7 @@ import tree1 from '../../utils/images/tree1.png';
 function CityInformation(props) {
   const { cityData } = props;
   const { id } = useParams();
+  // eslint-disable-next-line no-unused-vars
   const [families, setfamilies] = useState([]);
   useEffect(() => {
     const getCityData = async () => {
