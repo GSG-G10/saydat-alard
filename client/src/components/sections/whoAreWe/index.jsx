@@ -1,12 +1,13 @@
 import React from 'react';
-import './whoAreWe.css';
+import './style.css';
+import palestineMap from './map.jpg';
 import Img from '../../common/Img';
 import Title from '../../common/Title';
 import Paragraph from '../../common/Paragraph';
 
 const WhoAreWe = () => (
   <div className="section-waw">
-    <Img src="map.jpg" alt="map Of Palestine" styleClass="image-palestine" />
+    <Img src={palestineMap} alt="map Of Palestine" styleClass="image-palestine" />
     <div className="content-waw">
       <Title text="من نحن" level={1} titleClass="title-waw" />
       <Paragraph

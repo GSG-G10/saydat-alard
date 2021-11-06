@@ -1,5 +1,5 @@
 import React from 'react';
-import WhoAreWe from '../components/sections/whoAreWe/WhoAreWe';
+import WhoAreWe from '../components/sections/whoAreWe/index';
 
 function Home() {
   return (
