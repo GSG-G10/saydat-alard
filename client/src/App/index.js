@@ -56,8 +56,8 @@ function App() {
     },
   ];
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Switch>
           {routes.map((route) => (route.public ? (
             <Route key={route.path} exact={route.exact} path={route.path}>
@@ -73,8 +73,8 @@ function App() {
             </ProtectedRoute>
           )))}
         </Switch>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

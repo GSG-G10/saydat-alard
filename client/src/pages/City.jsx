@@ -5,6 +5,7 @@ import StoryCard from '../components/common/Story';
 import { AuthContext } from '../context/AuthContext';
 import { CityContext } from '../context/CityContext';
 import StoryModal from '../components/Story';
+import NavBar from '../components/common/NavBar';
 
 function City() {
   const [visible, setVisible] = useState(false);
@@ -13,6 +14,7 @@ function City() {
   const { stories } = cityInfo;
   return (
     <>
+      <NavBar />
       <BackgroundImg
         img="https://www.alquds.co.uk/wp-content/uploads/2021/09/20210910112926afpp-afp_9mk4vg.h-730x438.jpg"
         quotation="أجمل المدن القديمة و أقدم المدن الجميلة "
@@ -32,7 +34,11 @@ function City() {
         </div>
 
         {stories?.length && stories.map((story) => (
-          <StoryCard key={story.id} storyInfo={story} userInfo={userData.id} />
+          <StoryCard
+            key={story.id}
+            storyInfo={story}
+            userInfo={userData.id}
+          />
         ))}
       </div>
     </>
