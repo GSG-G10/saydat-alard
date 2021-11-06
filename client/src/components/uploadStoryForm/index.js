@@ -4,13 +4,14 @@ import {
 } from 'antd';
 import PropTypes from 'prop-types';
 import './styles.css';
+import { useParams } from 'react-router-dom';
 import httpService from '../../services/httpService';
 import previewFile from '../../utils';
 
 const { TextArea } = Input;
 function StoryForm({ visible, setVisible }) {
   const [previewSource, setPreviewSource] = useState('');
-
+  const { id } = useParams();
   const [form] = Form.useForm();
 
   const handleFileInputChange = (e) => {
@@ -43,7 +44,9 @@ function StoryForm({ visible, setVisible }) {
           .validateFields()
           .then(({ title, content }) => {
             form.resetFields();
-            uploadImage({ data: previewSource, title, content });
+            uploadImage({
+              data: previewSource, title, content, cityId: id,
+            });
           })
           .catch((info) => {
             message.error(info);
