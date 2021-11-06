@@ -110,11 +110,11 @@ function StoryForm({ visible, setVisible }) {
 
       </Form>
       {previewSource && (
-        <Img
-          src={previewSource}
-          alt="chosen"
-          style={{ height: '300px', width: '100%' }}
-        />
+      <Img
+        src={previewSource}
+        alt="chosen"
+        styleClass="prv-img"
+      />
       )}
     </Modal>
   );
