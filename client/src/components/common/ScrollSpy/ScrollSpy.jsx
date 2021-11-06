@@ -3,7 +3,7 @@ import { Scrollspy } from '@makotot/ghostui';
 import PropTypes from 'prop-types';
 import './scrollSpy.css';
 
-const ScrollSpy = ({ eleOfList }) => {
+const ScrollSpy = ({ eleOfList = [] }) => {
   const arr = eleOfList;
   const sectionRefs = [
     useRef(null),
@@ -63,7 +63,7 @@ const ScrollSpy = ({ eleOfList }) => {
 };
 
 Scrollspy.propTypes = {
-  eleOfList: PropTypes.array.isRequired,
+  eleOfList: PropTypes.isRequired,
 
 };
 export default ScrollSpy;

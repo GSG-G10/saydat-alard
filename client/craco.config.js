@@ -12,7 +12,7 @@ module.exports = {
               '@border-color-base': 'hsv(0, 0, 85%)',
               '@font-family': 'Almarai ',
               '@body-background': '#fff',
-              '@btn-primary-color': '#185503',
+              '@btn-primary-color': '#FFFFFF',
             },
             javascriptEnabled: true,
           },
