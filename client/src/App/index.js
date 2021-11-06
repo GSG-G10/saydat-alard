@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../pages/Dashboard';
-import City from '../pages/City';
+import City from '../pages/City/City';
 import Home from '../pages/Home';
 import SignUp from '../pages/SignUp';
 import Login from '../pages/Login';

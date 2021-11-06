@@ -15,9 +15,7 @@ function AuthProvider({ children }) {
       };
       getData();
     } catch (error) {
-      if (error.status >= 400 && error.status <= 500) {
-        message.error(error.message);
-      }
+      setUserData(null);
     }
 
     return () => {

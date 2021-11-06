@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Button } from 'antd';
-import CityInformation from '../components/CityInformation';
-import StoryCard from '../components/common/Story';
-import { AuthContext } from '../context/AuthContext';
-import { CityContext } from '../context/CityContext';
-import StoryModal from '../components/Story';
+import CityInformation from './CityInformation';
+import StoryCard from '../../components/common/Story';
+import { AuthContext } from '../../context/AuthContext';
+import { CityContext } from '../../context/CityContext';
+import StoryModal from '../../components/Story';
 
 function City() {
   const [visible, setVisible] = useState(false);

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import {
   useParams,
 } from 'react-router-dom';
-import httpService from '../services/httpService';
-import Img from './common/Img';
-import ParagraphText from './common/Paragraph';
-import HeaderTitle from './common/Title';
+import httpService from '../../services/httpService';
+import Img from '../../components/common/Img';
+import ParagraphText from '../../components/common/Paragraph';
+import HeaderTitle from '../../components/common/Title';
 import './city.css';
 
 function CityInformation() {
@@ -27,7 +27,7 @@ function CityInformation() {
     <div className="city-info-container">
 
       <Img
-        src="/tree1.png"
+        src="./tree1.png"
         alt="tree-design"
         styleClass="tree"
       />
