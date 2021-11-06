@@ -12,7 +12,7 @@ import Dashboard from '../pages/Dashboard';
 import City from '../pages/City';
 import Home from '../pages/Home';
 import SignUp from '../pages/SignUp';
-import Login from '../pages/Login';
+import Login from '../pages/login';
 import Error from '../pages/Error';
 
 import AuthProvider from '../context/AuthContext';

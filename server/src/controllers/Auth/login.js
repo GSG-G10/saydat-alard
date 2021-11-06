@@ -26,7 +26,7 @@ const login = async (req, res, next) => {
         { maxAge: 1000 * 60 * 60 * 24 * 1 },
         { httpOnly: true },
       );
-      httpResponse.created(res, null, 'تم تسجيل الدخول بنجاح');
+      httpResponse.ok(res, { id: user.id, name: user.name, role: user.is_admin }, 'تم تسجيل الدخول بنجاح');
     } else {
       boomHandler.unAuthorized('كلمة المرور أو البريد الإلكتروني خطأ');
     }
