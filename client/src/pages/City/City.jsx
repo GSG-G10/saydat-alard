@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Button } from 'antd';
 import CityInformation from './CityInformation';
-import NavBar from '../components/common/NavBar';
+import NavBar from '../../components/common/NavBar';
 import BackgroundImg from '../../components/BackgroundImg';
 import StoryCard from '../../components/common/Story';
 import { AuthContext } from '../../context/AuthContext';

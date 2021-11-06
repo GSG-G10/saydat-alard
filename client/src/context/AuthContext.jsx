@@ -26,7 +26,7 @@ function AuthProvider({ children }) {
   }, []);
 
   const logout = () => {
-    httpService.get('/api/v1/logout');
+    http.get('/api/v1/logout');
     setUserData({});
     history.push('/');
   };
