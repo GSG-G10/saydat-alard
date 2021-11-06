@@ -1,0 +1,20 @@
+input[type="file"] {
+  display: none;
+}
+.ant-form input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+.prv-img {
+    max-height: 450px;
+    max-width: 100%;
+    align-self: center;
+}
+

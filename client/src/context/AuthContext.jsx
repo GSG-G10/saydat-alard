@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import httpService from '../services/httpService';
+import http from '../services/httpService';
 
 export const AuthContext = createContext();
 
@@ -10,11 +10,19 @@ function AuthProvider({ children }) {
   const history = useHistory();
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await httpService.get('/api/v1/userinfo');
-      setUserData(data);
+    try {
+      const getData = async () => {
+        const data = await http.get('/api/v1/userinfo');
+        setUserData(data);
+      };
+      getData();
+    } catch (error) {
+      setUserData(null);
+    }
+
+    return () => {
+      http.source.cancel('request stopped by user');
     };
-    getData();
   }, []);
 
   const logout = () => {

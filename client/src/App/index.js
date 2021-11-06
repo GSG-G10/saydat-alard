@@ -3,7 +3,7 @@ import './App.less';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../pages/Dashboard';
-import City from '../pages/City';
+import City from '../pages/City/City';
 import Home from '../pages/Home';
 import SignUp from '../pages/signup/SignUp';
 import Login from '../pages/login';
