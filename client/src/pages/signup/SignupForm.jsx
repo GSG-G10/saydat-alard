@@ -7,8 +7,9 @@ import http from '../../services/httpService';
 import Img from '../../components/common/Img';
 import ParagraphText from '../../components/common/Paragraph';
 import HeaderTitle from '../../components/common/Title';
-import './signup.css';
+import './style.css';
 import { AuthContext } from '../../context/AuthContext';
+import map from '../../utils/images/map.png';
 
 const postData = async (userInfo, cb) => {
   try {
@@ -95,7 +96,7 @@ function SignupForm() {
           </div>
         </Form>
         <Img
-          src="/map.png"
+          src={map}
           alt="palestine map"
           styleClass="map"
         />
