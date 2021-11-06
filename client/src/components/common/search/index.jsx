@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { AutoComplete, message } from 'antd';
 import { useHistory } from 'react-router-dom';
-import http from '../../services/httpService';
-import config from '../../services/config.json';
-import Img from './Img';
+import http from '../../../services/httpService';
+import config from '../../../services/config.json';
+import Img from '../Img';
+import keyIcon from '../../../utils/images/key.png'
 
-import './css/search.css';
+import './style.css';
 
 const { Option } = AutoComplete;
 
@@ -63,7 +64,7 @@ const SearchCity = () => {
         ) : <Option disabled>لا توجد مدن تبدأ بهذا الحرف</Option>}
       </AutoComplete>
       <span>
-        <Img src="/key.png" alt="key-icon" styleClass="icon-key" />
+        <Img src={keyIcon} alt="key-icon" styleClass="icon-key" />
       </span>
     </div>
 

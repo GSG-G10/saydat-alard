@@ -6,7 +6,7 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import Img from '../Img';
 import './story.css';
 
-const StoryCard = ({ storyInfo, userInfo }) => {
+const StoryCard = ({ storyInfo, userInfo, handleClick }) => {
   const [coverClass, setCoverClass] = useState('card-cover deactive-hover');
 
   const hoverHandler = () => {
@@ -26,6 +26,7 @@ const StoryCard = ({ storyInfo, userInfo }) => {
         hoverable
         onMouseOver={hoverHandler}
         onMouseOut={nonHoverHandler}
+        onClick={() => { handleClick(storyInfo.id); }}
         cover={(
           <div className="card-container">
             <div
@@ -50,9 +51,11 @@ const StoryCard = ({ storyInfo, userInfo }) => {
 };
 StoryCard.propTypes = {
   userInfo: PropTypes.number,
+  handleClick: PropTypes.func.isRequired,
   storyInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     user_id: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 StoryCard.defaultProps = {
