@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Form, Input, Button, message,
 } from 'antd';
@@ -8,22 +8,29 @@ import Img from '../../components/common/Img';
 import ParagraphText from '../../components/common/Paragraph';
 import HeaderTitle from '../../components/common/Title';
 import './signup.css';
+import { AuthContext } from '../../context/AuthContext';
 
-const postData = async (userInfo) => {
+const postData = async (userInfo, cb) => {
   try {
-    await http.post('/api/v1/signup', userInfo);
+    const data = await http.post('/api/v1/signup', userInfo);
+    cb(data);
   } catch (error) {
     message.error(error);
   }
 };
 
 function SignupForm() {
+  const { setUserData } = useContext(AuthContext);
+
   const { Password } = Input;
   const { Item } = Form;
   const onFinish = (values) => {
     const { confirmPassword, password } = values;
     if (confirmPassword === password) {
-      postData(values);
+      postData(values, ({ data }) => {
+        const { id, isAdmin, name } = data;
+        setUserData({ id, role: isAdmin, name });
+      });
     } else message.warning('كلمتا المرور غير متطابقتان ');
   };
   return (
