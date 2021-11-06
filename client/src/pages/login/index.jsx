@@ -98,7 +98,12 @@ const Login = () => {
                 <Button type="primary" htmlType="submit" style={{ backgroundColor: 'green', borderRadius: '5px' }}>
                   تسجيل لدخول
                 </Button>
-                <Link to="/" style={{ borderRadius: '5px', border:'1px solid green', padding:'0px 10px',color:'green' }}>
+                <Link
+                  to="/"
+                  style={{
+                    borderRadius: '5px', border: '1px solid green', padding: '0px 10px', color: 'green',
+                  }}
+                >
                   الصفحة الرئيسية
                 </Link>
               </div>
