@@ -7,6 +7,7 @@ import './styles.css';
 import { useParams } from 'react-router-dom';
 import httpService from '../../services/httpService';
 import previewFile from '../../utils';
+import Img from '../common/Img';
 
 const { TextArea } = Input;
 function StoryForm({ visible, setVisible }) {
@@ -109,7 +110,7 @@ function StoryForm({ visible, setVisible }) {
 
       </Form>
       {previewSource && (
-        <img
+        <Img
           src={previewSource}
           alt="chosen"
           style={{ height: '300px', width: '100%' }}
