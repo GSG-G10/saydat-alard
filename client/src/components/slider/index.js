@@ -6,7 +6,7 @@ import 'react-stacked-carousel/dist/index.css';
 import { Button, message } from 'antd';
 import http from '../../services/httpService';
 import Card from '../common/CityCard/card';
-import './style.css';
+import style from './style.module.css';
 import pic from './leaves.png';
 
 function Slider() {
@@ -33,20 +33,20 @@ function Slider() {
   }, []);
 
   return (
-    <div className="sliderDiv">
-      <img src={pic} alt="background" className="leavesImg" />
+    <div className={style.sliderDiv}>
+      <img src={pic} alt="background" className={style.leavesImg} />
       <StackedCarousel
         autoRotate
-        containerClassName="carousel"
-        cardClassName="card"
+        containerClassName={style.carousel}
+        cardClassName={style.card}
         rotationInterval="2000"
         leftButton={(
-          <button className="left-button" type="button">
+          <button className={style['left-button']} type="button">
             {'<'}
           </button>
         )}
         rightButton={(
-          <button className="right-button" type="button">
+          <button className={style['right-button']} type="button">
             {'>'}
           </button>
         )}
@@ -72,7 +72,7 @@ function Slider() {
               {' '}
               {city.location}
             </p>
-            <Button type="button" className="cardButton">
+            <Button type="button" className={style.cardButton}>
               <Link to={`/city/${city.id}`}>إقرأ المزيد</Link>
             </Button>
           </Card>
