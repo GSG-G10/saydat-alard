@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Button } from 'antd';
-import CityInformation from './CityInformation';
+import BackgroundImg from '../../components/BackgroundImg';
 import StoryCard from '../../components/common/Story';
 import { AuthContext } from '../../context/AuthContext';
 import { CityContext } from '../../context/CityContext';
@@ -13,7 +13,13 @@ function City() {
   const { stories } = cityInfo;
   return (
     <>
-      <CityInformation />
+      <ScrollSpy />
+
+      <BackgroundImg
+        img="https://www.alquds.co.uk/wp-content/uploads/2021/09/20210910112926afpp-afp_9mk4vg.h-730x438.jpg"
+        quotation="أجمل المدن القديمة و أقدم المدن الجميلة "
+        cityName="عكاا"
+      />
       <div>
         <div>
           <Button type="primary" onClick={() => setVisible(true)}>
@@ -26,6 +32,7 @@ function City() {
             userName="نادية التميمي"
           />
         </div>
+
         {stories?.length && stories.map((story) => (
           <StoryCard key={story.id} storyInfo={story} userInfo={userData.id} />
         ))}
