@@ -2,22 +2,22 @@ import React, { useEffect, useState } from 'react';
 import {
   useParams,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import httpService from '../../services/httpService';
 import Img from '../../components/common/Img';
 import ParagraphText from '../../components/common/Paragraph';
 import HeaderTitle from '../../components/common/Title';
 import './city.css';
+import tree from '../../utils/images/tree.png';
+import tree1 from '../../utils/images/tree1.png';
 
-function CityInformation() {
+function CityInformation(props) {
+  const { cityData } = props;
   const { id } = useParams();
-  const [cityInfo, setcityInfo] = useState({});
   const [families, setfamilies] = useState([]);
   useEffect(() => {
     const getCityData = async () => {
-      const cityInformation = await httpService.get(`/api/v1/city/${id}`);
       const cityFamilies = await httpService.get(`/api/v1/families/${id}`);
-      const { cityData } = cityInformation.data.data;
-      setcityInfo(cityData);
       setfamilies(cityFamilies);
     };
     getCityData();
@@ -27,23 +27,23 @@ function CityInformation() {
     <div className="city-info-container">
 
       <Img
-        src="./tree1.png"
+        src={tree1}
         alt="tree-design"
         styleClass="tree"
       />
       <Img
-        src="/tree.png"
+        src={tree}
         alt="tree-design"
         styleClass="tree1"
       />
       <div className="city-information-section">
         {
-        cityInfo
+        cityData
 
           ? (
             <>
-              <ParagraphText text={`المساحة : ${cityInfo.area} كم `} strong={false} />
-              <ParagraphText text={`الموقع  : ${cityInfo.location}  `} strong={false} />
+              <ParagraphText text={`المساحة : ${cityData.area} كم `} strong={false} />
+              <ParagraphText text={`الموقع  : ${cityData.location}  `} strong={false} />
               <ParagraphText text=" تشتهر ب  : الصناعة و التجارة " strong={false} />
               <ParagraphText text="العائلات الفلسطينية في هذه القرية / المدينة " strong={false} />
               <div className="families">
@@ -62,5 +62,11 @@ function CityInformation() {
     </div>
   );
 }
+CityInformation.propTypes = {
+  cityData: PropTypes.shape({
+    area: PropTypes.string.isRequired,
+    location: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
 export default CityInformation;

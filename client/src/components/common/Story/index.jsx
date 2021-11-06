@@ -20,7 +20,7 @@ const StoryCard = ({ storyInfo, userInfo }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card-story">
       <Card
         className="card-component"
         hoverable
