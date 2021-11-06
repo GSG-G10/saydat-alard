@@ -9,9 +9,9 @@ const WhoAreWe = () => (
   <div className="section-waw">
     <Img src={palestineMap} alt="map Of Palestine" styleClass="image-palestine" />
     <div className="content-waw">
-      <Title text="من نحن" level={1} titleClass="title-waw" />
+      <Title text="من نحن" level={1} className="title-waw" />
       <Paragraph
-        paragraphClass="summary-waw"
+        className="summary-waw"
         text="الأرض الأولى هي الأم الأولى، هي الحب الأول، هي أيضا الأغنية التي ما أن ترافق ولادة أبنائها حتى تصبح صورة حقيقية لوجه تلك الأرض، فلو ذهبت الأرض تبقى الأغنية، وأغنية فلسطين اليوم هي الأرض الموعودة"
         strong
       />

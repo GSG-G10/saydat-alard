@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import 'antd/dist/antd.css';
+import './App.less';
 import {
   BrowserRouter as Router,
   Route,
