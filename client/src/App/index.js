@@ -4,13 +4,12 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  // Redirect,
 } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../pages/Dashboard';
 import City from '../pages/City';
 import Home from '../pages/Home';
-import SignUp from '../pages/SignUp';
+import SignUp from '../pages/signup/SignUp';
 import Login from '../pages/Login';
 import Error from '../pages/Error';
 
