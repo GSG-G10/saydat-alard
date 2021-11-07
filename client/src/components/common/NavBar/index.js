@@ -6,34 +6,30 @@ import { AuthContext } from '../../../context/AuthContext';
 import style from './style.module.css';
 
 const signInButton = () => (
-  <Button key="1">
-    <Link to="/login">تسجبل دخول</Link>
-  </Button>
+  
+    <Link key="1" to="/login" className={style.navLink}>تسجبل دخول  </Link>
+  
 );
 const signUpButton = () => (
-  <Button key="2">
-    <Link to="/signup">إنشاء حساب</Link>
-  </Button>
+    <Link key="2" to="/signup" className={style.navButton}>إنشاء حساب</Link>
 );
 const dashBoardButton = () => (
-  <Button key="3">
-    <Link to="/dashboard">لوحة التحكم</Link>
-  </Button>
+    <Link key="3" to="/dashboard" className={style.navLink}>لوحة التحكم</Link>
 );
 const accountButton = (name) => (
-  <p className={style['account-name']} key="4">
+  <p className={style['account-name']} key="4" >
     {name}
   </p>
 );
 const logoutButton = (logout) => (
-  <Button key="5" onClick={logout}>
+  <Button key="5" style={{borderRadius:' 20px'}} onClick={logout}>
     تسجبل خروج
   </Button>
 );
 
 const IconLink = ({ src, text }) => (
-  <Link to="/" className="example-link">
-    <img className="example-link-icon" src={src} alt={text} />
+  <Link key="6" to="/" className="example-link">
+    <img className= {style['example-link-icon']} src={src} alt={text} />
   </Link>
 );
 
