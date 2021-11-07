@@ -55,6 +55,7 @@ function CityInformation(props) {
             <div className="no-data">
               <HeaderTitle text="يتم العمل على إضافة معلومات عن هذه المدينة /القرية يمكنك المساهمة بإرسال المعلومات على هذا البريد الإلكتروني " level={3} />
               <HeaderTitle text="saydat.alard@gmail.com" level={4} />
+              {JSON.stringify(families)}
             </div>
           )
       }
