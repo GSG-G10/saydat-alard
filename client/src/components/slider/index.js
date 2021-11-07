@@ -33,7 +33,7 @@ function Slider() {
   }, []);
 
   return (
-    <div className={style.sliderDiv}>
+    <div className={style.sliderDiv} id="section-0">
       <img src={pic} alt="background" className={style.leavesImg} />
       <StackedCarousel
         autoRotate

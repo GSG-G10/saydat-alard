@@ -6,6 +6,7 @@ import config from '../../services/config.json';
 import Img from './Img';
 
 import './css/search.css';
+import keyIcon from '../../utils/images/key.png';
 
 const { Option } = AutoComplete;
 
@@ -63,7 +64,7 @@ const SearchCity = () => {
         ) : <Option disabled>لا توجد مدن تبدأ بهذا الحرف</Option>}
       </AutoComplete>
       <span>
-        <Img src="/key.png" alt="key-icon" styleClass="icon-key" />
+        <Img src={keyIcon} alt="key-icon" styleClass="icon-key" />
       </span>
     </div>
 

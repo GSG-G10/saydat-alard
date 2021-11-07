@@ -3,7 +3,9 @@ import { Scrollspy } from '@makotot/ghostui';
 import PropTypes from 'prop-types';
 import './scrollSpy.css';
 
-const ScrollSpy = ({ eleOfList = [] }) => {
+const { number, shape, arrayOf } = PropTypes;
+
+const ScrollSpy = ({ eleOfList }) => {
   const arr = eleOfList;
   const sectionRefs = [
     useRef(null),
@@ -13,7 +15,7 @@ const ScrollSpy = ({ eleOfList = [] }) => {
   return (
     <Scrollspy sectionRefs={sectionRefs}>
       {({ currentElementIndexInViewport }) => (
-        <div>
+        <div className="scroll-nav">
           <ul
             data-cy="nav-wrapper"
             className="nav-wrapper"
@@ -37,33 +39,17 @@ const ScrollSpy = ({ eleOfList = [] }) => {
               </li>
             ))}
           </ul>
-          <div className="before-sections" />
-          <div
-            data-cy="section-wrapper"
-            className="section-wrapper"
-          >
-            {arr.map((ele, i) => (
-              <section
-                id={`section-${i}`}
-                key={ele}
-                ref={sectionRefs[i]}
-                className={
-                    currentElementIndexInViewport === i ? 'active' : ''
-                }
-              >
-                {arr[i]}
-              </section>
-            ))}
-          </div>
-          <div className="after-sections" />
         </div>
       )}
     </Scrollspy>
   );
 };
 
-Scrollspy.propTypes = {
-  eleOfList: PropTypes.isRequired,
-
+ScrollSpy.propTypes = {
+  eleOfList: arrayOf(
+    shape({
+      id: number.isRequired,
+    }),
+  ).isRequired,
 };
 export default ScrollSpy;
