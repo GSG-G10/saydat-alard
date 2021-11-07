@@ -1,13 +1,13 @@
+
 li {
   border-radius: 100px !important;
   box-shadow: 0;
 }
 .module {
-  border-radius: 40px !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 160px  !important;
+  margin-top: 140px ;
 }
 .leavesImg {
   position: absolute;
@@ -17,8 +17,6 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  top:55px;
-  right: 30%;
 }
 
 p {
@@ -42,8 +40,8 @@ p {
   padding-right: 16px;
 }
 
-.left-button,
-.right-button {
+.leftButton,
+.rightButton {
   border-radius: 50%;
   background: transparent;
   color: #000000;
@@ -59,6 +57,6 @@ button.cardButton {
   height: 40px;
   border-radius: 50px;
 }
-._2YVEG{
-  font-size: 100px  !important;
+._1Lxpd{
+  width:100% !important;
 }
