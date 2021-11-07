@@ -15,10 +15,10 @@
   "scripts": {
     "client": "cd client && npm start",
     "server": "cd server && npm run dev",
-    "lint-fix": "cd server && npm run lint && cd ../client && npm run lint-front",
-    "start": "cd server && npm run start",
+    "install": "cd server && npm i && cd ../client && npm i && cd ..",
     "heroku-postbuild": "NODE_ENV=production cd client && npm run build",
-    "install": "cd server && npm i && cd ../client && npm i && cd .."
+    "lint-fix": "cd server && npm run lint && cd ../client && npm run lint-front",
+    "start": "cd server && npm run start"
   },
   "pre-commit": [
     "lint-fix"
