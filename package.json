@@ -17,7 +17,7 @@
     "server": "cd server && npm run dev",
     "lint-fix": "cd server && npm run lint && cd ../client && npm run lint-front",
     "start": "cd server && npm run start",
-    "heroku-postbuild‏": "cd client && npm run build",
+    "heroku-postbuild": "NODE_ENV=production cd client && npm run build",
     "install": "cd server && npm i && cd ../client && npm i && cd .."
   },
   "pre-commit": [
