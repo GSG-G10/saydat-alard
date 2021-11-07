@@ -1,11 +1,9 @@
 import React from 'react';
 import { Modal, Spin } from 'antd';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.css';
 
 function StoryModal({ visible, storyInfo, handleVisible }) {
-  const push = useHistory();
   const {
     image, content, name, title,
   } = storyInfo;
