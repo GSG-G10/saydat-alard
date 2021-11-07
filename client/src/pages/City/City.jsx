@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import BackgroundImg from '../../components/BackgroundImg';
 import StoryCard from '../../components/common/Story';
 import { AuthContext } from '../../context/AuthContext';
@@ -6,11 +6,10 @@ import { CityContext } from '../../context/CityContext';
 import CityInformation from './CityInformation';
 import ScrollSpy from '../../components/common/ScrollSpy';
 import Search from '../../components/common/search';
-import StoryModal from '../../components/Story';
 import HeaderTitle from '../../components/common/Title';
+import Footer from '../../components/common/Footer';
 
 function City() {
-  const [visibleId, setVisibleId] = useState(0);
   const { userData } = useContext(AuthContext);
   const { cityData: cityInfo } = useContext(CityContext);
   const { stories, cityData } = cityInfo;
@@ -27,34 +26,26 @@ function City() {
         cityName="عكاا"
       />
 
-      <div>
-        <div id="section-0" className="section-info">
-          <CityInformation cityData={cityData} />
-        </div>
+      <div id="section-0" className="section-info">
+        <CityInformation cityData={cityData} />
+      </div>
 
-        <div id="section-1" className="section-stories">
-
-          <HeaderTitle text="القصص" level={1} className="stories-title" />
-
-          <div className="stories">
-            <StoryModal
-              visible={visibleId}
-              handleVisible={setVisibleId}
-            />
-            {stories?.length
+      <div id="section-1" className="section-stories">
+        <HeaderTitle text="القصص" level={1} className="stories-title" />
+        {stories?.length
           && stories.map((story) => (
             <StoryCard
               key={story.id}
               storyInfo={story}
               userInfo={userData.id}
-              handleClick={setVisibleId}
             />
           ))}
-          </div>
-
-        </div>
       </div>
+
+      <Footer />
+
     </div>
+
   );
 }
 

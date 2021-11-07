@@ -9,11 +9,17 @@
 .scroll-nav, 
 .background-img-section, 
 .search-container,
-.section-info,
-.section-stories {
+.section-info {
   margin-bottom: 8vh;
   position: relative;
 }
+
+.footer {
+  margin-top: 20vh;
+  position: relative;
+}
+
+
 
 .city-info-container{
   position: relative;
@@ -21,10 +27,10 @@
   padding-top: 120px;
 }
 .city-information-section{
-  height: 75vh;
+  height: 65vh;
   background-repeat: no-repeat;
   background-size: cover;
-  width:62%;
+  width:85%;
   margin: auto;
   padding: 20px 40px 20px 20px;
   border-radius: 15px;
@@ -34,9 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 90%;
-  margin: auto;
-  margin-top: 30px;
+  width: 85%;
 }
 .stories {
   display: flex;
@@ -52,14 +56,14 @@ div.ant-typography{
  .tree{
   position: absolute;
   top: 16px;
-  right: 215px;
+  right: 50px;
   width: 70px;
   height: 150px;
 }
 .tree1 {
   position: absolute;
-  bottom: -50px;
-  left: 200px;
+  bottom: -20px;
+  left: 100px;
   width: 100px;
   height: 170px;
 }

@@ -1,27 +1,27 @@
-import React, { useContext } from 'react';
-import { Modal } from 'antd';
+import React from 'react';
+import { Modal, Spin } from 'antd';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.css';
-import { CityContext } from '../../context/CityContext';
 
-function StoryModal({ visible, handleVisible }) {
-  const { cityData: cityInfo } = useContext(CityContext);
-  const { stories } = cityInfo;
-  const visibleStory = stories?.filter((ele) => ele.id === visible);
-  if (visibleStory?.length) {
-    const {
-      id, image, content, name, title, user_id,
-    } = visibleStory[0];
+function StoryModal({ visible, storyInfo, handleVisible }) {
+  const push = useHistory();
+  const {
+    image, content, name, title,
+  } = storyInfo;
 
-    return (
-      <Modal
-        centered
-        visible={visible}
-        onOk={() => handleVisible(0)}
-        onCancel={() => handleVisible(0)}
-        footer={null}
-        width={750}
-      >
+  return (
+    <Modal
+      centered
+      visible={visible}
+      title={title}
+      onOk={() => handleVisible(false)}
+      onCancel={() => handleVisible(false)}
+      footer={null}
+      width={750}
+    >
+      {storyInfo ? (
+
         <div className="storyModal">
 
           <div className="content-container">
@@ -34,14 +34,19 @@ function StoryModal({ visible, handleVisible }) {
           </div>
 
         </div>
-      </Modal>
-    );
-  }
-  return null;
+      ) : <Spin />}
+    </Modal>
+  );
 }
 StoryModal.propTypes = {
-  visible: PropTypes.number.isRequired,
+  visible: PropTypes.bool.isRequired,
   handleVisible: PropTypes.func.isRequired,
+  storyInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default StoryModal;
