@@ -28,7 +28,7 @@ function StoryModal({ visible, storyInfo, handleVisible }) {
           </div>
 
           <div className="image-container">
-            <img className="storyPic" src="https://lh3.googleusercontent.com/proxy/s2SFcqiZan3MrHkwP25078ktEvbc1JLV3TAtKu1iclu6ePqEWQIzeCatVeKQ-ciMde7ORZ5oOYa57U9HkjHOBxRuPepoig9QwZwU9s1DRr1Sew" alt={`${name} صورة من `} />
+            <img className="storyPic" src={image} alt={`${name} صورة من `} />
           </div>
 
         </div>

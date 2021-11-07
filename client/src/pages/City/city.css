@@ -10,7 +10,7 @@
 .background-img-section, 
 .search-container,
 .section-info {
-  margin-bottom: 8vh;
+  margin-bottom: 4vh;
   position: relative;
 }
 
@@ -18,8 +18,6 @@
   margin-top: 20vh;
   position: relative;
 }
-
-
 
 .city-info-container{
   position: relative;
@@ -73,6 +71,14 @@ div.ant-typography{
 }
 h4.ant-typography{
   color: green;
+}
+.prv-img {
+  height: 30vh;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
 }
 @media (max-width:1024px) {
 

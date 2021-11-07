@@ -48,7 +48,7 @@ const StoryCard = ({ storyInfo, userInfo }) => {
                 </div>
               </div>
               <Img
-                src="https://www.aljazeera.net/wp-content/uploads/2021/04/12fg56.jpg?resize=770%2C513"
+                src={storyInfo.image}
                 alt={storyInfo.title}
                 styleClass="card-img"
               />
@@ -65,6 +65,7 @@ StoryCard.propTypes = {
     title: PropTypes.string.isRequired,
     user_id: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
   }).isRequired,
 };
 StoryCard.defaultProps = {
