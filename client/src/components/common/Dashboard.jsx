@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { message } from 'antd';
-import Addstory from '../components/AddStory/Addstory';
-import http from '../services/httpService';
-import '../components/AddStory/Addstory.css';
+import Addstory from '../AddStory/Addstory';
+import http from '../../services/httpService';
+import '../AddStory/Addstory.css';
 
 function Dashboard({ page = 1 }) {
   const [story, setStory] = useState([]);

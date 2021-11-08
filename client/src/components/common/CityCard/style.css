@@ -1,0 +1,13 @@
+.card-green{
+       background-color: white;
+      border: 1px solid #577254;
+      background-color: white;
+      box-shadow: 10px 10px 5px #aaaaaa;
+      border-radius: 40px;
+   } 
+   .site-card-border-less-wrapper{
+       border-radius: 40px;
+       padding: 0;
+       height: 100%;
+   }
+ 

@@ -78,7 +78,7 @@ VALUES
         'في القدس',
         2,
         3,
-        false
+        true
     );
 
 INSERT INTO
