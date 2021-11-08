@@ -1,39 +1,29 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Route, Switch,
-} from 'react-router-dom';
+import { Tabs } from 'antd';
 import CityDashboard from './city/City';
+import './style.css';
+
+const { TabPane } = Tabs;
 
 function Dashboard() {
-  const routes = [
-    {
-      path: '/dashboard',
-      children: CityDashboard,
-
-    },
-    {
-      path: '/dashboard/story',
-      children: CityDashboard,
-
-    },
-    {
-      path: '/dashboard/proverb',
-      children: CityDashboard,
-
-    },
-  ];
   return (
-    <>
-      <p> Dashboard</p>
-      <Router>
-        <Switch>
-          {routes.map((route) => (
-            <Route key={route.path} path={route.path} component={route.children} />
-          ))}
+    <div className="dashboard-page">
 
-        </Switch>
-      </Router>
-    </>
+
+        <Tabs defaultActiveKey="1">
+          <TabPane tab="المدن" key="1">
+            <CityDashboard />
+          </TabPane>
+          <TabPane tab="القصص" key="2">
+            Content of Tab Pane 2
+          </TabPane>
+          <TabPane tab="الأمثال" key="3">
+            Content of Tab Pane 3
+          </TabPane>
+        </Tabs>
+
+    </div>
+
   );
 }
 
