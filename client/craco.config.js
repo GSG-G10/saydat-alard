@@ -10,9 +10,10 @@ module.exports = {
             modifyVars: {
               '@primary-color': '#185503',
               '@border-color-base': 'hsv(0, 0, 85%)',
-              '@font-family': 'Almarai ',
+              '@font-family': "'Aref Ruqaa', serif",
               '@body-background': '#fff',
               '@btn-primary-color': '#FFFFFF',
+
             },
             javascriptEnabled: true,
           },
