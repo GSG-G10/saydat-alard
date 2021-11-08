@@ -4,18 +4,11 @@ import PropTypes from 'prop-types';
 import { AuthContext } from '../context/AuthContext';
 
 function ProtectedRoute(props) {
-  const userInfo = useContext(AuthContext);
+  const { userData } = useContext(AuthContext);
   const { children } = props;
-  const { isAdmin } = userInfo;
+  const { role } = userData;
 
-  return (
-    isAdmin ? (
-      <Route>
-        {children}
-      </Route>
-    ) : <Redirect to={{ pathname: '/' }} />
-
-  );
+  return role ? <Route>{children}</Route> : <Redirect to={{ pathname: '/' }} />;
 }
 ProtectedRoute.propTypes = {
   children: PropTypes.element.isRequired,
