@@ -1,93 +1,275 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import { Table, message, Modal } from 'antd';
 import http from '../../services/httpService';
-import { Table, message } from 'antd';
 
 function CityTable() {
-    const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [modalState, setModalState] = useState({
+    isVisible: false,
+    data: null,
+  });
 
-    const getDashBoardCities = async () => {
-        const url = '/api/v1/dashboard/city';
-        const response = await http
-          .get(url)
-          .catch((err) => {
-            message.error(err.message);
-          });
-        return response;
-      }; useEffect(() => {
-        getDashBoardCities().then((response) => {
-          if (response) {
-            const { data } = response;
-            console.log("response",response);
-            if (data?.cities) {
-              setCities(data.cities);
-            }
-          }
-        });
-      }, []);
-    
-      const editCityDashboard = async () => {
-        const url = '/api/v1/city';
-        const response = await http.patch(url).catch((err) =>{
-            message.error(err.message);
-        });
-        return response;
+  const getDashBoardCities = async () => {
+    const url = '/api/v1/dashboard/city';
+    const response = await http.get(url).catch((err) => {
+      message.error(err.message);
+    });
+    return response;
+  };
+  useEffect(() => {
+    getDashBoardCities().then((response) => {
+      if (response) {
+        const { data } = response;
+        if (data?.cities) {
+          setCities(data.cities);
+        }
       }
+    });
+  }, []);
 
+  const onEditCityDashboard = async (text, record, index) => {
+    console.log('record', record.name);
+    setModalState({ isVisible: true, data: record });
+  };
 
+  const editCity = async (e) => {
+    e.preventDefault();
+    const url = '/api/v1/dashboard/city';
+    console.log('input', {
+      name: e.target.name.value,
+      location: e.target.location.value,
+      image: e.target.image.value,
+      quotation: e.target.quotation.value,
+    });
+    const response = await http
+      .patch(url, {
+        name: e.target.name.value,
+        location: e.target.location.value,
+        area: e.target.area.value,
+        image: e.target.image.value,
+        quotation: e.target.quotation.value,
+      })
+      .catch((err) => {
+        message.error(err.message);
+      });
+    setModalState((prev) => ({ ...prev, isVisible: false }));
+    return response;
+  };
 
-
-
+  const deleteCityDashboard = async () => {
+    try {
+      await http.delete(`/api/v1/dashboard/city/${Data.cities.id}`);
+      return message.success('تم حذف المدينة بنجاح');
+    } catch (error) {
+      if (error) {
+        throw new Error("sdasdasd");
+      }
+      return message.error(error.response.data.message);
+    }
+  };
 
   const columns = [
-    { title: 'Name', dataIndex: 'name', key: 'name' },
-    { title: 'Age', dataIndex: 'age', key: 'age' },
-    { title: 'Address', dataIndex: 'address', key: 'address' },
-    { title: 'الاسم', dataIndex: 'name', key: 'name' },
-    { title: 'المساحة', dataIndex: 'age', key: 'age' },
-    { title: 'الموقع', dataIndex: 'address', key: 'address' },
+    { title: 'المدينة', dataIndex: 'name', key: 'name' },
+    { title: 'المساحة', dataIndex: 'area', key: 'area' },
+    { title: 'الموقع', dataIndex: 'location', key: 'location' },
+    { title: 'الاقتباس', dataIndex: 'quotation', key: 'quotation' },
     {
-        title: 'حذف',
-        dataIndex: '',
-        key: 'x',
-        render: () => <a href="/">Delete</a>,
-      },
+      title: 'حذف',
+      dataIndex: '',
+      key: 'x',
+      render: () => <button onClick={deleteCityDashboard}> حذف</button>,
+    },
     {
-    title: 'تعديل',
-    dataIndex: '',
-    key: 'y',
-    render: () => <a href="/">Delete</a>,
+      title: 'تعديل',
+      dataIndex: '',
+      key: 'y',
+      render: (text, record, index) => (
+        <button onClick={() => onEditCityDashboard(text, record, index)}>
+          {' '}
+          تعديل
+        </button>
+      ),
     },
   ];
 
-//   const data = [
-//       // {
-//       //   key: 2,
-//       //   name: 'Jim Green',
-//       //   age: 42,
-//       //   address: 'London No. 1 Lake Park',
-//       //   description: 'My name is Jim Green, I am 42 years old, living in London No. 1 Lake Park.',
-//       // },
-//     // {
-//     //   key: city.id,
-//     //   name: city.name,
-//     //   area: city.area,
-//     //   image: city.image,
-//     //   quotation: city.quotation,
-//     // },
-  
-//   ];
-
   return (
-    <Table
-      columns={columns}
-      expandable={{
-        expandedRowRender: (record) => <p style={{ margin: 0 }}>{record.description}</p>,
-        rowExpandable: (record) => record.name !== 'Not Expandable',
-      }}
-      dataSource={cities}
-    />
-
+    <>
+      <Table columns={columns} dataSource={cities} rowKey={(row) => row.id} />
+      {modalState.isVisible && <Modal
+        title="تعديل المدينة"
+        centered
+        visible={modalState.isVisible}
+        onCancel={() => setModalState({ data: null, isVisible: false })}
+        okText="موافق"
+        cancelText="إلغاء"
+        footer={null}
+        width={800}
+        style={{ borderRadius: '50px' }}
+      >
+        <form onSubmit={editCity}>
+          <div
+            className=""
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
+              <label
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  height: '30px',
+                }}
+              >
+                الإسم:
+                <input
+                  name="name"
+                  style={{
+                    height: '100%',
+                    border: '1px solid #c4c4c4',
+                    borderRadius: '4px',
+                    padding: '0 2px',
+                    marginRight: '16px',
+                  }}
+                  type="text"
+                  defaultValue={modalState.data?.name}
+                />
+              </label>
+              <label
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  height: '30px',
+                }}
+              >
+                الموقع:
+                <input
+                  name="location"
+                  style={{
+                    height: '100%',
+                    border: '1px solid #c4c4c4',
+                    borderRadius: '4px',
+                    padding: '0 2px',
+                    marginRight: '16px',
+                  }}
+                  type="text"
+                  defaultValue={modalState.data?.location}
+                />
+              </label>
+              <label
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  height: '30px',
+                }}
+              >
+                المساحة:
+                <input
+                  name="area"
+                  style={{
+                    height: '100%',
+                    border: '1px solid #c4c4c4',
+                    borderRadius: '4px',
+                    padding: '0 2px',
+                    marginRight: '16px',
+                  }}
+                  type="text"
+                  defaultValue={modalState.data?.area}
+                />
+              </label>
+              <label
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  height: '30px',
+                }}
+              >
+                الإقتباس:
+                <input
+                  name="quotation"
+                  style={{
+                    height: '100%',
+                    border: '1px solid #c4c4c4',
+                    borderRadius: '4px',
+                    padding: '0 2px',
+                    marginRight: '16px',
+                  }}
+                  type="text"
+                  defaultValue={modalState.data?.quotation}
+                />
+              </label>
+            </div>
+            <div style={{ flexBasis: '50%' }}>
+              <label
+                style={{
+                  marginBottom: '10px',
+                  display: 'inline-block',
+                  height: '30px',
+                }}
+              >
+                الصورة:
+                <input
+                  style={{
+                    height: '100%',
+                    border: '1px solid #c4c4c4',
+                    borderRadius: '4px',
+                    padding: '0 2px',
+                    marginRight: '16px',
+                  }}
+                  type="text"
+                  name="image"
+                  onChange={(e) =>
+                    setModalState((prev) => ({
+                      ...prev,
+                      data: { ...prev.data, image: e.target.value },
+                    }))
+                  }
+                />
+              </label>
+              <img
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  minHeight: '50px',
+                  minHeight: '150px',
+                  display: 'block',
+                }}
+                className=""
+                src={modalState.data?.image}
+                alt={`${modalState.data?.name} صورة من `}
+              />
+            </div>
+          </div>
+          <br />
+          <hr />
+          <br />
+          <button
+            type="submit"
+            style={{ marginLeft: '16px', padding: '1px 2px', minWidth: '70px' }}
+          >
+            موافق
+          </button>
+          <button
+            type="button"
+            style={{ padding: '1px 2px', minWidth: '70px' }}
+          >
+            إلغاء
+          </button>
+        </form>
+      </Modal>
+}    </>
   );
 }
 

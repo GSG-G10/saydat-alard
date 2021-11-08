@@ -7,7 +7,7 @@ import style from './style.module.css';
 
 const signInButton = () => (
   
-    <Link key="1" to="/login" className={style.navLink}>تسجبل دخول  </Link>
+    <Link key="1" to="/login" className={style.navLink}>تسجيل دخول  </Link>
   
 );
 const signUpButton = () => (
@@ -23,7 +23,7 @@ const accountButton = (name) => (
 );
 const logoutButton = (logout) => (
   <Button key="5" style={{borderRadius:' 20px'}} onClick={logout}>
-    تسجبل خروج
+    تسجيل خروج
   </Button>
 );
 
