@@ -5,21 +5,21 @@ import http from '../services/httpService';
 
 export const AuthContext = createContext();
 
+const getData = async (cb) => {
+  try {
+    const data = await http.get('/api/v1/userinfo');
+    cb({ ...data });
+  } catch (error) {
+    cb(null);
+  }
+};
+
 function AuthProvider({ children }) {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   const history = useHistory();
 
   useEffect(() => {
-    try {
-      const getData = async () => {
-        const data = await http.get('/api/v1/userinfo');
-        setUserData(data);
-      };
-      getData();
-    } catch (error) {
-      setUserData(null);
-    }
-
+    getData(setUserData);
     return () => {
       http.source.cancel('request stopped by user');
     };
@@ -32,9 +32,12 @@ function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ userData, setUserData, logout }}>
-      {children}
-    </AuthContext.Provider>
+    userData ? (
+      <AuthContext.Provider value={{ userData, setUserData, logout }}>
+        {children}
+      </AuthContext.Provider>
+    ) : <p>Loading</p>
+
   );
 }
 AuthProvider.propTypes = {
