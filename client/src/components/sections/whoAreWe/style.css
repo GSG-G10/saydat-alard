@@ -1,9 +1,8 @@
 
 .section-waw {
-    margin: 150px auto;
-    margin-top: 30px;
+    margin: 50px auto ;
+    padding-top: 100px;
     width: 90%;
-    height: 90vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;

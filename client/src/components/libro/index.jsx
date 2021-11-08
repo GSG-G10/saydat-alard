@@ -12,7 +12,7 @@ function Libro() {
 
   const getProverbs = async () => {
     try {
-      const proverbsData = await http.get('api/v1/proverbs?char=ا&page=1');
+      const proverbsData = await http.get('api/v1/proverbs');
       if (proverbsData.data.proverbs.length) {
         setProverbs(proverbsData.data.proverbs);
       } else {
@@ -63,7 +63,7 @@ function Libro() {
           {proverbs.length > 0
             ? numbers.map((ele, i) => ((ele <= totalPages)
               ? (
-                <div key={ele} className={proverbs.length <= 5 ? 'cont' : 'container'}>
+                <div key={ele} className={proverbs.length <= 5 ? 'cont' : 'proverbContainer'}>
                   <h3>الأمثـــــــال الشعبــيــة</h3>
                   <div className={proverbs.length <= 5 ? 'pro' : 'proverbs'}>
                     {proverbs.map((element, index) => ((index < ele * 10 && i * 10 <= index) ? <p key={element.id}>{element.content}</p> : ''))}

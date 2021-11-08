@@ -17,7 +17,7 @@
     box-sizing: border-box;
     background-image: url('./img/oldpaper.jpg') ;
     background-size:contain; 
-    
+
 }
 
 .App-page {
@@ -34,7 +34,7 @@
 .rigth{
     width: 50%;
     margin:20px 30px 20px 0px;
-    
+
 }
 .left{
     width: 50%;
@@ -42,7 +42,7 @@
 }
 .proverbs {
     width: 100%;
-  height: 77%;
+  height: 50%;
   display: flex;
   flex-direction:column;
   flex-wrap: wrap;
@@ -53,23 +53,23 @@
     height: 9%;
     opacity: 0.7;
     font-family: 'Noto Nastaliq Urdu', serif;
-  
+
 }
-.container{
+.proverbContainer{
     width: 100%;
     height: 79%;
     display: flex;
   flex-direction:column;
-  
+  justify-content: space-around;
 }
-.container h3{
+.proverbContainer h3{
     margin-right: 240px;
-    /* margin-top: 35px; */
+     margin-top: 35px; 
     font-weight: bold;
     font-size: 30px;
     opacity: 0.5;
     font-family: 'Noto Nastaliq Urdu', serif;
-    
+
 }
 .btn{
     color:rgb(1, 49, 1);
@@ -90,22 +90,21 @@
     height: 9%;
     opacity: 0.7;
     font-family: 'Noto Nastaliq Urdu', serif;
-  
+
 }
 .cont{
     width: 100%;
     height: 79%;
     display: flex;
   flex-direction:column;
-  
+
 }
 .cont h3{
     margin-right: 240px;
-    /* margin-top: 35px; */
+    margin-top: 35px; 
     font-weight: bold;
     font-size: 30px;
     opacity: 0.5;
     font-family: 'Noto Nastaliq Urdu', serif;
-    
-}
 
+}
