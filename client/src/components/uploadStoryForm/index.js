@@ -49,8 +49,8 @@ function StoryForm({ visible, setVisible }) {
               data: previewSource, title, content, cityId: id,
             });
           })
-          .catch((info) => {
-            message.error(info);
+          .catch((err) => {
+            message.error(err);
           });
       }}
       style={{ padding: '20px' }}

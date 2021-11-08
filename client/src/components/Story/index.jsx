@@ -1,42 +1,50 @@
 import React from 'react';
-import { Modal } from 'antd';
+import { Modal, Spin } from 'antd';
 import PropTypes from 'prop-types';
 import './style.css';
 
-function StoryModal({
-  visible, setVisible, text, userName, photo,
-}) {
+function StoryModal({ visible, storyInfo, handleVisible }) {
+  const {
+    image, content, name, title,
+  } = storyInfo;
+
   return (
     <Modal
-      title="محتوى هذه القصة"
       centered
       visible={visible}
-      onOk={() => setVisible(false)}
-      onCancel={() => setVisible(false)}
+      title={title}
+      onOk={() => handleVisible(false)}
+      onCancel={() => handleVisible(false)}
       footer={null}
-      width={800}
-      style={{ borderRadius: '50px' }}
+      width={750}
     >
-      <div className="storyModal">
-        <div>
-          <p className="text">{text}</p>
-          <p className="userName">
-            -
-            {userName}
-          </p>
+      {storyInfo ? (
+
+        <div className="storyModal">
+
+          <div className="content-container">
+            <p className="text">{content}</p>
+            <p className="userName">{name}</p>
+          </div>
+
+          <div className="image-container">
+            <img className="storyPic" src={image} alt={`${name} صورة من `} />
+          </div>
+
         </div>
-        <div><img className="storyPic" src={photo} alt={`${userName} صورة من `} /></div>
-      </div>
+      ) : <Spin />}
     </Modal>
   );
 }
 StoryModal.propTypes = {
   visible: PropTypes.bool.isRequired,
-  setVisible: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
-
+  handleVisible: PropTypes.func.isRequired,
+  storyInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default StoryModal;

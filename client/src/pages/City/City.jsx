@@ -1,45 +1,80 @@
-import React, { useState, useContext } from 'react';
-import { Button } from 'antd';
+import React, { useContext, useState } from 'react';
+import { Spin } from 'antd';
+import CityInformation from './CityInformation';
+import NavBar from '../../components/common/NavBar';
 import BackgroundImg from '../../components/BackgroundImg';
 import StoryCard from '../../components/common/Story';
 import { AuthContext } from '../../context/AuthContext';
 import { CityContext } from '../../context/CityContext';
-import StoryModal from '../../components/Story';
-import CityInformation from './CityInformation';
+import ScrollSpy from '../../components/common/ScrollSpy';
+import Search from '../../components/common/search';
+import HeaderTitle from '../../components/common/Title';
+import Footer from '../../components/common/Footer';
+import Button from '../../components/common/Button';
+import StoryForm from '../../components/uploadStoryForm';
 
 function City() {
-  const [visible, setVisible] = useState(false);
   const { userData } = useContext(AuthContext);
   const { cityData: cityInfo } = useContext(CityContext);
+  const [visibleAddStory, setVisibleAddStory] = useState(false);
   const { stories, cityData } = cityInfo;
   return (
-    <>
-      {/* <ScrollSpy /> */}
+    <div className="city-page">
+      <NavBar />
+      <ScrollSpy eleOfList={['عن المدينة', 'قصص']} />
 
-      <BackgroundImg
-        img="https://www.alquds.co.uk/wp-content/uploads/2021/09/20210910112926afpp-afp_9mk4vg.h-730x438.jpg"
-        quotation="أجمل المدن القديمة و أقدم المدن الجميلة "
-        cityName="عكاا"
-      />
-      <div>
-        <div>
-          <CityInformation cityData={cityData} />
-          <Button type="primary" onClick={() => setVisible(true)}>
-            Open Modal of 1000px width
-          </Button>
-          <StoryModal
-            visible={visible}
-            setVisible={setVisible}
-            text="هي اليوم مدينة صغيرة وفقيرة ومهمّشة، لا يتجاوز عدد سكانها 50 ألف نسمة، ثلثهم من العرب، وهي مقسّمة إلى أربعة أحياء أساسيّة: حيّ عكا القديمة، حيّ عكا الانتدابيّة - مركز المدينة (حي الرشاديّة)، الحيّ الشماليّ والحيّ الشرقيّ. وجميع سكان عكا القديمة من العرب الفلسطينيّين/ أما الحيّ الشرقيّ فجميع سكانه، تقريبًا، من اليهود. "
-            userName="نادية التميمي"
+      <Search />
+
+      {cityData ? (
+        <>
+          <BackgroundImg
+            img={cityData.image}
+            quotation={cityData.quotation}
+            cityName={cityData.name}
           />
-        </div>
+          <div id="section-0" className="section-info">
+            <CityInformation cityData={cityData} />
+          </div>
 
-        {stories?.length && stories.map((story) => (
-          <StoryCard key={story.id} storyInfo={story} userInfo={userData.id} />
-        ))}
-      </div>
-    </>
+          <div id="section-1" className="section-stories">
+
+            <div className="title-container">
+              <HeaderTitle text="القصص" level={1} className="stories-title" />
+              {userData.id && (
+                <Button
+                  text="أضف قصتك"
+                  type="default"
+                  btnHandler={() => { setVisibleAddStory(true); }}
+                  load={false}
+                />
+              )}
+              {visibleAddStory && (
+                <StoryForm
+                  visible={visibleAddStory}
+                  setVisible={setVisibleAddStory}
+                />
+              )}
+            </div>
+
+            {stories?.length ? (
+              stories.map((story) => (
+                <StoryCard
+                  key={story.id}
+                  storyInfo={story}
+                  userInfo={userData.id}
+                />
+              ))
+            ) : (
+              <HeaderTitle text="لا يوجد قصص مضافة إلى هذه المدينة" level={2} />
+            )}
+          </div>
+        </>
+      ) : (
+        <Spin />
+      )}
+
+      <Footer />
+    </div>
   );
 }
 

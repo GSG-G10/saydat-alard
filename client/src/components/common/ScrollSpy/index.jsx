@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Scrollspy } from '@makotot/ghostui';
 import PropTypes from 'prop-types';
-import './scrollSpy.css';
+import './style.css';
 
 const { number, shape, arrayOf } = PropTypes;
 

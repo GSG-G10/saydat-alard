@@ -14,6 +14,7 @@ import tree1 from '../../utils/images/tree1.png';
 function CityInformation(props) {
   const { cityData } = props;
   const { id } = useParams();
+  // eslint-disable-next-line no-unused-vars
   const [families, setfamilies] = useState([]);
   useEffect(() => {
     const getCityData = async () => {
@@ -55,6 +56,7 @@ function CityInformation(props) {
             <div className="no-data">
               <HeaderTitle text="يتم العمل على إضافة معلومات عن هذه المدينة /القرية يمكنك المساهمة بإرسال المعلومات على هذا البريد الإلكتروني " level={3} />
               <HeaderTitle text="saydat.alard@gmail.com" level={4} />
+              {JSON.stringify(families)}
             </div>
           )
       }

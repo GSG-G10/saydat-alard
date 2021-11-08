@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { AutoComplete, message } from 'antd';
 import { useHistory } from 'react-router-dom';
-import http from '../../services/httpService';
-import config from '../../services/config.json';
-import Img from './Img';
+import http from '../../../services/httpService';
+import config from '../../../services/config.json';
+import Img from '../Img';
+import keyIcon from '../../../utils/images/key.png'
 
 import './css/search.css';
 import keyIcon from '../../utils/images/key.png';
