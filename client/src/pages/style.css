@@ -1,0 +1,45 @@
+.slider-container{
+  /* opacity: 5%; */
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.demo-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.demo-bg {
+  opacity: 0.05;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.demo-content {
+  position: relative;
+  margin: 5% auto;
+  width: 1000px;
+  height: 1000px;
+}
+
+.slider-container { 
+  background-image: url('https://storage.googleapis.com/rqiim-storage/5a77fa4c5d87410011c253aa.ab56c99bf49ba0b68ee20d5b.jpeg');
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  opacity: 0.75;
+}
+
+
+.slider-tree{
+  background-image: url('https://www.onlygfx.com/wp-content/uploads/2019/09/6-square-tree-branch-frame-1.png');
+ 
+}
