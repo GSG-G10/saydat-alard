@@ -5,4 +5,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./utils/images/kof.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.site-nav-bar .ant-page-header-heading {
+  align-items: center;
+}
+
+.site-card-border-less-wrapper {
+  padding: 20px;
+  background: #315f44;
+  height: 100%;
+  border-radius: 50px;
 }
