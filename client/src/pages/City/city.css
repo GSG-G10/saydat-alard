@@ -75,6 +75,9 @@ h4.ant-typography{
 .prv-img {
   height: 30vh;
 }
+.city-page .site-page-header-ghost-wrapper {
+  width: 90%;
+}
 
 .title-container {
   display: flex;

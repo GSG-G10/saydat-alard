@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Spin } from 'antd';
+import CityInformation from './CityInformation';
+import NavBar from '../../components/common/NavBar';
 import BackgroundImg from '../../components/BackgroundImg';
 import StoryCard from '../../components/common/Story';
 import { AuthContext } from '../../context/AuthContext';
 import { CityContext } from '../../context/CityContext';
-import CityInformation from './CityInformation';
 import ScrollSpy from '../../components/common/ScrollSpy';
 import Search from '../../components/common/search';
 import HeaderTitle from '../../components/common/Title';
@@ -19,6 +20,7 @@ function City() {
   const { stories, cityData } = cityInfo;
   return (
     <div className="city-page">
+      <NavBar />
       <ScrollSpy eleOfList={['عن المدينة', 'قصص']} />
 
       <Search />
@@ -42,7 +44,7 @@ function City() {
                 <Button
                   text="أضف قصتك"
                   type="default"
-                  btnHandler={setVisibleAddStory}
+                  btnHandler={() => { setVisibleAddStory(true); }}
                   load={false}
                 />
               )}

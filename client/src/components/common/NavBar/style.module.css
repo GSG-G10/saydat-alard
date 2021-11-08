@@ -1,0 +1,22 @@
+.account-name {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 12px;
+  color: #185503;
+}
+.navButton{
+  border-radius: 20px;
+  padding: 10px;
+  border: solid;
+  border-width: 1px;
+  color: #185503;
+
+}
+.example-link-icon{
+  max-width: 300px;
+  height: 100%;
+}
+.navLink{
+  color: #185503;
+}
