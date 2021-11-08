@@ -9,7 +9,7 @@ import Footer from '../components/common/Footer';
 
 function Home() {
   return (
-    <div>
+    <>
       <NavBar />
       <ScrollSpy eleOfList={['بلادنا', 'من نحن', 'الأمثال الشعبية ']} />
       <SearchCity />
@@ -17,7 +17,7 @@ function Home() {
       <WhoAreWe />
       <Book />
       <Footer />
-    </div>
+    </>
   );
 }
 
