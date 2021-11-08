@@ -62,6 +62,7 @@ function CityForm({ visible, setVisible }) {
             message.success('تمت إضافة المدينة بنجاح');
           })
           .catch((info) => {
+            // eslint-disable-next-line no-console
             console.log(info, 'info');
           });
       }}
