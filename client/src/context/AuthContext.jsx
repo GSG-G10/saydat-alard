@@ -4,27 +4,30 @@ import http from '../services/httpService';
 
 export const AuthContext = createContext();
 
-function AuthProvider({ children }) {
-  const [userData, setUserData] = useState({});
-  useEffect(() => {
-    try {
-      const getData = async () => {
-        const data = await http.get('/api/v1/userinfo');
-        setUserData(data);
-      };
-      getData();
-    } catch (error) {
-      setUserData(null);
-    }
+const getData = async (cb) => {
+  try {
+    const data = await http.get('/api/v1/userinfo');
+    cb({ ...data });
+  } catch (error) {
+    cb(null);
+  }
+};
 
+function AuthProvider({ children }) {
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+    getData(setUserData);
     return () => {
       http.source.cancel('request stopped by user');
     };
   }, []);
   return (
-    <AuthContext.Provider value={{ userData, setUserData }}>
-      {children}
-    </AuthContext.Provider>
+    userData ? (
+      <AuthContext.Provider value={{ userData, setUserData }}>
+        {children}
+      </AuthContext.Provider>
+    ) : <p>Loading</p>
+
   );
 }
 AuthProvider.propTypes = {
