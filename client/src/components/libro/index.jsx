@@ -13,6 +13,7 @@ function Libro() {
   const getProverbs = async () => {
     try {
       const proverbsData = await http.get('api/v1/proverbs?char=ا&page=1');
+      console.log(proverbsData);
       if (proverbsData.data.proverbs.length) {
         setProverbs(proverbsData.data.proverbs);
       } else {
