@@ -40,7 +40,7 @@ function City() {
 
             <div className="title-container">
               <HeaderTitle text="القصص" level={1} className="stories-title" />
-              {userData.id && (
+              {userData?.id && (
                 <Button
                   text="أضف قصتك"
                   type="default"
@@ -55,13 +55,12 @@ function City() {
                 />
               )}
             </div>
-
             {stories?.length ? (
               stories.map((story) => (
                 <StoryCard
                   key={story.id}
                   storyInfo={story}
-                  userInfo={userData.id}
+                  userInfo={userData?.id ? userData.id : null}
                 />
               ))
             ) : (

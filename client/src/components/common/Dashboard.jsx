@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { message } from 'antd';
 import Addstory from '../AddStory/Addstory';
@@ -9,16 +8,12 @@ import '../AddStory/Addstory.css';
 function Dashboard({ page = 1 }) {
   const [story, setStory] = useState([]);
   const [requestSent, setRequestSent] = useState(false);
-  const history = useHistory();
 
   const fetchData = async () => {
     try {
       const { data } = await http.get(`/api/v1/story?page=${page}`);
       return setStory(data);
     } catch (error) {
-      if (error.response.status === 500) {
-        return history.push('/error500');
-      }
       return message.error(error.response.data.message);
     }
   };
@@ -26,7 +21,6 @@ function Dashboard({ page = 1 }) {
   useEffect(() => {
     setRequestSent(false);
     fetchData();
-    // fetch dashboard data
   }, [requestSent]);
   return (
     <div className="addStory">
