@@ -6,7 +6,7 @@ import Title from '../../common/Title';
 import Paragraph from '../../common/Paragraph';
 
 const WhoAreWe = () => (
-  <div className="section-waw">
+  <div className="section-waw" id="section-1">
     <Img src={palestineMap} alt="map Of Palestine" styleClass="image-palestine" />
     <div className="content-waw">
       <Title text="من نحن" level={1} className="title-waw" />

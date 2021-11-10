@@ -57,7 +57,7 @@ function Addproverbs({ visible, setVisible }) {
     </Modal>
   );
 }
-Addproverbs.propType = {
+Addproverbs.propTypes = {
   visible: PropTypes.bool.isRequired,
   setVisible: PropTypes.func.isRequired,
 };
