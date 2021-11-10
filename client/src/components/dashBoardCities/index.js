@@ -29,19 +29,12 @@ function CityTable() {
   }, []);
 
   const onEditCityDashboard = async (text, record, index) => {
-    console.log('record', record.name);
     setModalState({ isVisible: true, data: record });
   };
 
   const editCity = async (e) => {
     e.preventDefault();
-    const url = '/api/v1/dashboard/city';
-    console.log('input', {
-      name: e.target.name.value,
-      location: e.target.location.value,
-      image: e.target.image.value,
-      quotation: e.target.quotation.value,
-    });
+    const url = `/api/v1/dashboard/city/${modalState.data.id}`;
     const response = await http
       .patch(url, {
         name: e.target.name.value,
@@ -57,13 +50,17 @@ function CityTable() {
     return response;
   };
 
-  const deleteCityDashboard = async () => {
+  const deleteCityDashboard = async (record, index) => {
     try {
-      await http.delete(`/api/v1/dashboard/city/${Data.cities.id}`);
+      await http.delete(`/api/v1/dashboard/city/${record.id}`);
+      setCities((prev) => {
+        prev.splice(index, 1);
+        return [...prev];
+      });
       return message.success('تم حذف المدينة بنجاح');
     } catch (error) {
       if (error) {
-        throw new Error("sdasdasd");
+        throw new Error('sdasdasd');
       }
       return message.error(error.response.data.message);
     }
@@ -78,7 +75,9 @@ function CityTable() {
       title: 'حذف',
       dataIndex: '',
       key: 'x',
-      render: () => <button onClick={deleteCityDashboard}> حذف</button>,
+      render: (_, record, index) => (
+        <button onClick={() => deleteCityDashboard(record, index)}> حذف</button>
+      ),
     },
     {
       title: 'تعديل',
@@ -96,180 +95,186 @@ function CityTable() {
   return (
     <>
       <Table columns={columns} dataSource={cities} rowKey={(row) => row.id} />
-      {modalState.isVisible && <Modal
-        title="تعديل المدينة"
-        centered
-        visible={modalState.isVisible}
-        onCancel={() => setModalState({ data: null, isVisible: false })}
-        okText="موافق"
-        cancelText="إلغاء"
-        footer={null}
-        width={800}
-        style={{ borderRadius: '50px' }}
-      >
-        <form onSubmit={editCity}>
-          <div
-            className=""
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
+      {modalState.isVisible && (
+        <Modal
+          title="تعديل المدينة"
+          centered
+          visible={modalState.isVisible}
+          onCancel={() => setModalState({ data: null, isVisible: false })}
+          okText="موافق"
+          cancelText="إلغاء"
+          footer={null}
+          width={800}
+          style={{ borderRadius: '50px' }}
+        >
+          <form onSubmit={editCity}>
             <div
+              className=""
               style={{
                 display: 'flex',
-                flexDirection: 'column',
                 justifyContent: 'space-between',
               }}
             >
-              <label
+              <div
                 style={{
                   display: 'flex',
+                  flexDirection: 'column',
                   justifyContent: 'space-between',
-                  alignItems: 'center',
-                  height: '30px',
                 }}
               >
-                الإسم:
-                <input
-                  name="name"
+                <label
                   style={{
-                    height: '100%',
-                    border: '1px solid #c4c4c4',
-                    borderRadius: '4px',
-                    padding: '0 2px',
-                    marginRight: '16px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    height: '30px',
                   }}
-                  type="text"
-                  defaultValue={modalState.data?.name}
-                />
-              </label>
-              <label
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  height: '30px',
-                }}
-              >
-                الموقع:
-                <input
-                  name="location"
+                >
+                  الإسم:
+                  <input
+                    name="name"
+                    style={{
+                      height: '100%',
+                      border: '1px solid #c4c4c4',
+                      borderRadius: '4px',
+                      padding: '0 2px',
+                      marginRight: '16px',
+                    }}
+                    type="text"
+                    defaultValue={modalState.data?.name}
+                  />
+                </label>
+                <label
                   style={{
-                    height: '100%',
-                    border: '1px solid #c4c4c4',
-                    borderRadius: '4px',
-                    padding: '0 2px',
-                    marginRight: '16px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    height: '30px',
                   }}
-                  type="text"
-                  defaultValue={modalState.data?.location}
-                />
-              </label>
-              <label
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  height: '30px',
-                }}
-              >
-                المساحة:
-                <input
-                  name="area"
+                >
+                  الموقع:
+                  <input
+                    name="location"
+                    style={{
+                      height: '100%',
+                      border: '1px solid #c4c4c4',
+                      borderRadius: '4px',
+                      padding: '0 2px',
+                      marginRight: '16px',
+                    }}
+                    type="text"
+                    defaultValue={modalState.data?.location}
+                  />
+                </label>
+                <label
                   style={{
-                    height: '100%',
-                    border: '1px solid #c4c4c4',
-                    borderRadius: '4px',
-                    padding: '0 2px',
-                    marginRight: '16px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    height: '30px',
                   }}
-                  type="text"
-                  defaultValue={modalState.data?.area}
-                />
-              </label>
-              <label
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  height: '30px',
-                }}
-              >
-                الإقتباس:
-                <input
-                  name="quotation"
+                >
+                  المساحة:
+                  <input
+                    name="area"
+                    style={{
+                      height: '100%',
+                      border: '1px solid #c4c4c4',
+                      borderRadius: '4px',
+                      padding: '0 2px',
+                      marginRight: '16px',
+                    }}
+                    type="text"
+                    defaultValue={modalState.data?.area}
+                  />
+                </label>
+                <label
                   style={{
-                    height: '100%',
-                    border: '1px solid #c4c4c4',
-                    borderRadius: '4px',
-                    padding: '0 2px',
-                    marginRight: '16px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    height: '30px',
                   }}
-                  type="text"
-                  defaultValue={modalState.data?.quotation}
+                >
+                  الإقتباس:
+                  <input
+                    name="quotation"
+                    style={{
+                      height: '100%',
+                      border: '1px solid #c4c4c4',
+                      borderRadius: '4px',
+                      padding: '0 2px',
+                      marginRight: '16px',
+                    }}
+                    type="text"
+                    defaultValue={modalState.data?.quotation}
+                  />
+                </label>
+              </div>
+              <div style={{ flexBasis: '50%' }}>
+                <label
+                  style={{
+                    marginBottom: '10px',
+                    display: 'inline-block',
+                    height: '30px',
+                  }}
+                >
+                  الصورة:
+                  <input
+                    style={{
+                      height: '100%',
+                      border: '1px solid #c4c4c4',
+                      borderRadius: '4px',
+                      padding: '0 2px',
+                      marginRight: '16px',
+                    }}
+                    type="text"
+                    name="image"
+                    onChange={(e) =>
+                      setModalState((prev) => ({
+                        ...prev,
+                        data: { ...prev.data, image: e.target.value },
+                      }))
+                    }
+                  />
+                </label>
+                <img
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    minHeight: '50px',
+                    minHeight: '150px',
+                    display: 'block',
+                  }}
+                  className=""
+                  src={modalState.data?.image}
+                  alt={`${modalState.data?.name} صورة من `}
                 />
-              </label>
+              </div>
             </div>
-            <div style={{ flexBasis: '50%' }}>
-              <label
-                style={{
-                  marginBottom: '10px',
-                  display: 'inline-block',
-                  height: '30px',
-                }}
-              >
-                الصورة:
-                <input
-                  style={{
-                    height: '100%',
-                    border: '1px solid #c4c4c4',
-                    borderRadius: '4px',
-                    padding: '0 2px',
-                    marginRight: '16px',
-                  }}
-                  type="text"
-                  name="image"
-                  onChange={(e) =>
-                    setModalState((prev) => ({
-                      ...prev,
-                      data: { ...prev.data, image: e.target.value },
-                    }))
-                  }
-                />
-              </label>
-              <img
-                style={{
-                  maxWidth: '100%',
-                  maxHeight: '100%',
-                  minHeight: '50px',
-                  minHeight: '150px',
-                  display: 'block',
-                }}
-                className=""
-                src={modalState.data?.image}
-                alt={`${modalState.data?.name} صورة من `}
-              />
-            </div>
-          </div>
-          <br />
-          <hr />
-          <br />
-          <button
-            type="submit"
-            style={{ marginLeft: '16px', padding: '1px 2px', minWidth: '70px' }}
-          >
-            موافق
-          </button>
-          <button
-            type="button"
-            style={{ padding: '1px 2px', minWidth: '70px' }}
-          >
-            إلغاء
-          </button>
-        </form>
-      </Modal>
-}    </>
+            <br />
+            <hr />
+            <br />
+            <button
+              type="submit"
+              style={{
+                marginLeft: '16px',
+                padding: '1px 2px',
+                minWidth: '70px',
+              }}
+            >
+              موافق
+            </button>
+            <button
+              type="button"
+              style={{ padding: '1px 2px', minWidth: '70px' }}
+            >
+              إلغاء
+            </button>
+          </form>
+        </Modal>
+      )}{' '}
+    </>
   );
 }
 
