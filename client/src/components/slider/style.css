@@ -2,12 +2,21 @@ li {
   border-radius: 100px !important;
   box-shadow: 0;
 }
-
+.module {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 140px ;
+  box-sizing: border-box;
+}
 .leavesImg {
   position: absolute;
   max-width: 100%;
   max-height: calc(100% - 2rem);
   min-width: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
@@ -31,8 +40,8 @@ p {
   padding-right: 16px;
 }
 
-.left-button,
-.right-button {
+.leftButton,
+.rightButton {
   border-radius: 50%;
   background: transparent;
   color: #000000;
@@ -47,4 +56,7 @@ button.cardButton {
   margin: auto;
   height: 40px;
   border-radius: 40px;
+}
+._1Lxpd{
+  width:100% !important;
 }

@@ -12,7 +12,7 @@ function Libro() {
 
   const getProverbs = async () => {
     try {
-      const proverbsData = await http.get('api/v1/proverbs?char=ا&page=1');
+      const proverbsData = await http.get('api/v1/proverbs');
       if (proverbsData.data.proverbs.length) {
         setProverbs(proverbsData.data.proverbs);
       } else {
@@ -39,10 +39,10 @@ function Libro() {
   const next = () => {
     setSelected((state) => state + 1);
   };
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   return (
 
-    <div className="App">
+    <div className="App" id="section-2">
       <button
         className="btn"
         type="button"
@@ -63,10 +63,10 @@ function Libro() {
           {proverbs.length > 0
             ? numbers.map((ele, i) => ((ele <= totalPages)
               ? (
-                <div className="container">
+                <div key={ele} className={proverbs.length <= 5 ? 'cont' : 'proverbContainer'}>
                   <h3>الأمثـــــــال الشعبــيــة</h3>
-                  <div className="proverbs">
-                    {proverbs.map((element, index) => ((index < ele * 10 && i * 10 <= index) ? <p>{element.content}</p> : ''))}
+                  <div className={proverbs.length <= 5 ? 'pro' : 'proverbs'}>
+                    {proverbs.map((element, index) => ((index < ele * 10 && i * 10 <= index) ? <p key={element.id}>{element.content}</p> : ''))}
                   </div>
                 </div>
               ) : '')) : <p>لا توجد أمثال</p>}

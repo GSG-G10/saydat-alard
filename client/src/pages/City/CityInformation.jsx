@@ -44,8 +44,8 @@ function CityInformation(props) {
 
           ? (
             <>
-              <ParagraphText text={`المساحة : ${cityData.area} كم `} strong={false} />
-              <ParagraphText text={`الموقع  : ${cityData.location}  `} strong={false} />
+              <ParagraphText text={`المساحة : ${cityData.area ? cityData.area : 'فلسطين'} كم `} strong={false} />
+              <ParagraphText text={`الموقع  : ${cityData.location || ''}  `} strong={false} />
               <ParagraphText text=" تشتهر ب  : الصناعة و التجارة " strong={false} />
               <ParagraphText text="العائلات الفلسطينية في هذه القرية / المدينة " strong={false} />
               <div className="families">
@@ -57,6 +57,7 @@ function CityInformation(props) {
             <div className="no-data">
               <HeaderTitle text="يتم العمل على إضافة معلومات عن هذه المدينة /القرية يمكنك المساهمة بإرسال المعلومات على هذا البريد الإلكتروني " level={3} />
               <HeaderTitle text="saydat.alard@gmail.com" level={4} />
+              {JSON.stringify(families)}
             </div>
           )
       }

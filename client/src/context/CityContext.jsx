@@ -8,8 +8,8 @@ import { apiEndPoint } from '../services/config.json';
 export const CityContext = createContext();
 function CityProvider({ children }) {
   const { id } = useParams();
-
   const [cityData, setCityData] = useState({});
+
   useEffect(() => {
     const getCityData = async () => {
       try {
@@ -27,7 +27,7 @@ function CityProvider({ children }) {
       };
     };
     getCityData();
-  }, []);
+  }, [id]);
 
   return (
     <CityContext.Provider value={{ cityData }}>{children}</CityContext.Provider>

@@ -6,9 +6,15 @@ import { AuthContext } from '../context/AuthContext';
 function ProtectedRoute(props) {
   const { userData } = useContext(AuthContext);
   const { children } = props;
-  const { role } = userData;
 
-  return role ? <Route>{children}</Route> : <Redirect to={{ pathname: '/' }} />;
+  return (
+    userData.role ? (
+      <Route>
+        {children}
+      </Route>
+    ) : <Redirect to={{ pathname: '/' }} />
+
+  );
 }
 ProtectedRoute.propTypes = {
   children: PropTypes.element.isRequired,

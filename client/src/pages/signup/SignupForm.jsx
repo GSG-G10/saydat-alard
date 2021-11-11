@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import {
   Form, Input, Button, message,
 } from 'antd';
-import { Link } from 'react-router-dom';
 import http from '../../services/httpService';
 import Img from '../../components/common/Img';
 import ParagraphText from '../../components/common/Paragraph';
@@ -21,6 +21,7 @@ const postData = async (userInfo, cb) => {
 };
 
 function SignupForm() {
+  const history = useHistory();
   const { setUserData } = useContext(AuthContext);
 
   const { Password } = Input;
@@ -31,6 +32,7 @@ function SignupForm() {
       postData(values, ({ data }) => {
         const { id, isAdmin, name } = data;
         setUserData({ id, role: isAdmin, name });
+        history.push('/');
       });
     } else message.warning('كلمتا المرور غير متطابقتان ');
   };

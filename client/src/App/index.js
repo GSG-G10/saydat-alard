@@ -2,7 +2,7 @@ import React from 'react';
 import './App.less';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/dashboard';
 import City from '../pages/City/City';
 import Home from '../pages/Home';
 import SignUp from '../pages/signup/SignUp';
@@ -72,6 +72,8 @@ function App() {
               {route.children}
             </ProtectedRoute>
           )))}
+          <Route component={Error} />
+
         </Switch>
       </AuthProvider>
     </Router>

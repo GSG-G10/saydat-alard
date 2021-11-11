@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useContext, useMemo } from 'react';
 import { PageHeader, Button } from 'antd';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 import style from './style.module.css';
@@ -18,6 +19,11 @@ const signUpButton = () => (
 const dashBoardButton = () => (
   <Link key="3" to="/dashboard" className={style.navLink}>
     لوحة التحكم
+  </Link>
+);
+const homePageButton = () => (
+  <Link key="3" to="/" className={style.navLink}>
+    الصفحة الرئيسية
   </Link>
 );
 const accountButton = (name) => (
@@ -47,7 +53,7 @@ const NavBar = () => {
       }
       return buttons;
     } else {
-      return [signInButton(), signUpButton()];
+      return [signInButton(), signUpButton(),homePageButton()];
     }
   }, [userData]);
 
@@ -62,5 +68,8 @@ const NavBar = () => {
     </div>
   );
 };
-
+IconLink.propTypes = {
+  text: PropTypes.string.isRequired,
+  src: PropTypes.bool.isRequired,
+};
 export default NavBar;
