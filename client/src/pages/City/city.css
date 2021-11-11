@@ -6,6 +6,9 @@
  width: 100%;
  height: auto; 
 }
+.section-info{
+  width:80%;
+}
 .scroll-nav, 
 .background-img-section, 
 .search-container,
@@ -13,6 +16,7 @@
   margin-bottom: 4vh;
   position: relative;
 }
+
 
 .footer {
   margin-top: 20vh;
