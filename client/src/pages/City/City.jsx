@@ -28,8 +28,10 @@ function City() {
       {cityData ? (
         <>
           <BackgroundImg
-            img={cityData.image}
-            quotation={cityData.quotation}
+            img={cityData.image
+              || 'https://www.aljawab24.com/wp-content/uploads/2019/11/%D9%88%D8%B1%D9%82-%D8%A7%D9%84%D8%B2%D9%8A%D8%AA%D9%88%D9%86.jpg'}
+            quotation={cityData.quotation
+            || 'ستظل في الزيتون خضرته و حول الأرض درعاً'}
             cityName={cityData.name}
           />
           <div id="section-0" className="section-info">

@@ -43,8 +43,8 @@ function CityInformation(props) {
 
           ? (
             <>
-              <ParagraphText text={`المساحة : ${cityData.area} كم `} strong={false} />
-              <ParagraphText text={`الموقع  : ${cityData.location}  `} strong={false} />
+              <ParagraphText text={`المساحة : ${cityData.area ? cityData.area : 'فلسطين'} كم `} strong={false} />
+              <ParagraphText text={`الموقع  : ${cityData.location || ''}  `} strong={false} />
               <ParagraphText text=" تشتهر ب  : الصناعة و التجارة " strong={false} />
               <ParagraphText text="العائلات الفلسطينية في هذه القرية / المدينة " strong={false} />
               <div className="families">

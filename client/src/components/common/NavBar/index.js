@@ -1,13 +1,13 @@
-/* eslint-disable */
 import React, { useContext } from 'react';
 import { PageHeader, Button } from 'antd';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 import style from './style.module.css';
 
 const signInButton = () => (
   <Link key="1" to="/login" className={style.navLink}>
-    تسجبل دخول
+    تسجيل دخول
   </Link>
 );
 const signUpButton = () => (
@@ -20,6 +20,11 @@ const dashBoardButton = () => (
     لوحة التحكم
   </Link>
 );
+const homePageButton = () => (
+  <Link key="3" to="/" className={style.navLink}>
+    الصفحة الرئيسية
+  </Link>
+);
 const accountButton = (name) => (
   <p className={style['account-name']} key="4">
     {name}
@@ -27,7 +32,7 @@ const accountButton = (name) => (
 );
 const logoutButton = (logout) => (
   <Button key="5" style={{ borderRadius: ' 20px' }} onClick={logout}>
-    تسجبل خروج
+    تسجيل خروج
   </Button>
 );
 
@@ -41,12 +46,12 @@ const NavBar = () => {
   const { userData, logout } = useContext(AuthContext);
   const navButtons = [];
   if (userData?.id) {
-    navButtons.push(accountButton(userData.name), logoutButton(logout));
+    navButtons.push(accountButton(userData.name), logoutButton(logout), homePageButton());
     if (userData.role) {
       navButtons.push(dashBoardButton());
     }
   } else {
-    navButtons.push(signInButton(), signUpButton());
+    navButtons.push(signInButton(), signUpButton(), homePageButton());
   }
 
   return (
@@ -60,5 +65,8 @@ const NavBar = () => {
     </div>
   );
 };
-
+IconLink.propTypes = {
+  text: PropTypes.string.isRequired,
+  src: PropTypes.bool.isRequired,
+};
 export default NavBar;
