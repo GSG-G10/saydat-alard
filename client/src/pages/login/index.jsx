@@ -101,7 +101,7 @@ const Login = () => {
                 <Link
                   to="/"
                   style={{
-                    borderRadius: '5px', border: '1px solid green', padding: '0px 10px', color: 'green',
+                    borderRadius: '5px', border: '1px solid green', padding: '0px 10px', color: 'green', fontSize: '16px',
                   }}
                 >
                   الصفحة الرئيسية
