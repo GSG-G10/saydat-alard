@@ -4,21 +4,21 @@ import { Table, message, Modal } from 'antd';
 import http from '../../services/httpService';
 import style from './style.module.css';
 
-const previewFile = (file, cb) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-
-  reader.onloadend = () => {
-    cb(reader.result);
-  };
-};
-
 function CityTable() {
   const [cities, setCities] = useState([]);
+  const [previewSource, setPreviewSource] = useState('');
   const [modalState, setModalState] = useState({
     isVisible: false,
     data: null,
   });
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
 
   const getDashBoardCities = async () => {
     const url = '/api/v1/dashboard/city';
@@ -47,10 +47,10 @@ function CityTable() {
     const url = `/api/v1/dashboard/city/${modalState.data.id}`;
     const response = await http
       .patch(url, {
-        name: e.target.name.value,
+        cityName: e.target.name.value,
         location: e.target.location.value,
         area: e.target.area.value,
-        image: e.target.image.value,
+        image: previewSource,
         quotation: e.target.quotation.value,
       })
       .catch((err) => {
@@ -78,13 +78,11 @@ function CityTable() {
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
-    previewFile(
-      file,
-      setModalState((prev) => ({
-        ...prev,
-        data: { ...prev.data, image: e.target.value },
-      }))
-    );
+    previewFile(file);
+    setModalState((prev) => ({
+      ...prev,
+      data: { ...prev.data, image: previewSource },
+    }));
   };
 
   const columns = [
@@ -97,7 +95,13 @@ function CityTable() {
       dataIndex: '',
       key: 'x',
       render: (_, record, index) => (
-        <button onClick={() => deleteCityDashboard(record, index)} className={style.editDeleteBtn}> حذف</button>
+        <button
+          onClick={() => deleteCityDashboard(record, index)}
+          className={style.editDeleteBtn}
+        >
+          {' '}
+          حذف
+        </button>
       ),
     },
     {
@@ -105,7 +109,10 @@ function CityTable() {
       dataIndex: '',
       key: 'y',
       render: (text, record, index) => (
-        <button onClick={() => onEditCityDashboard(text, record, index)} className={style.editDeleteBtn} >
+        <button
+          onClick={() => onEditCityDashboard(text, record, index)}
+          className={style.editDeleteBtn}
+        >
           {' '}
           تعديل
         </button>
@@ -113,9 +120,17 @@ function CityTable() {
     },
   ];
 
+  function both() {}
+
   return (
     <>
-      <Table columns={columns} dataSource={cities} rowKey={(row) => row.id} className={style.mainTable} />
+      <Table
+        columns={columns}
+        dataSource={cities}
+        rowKey={(row) => row.id}
+        className={style.mainTable}
+        size="small"
+      />
       {modalState.isVisible && (
         <Modal
           title="تعديل المدينة"
@@ -175,36 +190,26 @@ function CityTable() {
                     className={style.formInput}
                     type="file"
                     name="image"
-                    onChange={
-                      handleFileInputChange
-                      // (e) =>
-                      // setModalState((prev) => ({
-                      //   ...prev,
-                      //   data: { ...prev.data, image: e.target.value },
-                      // }))
-                    }
+                    onChange={handleFileInputChange}
                   />
                 </label>
-                <img
-                className={style.formImg}
-                  src={modalState.data?.image}
-                  alt={`${modalState.data?.name} صورة من `}
-                />
+
+                {previewSource && (
+                  <img
+                    src={previewSource}
+                    alt="chosen"
+                    className={style.formImg}
+                  />
+                )}
               </div>
             </div>
             <br />
             <hr />
             <br />
-            <button
-            className={style.okBtn}
-              type="submit"
-            >
+            <button className={style.okBtn} type="submit">
               موافق
             </button>
-            <button
-            className={style.cancelBtn}
-              type="button"
-            >
+            <button className={style.cancelBtn} type="button">
               إلغاء
             </button>
           </form>
