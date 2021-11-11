@@ -94,7 +94,7 @@ function SignupForm() {
           </Item>
           <div className="signupRedirect">
             <ParagraphText text="هل تمتلك حساب ؟" strong={false} />
-            <Link to="/signup" className="loginLink">تسجيل الدخول</Link>
+            <Link to="/login" className="loginLink">تسجيل الدخول</Link>
           </div>
         </Form>
         <Img

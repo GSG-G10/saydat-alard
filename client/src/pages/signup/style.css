@@ -52,7 +52,7 @@
   text-align: center;
 }
 .signupBtns {
-  margin-right: -160px;
+  margin-right: 30px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
