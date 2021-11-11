@@ -2,6 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { Table, message, Modal } from 'antd';
 import http from '../../services/httpService';
+import style from './style.module.css';
+
+const previewFile = (file, cb) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+
+  reader.onloadend = () => {
+    cb(reader.result);
+  };
+};
 
 function CityTable() {
   const [cities, setCities] = useState([]);
@@ -66,6 +76,17 @@ function CityTable() {
     }
   };
 
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(
+      file,
+      setModalState((prev) => ({
+        ...prev,
+        data: { ...prev.data, image: e.target.value },
+      }))
+    );
+  };
+
   const columns = [
     { title: 'المدينة', dataIndex: 'name', key: 'name' },
     { title: 'المساحة', dataIndex: 'area', key: 'area' },
@@ -76,7 +97,7 @@ function CityTable() {
       dataIndex: '',
       key: 'x',
       render: (_, record, index) => (
-        <button onClick={() => deleteCityDashboard(record, index)}> حذف</button>
+        <button onClick={() => deleteCityDashboard(record, index)} className={style.editDeleteBtn}> حذف</button>
       ),
     },
     {
@@ -84,7 +105,7 @@ function CityTable() {
       dataIndex: '',
       key: 'y',
       render: (text, record, index) => (
-        <button onClick={() => onEditCityDashboard(text, record, index)}>
+        <button onClick={() => onEditCityDashboard(text, record, index)} className={style.editDeleteBtn} >
           {' '}
           تعديل
         </button>
@@ -94,7 +115,7 @@ function CityTable() {
 
   return (
     <>
-      <Table columns={columns} dataSource={cities} rowKey={(row) => row.id} />
+      <Table columns={columns} dataSource={cities} rowKey={(row) => row.id} className={style.mainTable} />
       {modalState.isVisible && (
         <Modal
           title="تعديل المدينة"
@@ -108,145 +129,64 @@ function CityTable() {
           style={{ borderRadius: '50px' }}
         >
           <form onSubmit={editCity}>
-            <div
-              className=""
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <label
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    height: '30px',
-                  }}
-                >
+            <div className={style.mianForm}>
+              <div className={style.dev2}>
+                <label className={style.formLabel}>
                   الإسم:
                   <input
                     name="name"
-                    style={{
-                      height: '100%',
-                      border: '1px solid #c4c4c4',
-                      borderRadius: '4px',
-                      padding: '0 2px',
-                      marginRight: '16px',
-                    }}
                     type="text"
+                    className={style.formInput}
                     defaultValue={modalState.data?.name}
                   />
                 </label>
-                <label
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    height: '30px',
-                  }}
-                >
+                <label className={style.formlabel}>
                   الموقع:
                   <input
                     name="location"
-                    style={{
-                      height: '100%',
-                      border: '1px solid #c4c4c4',
-                      borderRadius: '4px',
-                      padding: '0 2px',
-                      marginRight: '16px',
-                    }}
                     type="text"
+                    className={style.formInput}
                     defaultValue={modalState.data?.location}
                   />
                 </label>
-                <label
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    height: '30px',
-                  }}
-                >
+                <label className={style.formLabel}>
                   المساحة:
                   <input
                     name="area"
-                    style={{
-                      height: '100%',
-                      border: '1px solid #c4c4c4',
-                      borderRadius: '4px',
-                      padding: '0 2px',
-                      marginRight: '16px',
-                    }}
                     type="text"
+                    className={style.formInput}
                     defaultValue={modalState.data?.area}
                   />
                 </label>
-                <label
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    height: '30px',
-                  }}
-                >
+                <label className={style.formLabel}>
                   الإقتباس:
                   <input
                     name="quotation"
-                    style={{
-                      height: '100%',
-                      border: '1px solid #c4c4c4',
-                      borderRadius: '4px',
-                      padding: '0 2px',
-                      marginRight: '16px',
-                    }}
                     type="text"
+                    className={style.formInput}
                     defaultValue={modalState.data?.quotation}
                   />
                 </label>
               </div>
               <div style={{ flexBasis: '50%' }}>
-                <label
-                  style={{
-                    marginBottom: '10px',
-                    display: 'inline-block',
-                    height: '30px',
-                  }}
-                >
+                <label className={style.defLabel}>
                   الصورة:
                   <input
-                    style={{
-                      height: '100%',
-                      border: '1px solid #c4c4c4',
-                      borderRadius: '4px',
-                      padding: '0 2px',
-                      marginRight: '16px',
-                    }}
-                    type="text"
+                    className={style.formInput}
+                    type="file"
                     name="image"
-                    onChange={(e) =>
-                      setModalState((prev) => ({
-                        ...prev,
-                        data: { ...prev.data, image: e.target.value },
-                      }))
+                    onChange={
+                      handleFileInputChange
+                      // (e) =>
+                      // setModalState((prev) => ({
+                      //   ...prev,
+                      //   data: { ...prev.data, image: e.target.value },
+                      // }))
                     }
                   />
                 </label>
                 <img
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    minHeight: '50px',
-                    minHeight: '150px',
-                    display: 'block',
-                  }}
-                  className=""
+                className={style.formImg}
                   src={modalState.data?.image}
                   alt={`${modalState.data?.name} صورة من `}
                 />
@@ -256,18 +196,14 @@ function CityTable() {
             <hr />
             <br />
             <button
+            className={style.okBtn}
               type="submit"
-              style={{
-                marginLeft: '16px',
-                padding: '1px 2px',
-                minWidth: '70px',
-              }}
             >
               موافق
             </button>
             <button
+            className={style.cancelBtn}
               type="button"
-              style={{ padding: '1px 2px', minWidth: '70px' }}
             >
               إلغاء
             </button>

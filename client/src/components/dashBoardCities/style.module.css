@@ -1,0 +1,61 @@
+.mianForm{
+    display: flex;
+    justify-content: space-between;
+}
+.dev2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.formLabel{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+}
+
+.formInput{
+    height: 100%;
+    border: 1px solid #c4c4c4;
+    border-radius: 4px;
+    padding: 0 2px;
+    margin-right: 16px;
+}
+
+.locationInput{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.defLabel{
+    margin-bottom: 10px;
+    display: inline-block;
+    height: 30px;
+}
+.formImg{
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 150px;
+    min-width: 50px;
+    display: block;
+}
+.okBtn{
+    margin-left: 16px;
+    padding: 1px 2px;
+    min-width: 70px;
+}
+.cancelBtn{
+padding: 1px 2px;
+min-width: 70px;
+}
+
+.mainTable{
+    max-width: 90%;
+}
+
+.editDeleteBtn{
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #c4c4c4;
+    padding: 5px;
+}
