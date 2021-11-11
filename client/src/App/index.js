@@ -72,6 +72,8 @@ function App() {
               {route.children}
             </ProtectedRoute>
           )))}
+          <Route component={Error} />
+
         </Switch>
       </AuthProvider>
     </Router>
