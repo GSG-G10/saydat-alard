@@ -46,7 +46,7 @@ const IconLink = ({ src, text }) => (
 const NavBar = () => {
   const { userData, logout } = useContext(AuthContext);
   const navButtons = useMemo(() => {
-    if (userData.id) {
+    if (userData) {
       const buttons = [accountButton(userData.name), logoutButton(logout)];
       if (userData.role) {
         return buttons.concat(dashBoardButton());
