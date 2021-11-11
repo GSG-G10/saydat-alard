@@ -40,7 +40,7 @@ const IconLink = ({ src, text }) => (
 const NavBar = () => {
   const { userData, logout } = useContext(AuthContext);
   const navButtons = [];
-  if (userData.id) {
+  if (userData?.id) {
     navButtons.push(accountButton(userData.name), logoutButton(logout));
     if (userData.role) {
       navButtons.push(dashBoardButton());
