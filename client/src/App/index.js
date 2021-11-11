@@ -1,27 +1,26 @@
-/* eslint-disable no-console */
 import React from 'react';
-import 'antd/dist/antd.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  // Redirect,
-} from 'react-router-dom';
+import './App.less';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
-import Dashboard from '../pages/Dashboard';
-import City from '../pages/City';
+import Dashboard from '../pages/dashboard';
+import City from '../pages/City/City';
 import Home from '../pages/Home';
-import SignUp from '../pages/SignUp';
+import SignUp from '../pages/signup/SignUp';
 import Login from '../pages/login';
 import Error from '../pages/Error';
 
 import AuthProvider from '../context/AuthContext';
+import CityProvider from '../context/CityContext';
 
 function App() {
   const routes = [
     {
       path: '/city/:id',
-      children: <City />,
+      children: (
+        <CityProvider>
+          <City />
+        </CityProvider>
+      ),
       public: true,
       exact: true,
     },
@@ -57,22 +56,27 @@ function App() {
     },
   ];
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Switch>
-          {
-          routes.map((route) => (route.public
-            ? <Route key={route.path} exact={route.exact} path={route.path}>{route.children}</Route>
-            : (
-              <ProtectedRoute key={route.path} exact={route.exact} path={route.path}>
-                {route.children}
+          {routes.map((route) => (route.public ? (
+            <Route key={route.path} exact={route.exact} path={route.path}>
+              {route.children}
+            </Route>
+          ) : (
+            <ProtectedRoute
+              key={route.path}
+              exact={route.exact}
+              path={route.path}
+            >
+              {route.children}
+            </ProtectedRoute>
+          )))}
+          <Route component={Error} />
 
-              </ProtectedRoute>
-            )))
-        }
         </Switch>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

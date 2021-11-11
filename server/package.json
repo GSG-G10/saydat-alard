@@ -5,6 +5,7 @@
     "cloudinary": "^1.27.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "env2": "^2.2.2",
     "express": "^4.17.1",
@@ -18,7 +19,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node src/index.js",
+    "start": "cross-env NODE_ENV=production node ./src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "cross-env NODE_ENV=test jest test/test.js",
     "lint": "eslint ./src --fix",

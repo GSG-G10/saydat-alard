@@ -1,0 +1,62 @@
+li {
+  border-radius: 100px !important;
+  box-shadow: 0;
+}
+.module {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 140px ;
+  box-sizing: border-box;
+}
+.leavesImg {
+  position: absolute;
+  max-width: 100%;
+  max-height: calc(100% - 2rem);
+  min-width: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  text-align: right;
+}
+
+.sliderDiv {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.sliderDiv > div {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.leftButton,
+.rightButton {
+  border-radius: 50%;
+  background: transparent;
+  color: #000000;
+  border: #000000 solid 2px;
+  font-size: 31px;
+  height: 71px;
+  width: 68px;
+}
+
+button.cardButton {
+  width: 160px;
+  margin: auto;
+  height: 40px;
+  border-radius: 40px;
+}
+._1Lxpd{
+  width:100% !important;
+}
