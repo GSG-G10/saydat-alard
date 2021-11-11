@@ -33,7 +33,7 @@ function AuthProvider({ children }) {
 
   const logout = () => {
     http.get(`${apiEndPoint}/logout`);
-    setUserData({});
+    setUserData(null);
     history.push('/');
   };
   if (loading) {

@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+/* eslint-disable */
+import React, { useContext, useMemo } from 'react';
 import { PageHeader, Button } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -7,7 +8,7 @@ import style from './style.module.css';
 
 const signInButton = () => (
   <Link key="1" to="/login" className={style.navLink}>
-    تسجيل دخول
+    تسجيل دخول{' '}
   </Link>
 );
 const signUpButton = () => (
@@ -44,15 +45,17 @@ const IconLink = ({ src, text }) => (
 
 const NavBar = () => {
   const { userData, logout } = useContext(AuthContext);
-  const navButtons = [];
-  if (userData?.id) {
-    navButtons.push(accountButton(userData.name), logoutButton(logout), homePageButton());
-    if (userData.role) {
-      navButtons.push(dashBoardButton());
+  const navButtons = useMemo(() => {
+    if (userData) {
+      const buttons = [accountButton(userData.name), logoutButton(logout)];
+      if (userData.role) {
+        return buttons.concat(dashBoardButton());
+      }
+      return buttons;
+    } else {
+      return [signInButton(), signUpButton(),homePageButton()];
     }
-  } else {
-    navButtons.push(signInButton(), signUpButton(), homePageButton());
-  }
+  }, [userData]);
 
   return (
     <div className="site-page-header-ghost-wrapper">
