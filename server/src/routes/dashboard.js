@@ -29,13 +29,16 @@ router
 router
   .route('/city')
   .get(asyncHandler(getDashboardCities))
-  .post(asyncHandler(addCity))
-  .put(asyncHandler(editCityDashboard));
+  .post(asyncHandler(addCity));
+
+router
+  .route('/city/:id')
+  .put(asyncHandler(editCityDashboard))
+  .patch(asyncHandler(editCityDashboard))
+  .delete(asyncHandler(deleteCityDashboard));
 
 router.get('/story', asyncHandler(getDashboardStories));
 
-router
-  .patch('/story/:id', asyncHandler(approvedStory))
-  .delete(asyncHandler(deleteCityDashboard));
+router.patch('/story/:id', asyncHandler(approvedStory));
 
 module.exports = router;
