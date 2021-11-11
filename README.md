@@ -43,19 +43,42 @@ The visitor will enter the site and will see a Nav bar with an entry box to sear
 ![database ](https://user-images.githubusercontent.com/71079908/138549598-36d2ef3f-1813-4740-8078-ee0d4f45c283.png)
 
 ------
-## Tech Stack  :clipboard: 
-* Node js
-* Javascript
-* React js
-* css
-* html
-* Git Work Flow
-* npm modules
-* React hocks
-* Postgress
+## Technologies 💻:-
+**BackEnd**: Node JS & Express JS.
+**FrontEnd**: React JS,Ant design,css.
+**Database**: PostgreSQL.
+
 -----------
+## How to Launch App Locally
+ * clone this repo by typing this command in the terminal:
+ ```https://github.com/GSG-G10/saydat-alard.git```
+* Run `npm i` to install the packages for the app as general.
+* Run `cd client` and `npm i` to install the packages for the client- React Js.
+### Database Setup 📋
+* Make sure you have installed PostgreSQL and pgcli
+```
+CREATE DATABASE {database name};
+CREATE USER {user name} WITH superuser password {password}
+ALTER DATABASE {database name} OWNER TO {user name};
+```
+* Test DB:
+ Do the same as before but make sure to change the names.
+* Run the following command in the database pgcli terminal
+`\i server/database/config/build.sql` .
+
+
+### Start the App :-
+To start the App Locally you can start the server First then start client-side or vice versa!
+
+To run Server, In your terminal Type:
+
+* `npm run dev` then you should be able to go to [localhost](http://localhost:5000/) 
+ To run client-side, In your terminal Type:
+* `cd client` => `npm start` then you will be able to run [localhost](http://localhost:3000/) 
+Now you can view the app live in the Browser!
+------------------
 ## Team Members :busts_in_silhouette:
-* Nizar Zakout
-* Reem Shamia
-* Nadia Tamimi
-* Mohammed Rayyes
+* [Nizar Zaqout](https://github.com/Nizar7zak)
+* [Reem Shamia](https://github.com/reemsh2000)
+* [Nadia Tamimi](https://github.com/NadiaJalalTamimi)
+* [Mohammed Rayyes](https://github.com/modrayyes)
