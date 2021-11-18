@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs } from 'antd';
 import CityDashboard from './city/City';
 import NavBar from '../../components/common/NavBar';
+import CityTable from '../../components/dashBoardCities';
 import './style.css';
 
 const { TabPane } = Tabs;
@@ -15,6 +16,7 @@ function Dashboard() {
         <Tabs defaultActiveKey="1">
           <TabPane tab="المدن" key="1">
             <CityDashboard />
+            <CityTable />
           </TabPane>
           <TabPane tab="القصص" key="2">
             Content of Tab Pane 2
